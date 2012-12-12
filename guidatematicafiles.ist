@@ -1,0 +1,8 @@
+headings_flag 1
+heading_prefix   "\\par\\penalty-50\\section*{"
+heading_suffix   "}"
+symhead_positive "Estensioni"
+symhead_negative "estensioni"
+numhead_positive "Numeri"
+numhead_negative "numeri"
+delim_0 ",\~"
