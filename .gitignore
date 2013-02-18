@@ -27,7 +27,6 @@ Makefile~
 *.log
 *.out
 *.toc
-*.synctex.gz
 #
 # File *non* sorgenti.
 #
