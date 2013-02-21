@@ -12,7 +12,7 @@ Installazione
 ----------
 
 La modalità per usare la classe è riportata nel file
-*GuidaTematica-doc.pdf*. In più, c'è un Makefile da usare su *GNU/Linux* e un
+*GuidaTematica-doc.pdf*. In più, c'è un *Makefile* da usare su *GNU/Linux* e un
 *Makefile.bat* da usare su Windows.
 
 Licenza
