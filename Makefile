@@ -59,7 +59,6 @@ doc: $(CLASSE_DOC)
 
 $(CLASSE_DOC): $(MAIN_DOC).tex
 	echo "Compilazione di $< ..."
-	echo off
 	xelatex $< > /dev/null
 	bibtex	$(MAIN_DOC) > /dev/null
 	xelatex $< > /dev/null
