@@ -1,6 +1,7 @@
+% Compilare con -*- TeX-engine:xetex -*-
+
 % !TEX encoding = UTF-8 Unicode
 % !TEX TS-program = XeLaTeX
-
 
 \documentclass[b5paper,oneside,11pt,ipertesto]{guidatematica}
 \ProvidesFile{GuidaTematica-doc.tex}[2012/12/12 v.1.3 Documentazione della classe guidatematica.cls]
@@ -208,7 +209,7 @@ Entità	& Descrizione\\
 \cs{chiavestyle}& comando per comporre il nome delle chiavi nella sintassi \meta{chiave} = \meta{valore}con un certo stile di scrittura \verb|\chiavestyle{angle}|\lra\chiavestyle{angle}\tabularnewline
 \cs{descrittorestyle}& comando per comporre il codice dei descrittori delle colonne con un certo stile di scrittura \verb|\descrittorestyle{c}|\lra\descrittorestyle{c}\tabularnewline
 \cs{posizionestyle}& comando per comporre il codice dei posizionamenti degli oggetti mobili con un certo stile di scrittura \verb|\posizionestyle{t}|\lra\posizionestyle{t}\tabularnewline
-\cs{allineamentostyle}& comando per comporre il codice degli allineamenti degli ambineti \amb{tabular}, \amb{array} e simili con un certo stile di scrittura \verb|\allineamentostyle{b}|\lra\allineamentostyle{b}\tabularnewline
+\cs{allineamentostyle}& comando per comporre il codice degli allineamenti degli ambienti \amb{tabular}, \amb{array} e simili con un certo stile di scrittura \verb|\allineamentostyle{b}|\lra\allineamentostyle{b}\tabularnewline
 \cs{opz}& compone una opzione nello stile \cs{opzstyle} e manda le informazioni all'indice analitico sotto la voce ``opzione''\tabularnewline
 \cs{conta}& compone il nome di un contatore nello stile \cs{contastyle} e manda le informazioni all'indice analitico  sotto la voce ``contatore''\tabularnewline
 \cs{stile}& compone il nome di uno stile di pagina nello stile \cs{stilestyle} e manda le informazioni all'indice analitico  sotto la voce ``stile della pagina''\tabularnewline
@@ -224,11 +225,11 @@ Entità	& Descrizione\\
 \cs{pack}& compone il nome di un pacchetto nello stile \cs{packstyle} e manda le informazioni all'indice analitico sotto la voce ``pacchetto''\tabularnewline
 \cs{prog}& compone il nome di un programma nello stile \cs{progstyle} e manda le informazioni all'indice analitico sotto la voce ``programma''\tabularnewline
 \amb{description}& si riferisce al solito ambente di \LaTeX\ salvo che l'etichetta della voce da descrivere è composta in maiuscoletto\tabularnewline
-\amb{blockdescritption}& si riferisce ad un ambiente simile a \amb{description} privo però del rientro del margine sinistro; l'etichetta è composta in maiuscoletto\tabularnewline
+\amb{blockdescription}& si riferisce ad un ambiente simile a \amb{description} privo però del rientro del margine sinistro; l'etichetta è composta in maiuscoletto\tabularnewline
 \amb{plaindescription}& si riferisce ad un ambiente simile a \amb{description} con il rientro del margine sinistro; l'etichetta è composta in font normale, non in neretto come nell'ambiente descrittivo di \LaTeX\tabularnewline
 \amb{compactitemize}& si riferisce ad una lista semplice (puntata) priva di spazi di separazione fra una voce e la successiva\tabularnewline
 \amb{compactenumerate}& si riferisce ad una lista enumerativa priva di spazi separazione fra una voce e l'altra\tabularnewline
-\amb{compactdescritption}& si riferisce ad una lista descrittiva priva di spazi di separazione fra una voce e l'altra; l'etichetta è composta in maiuscoletto\tabularnewline
+\amb{compactdescription}& si riferisce ad una lista descrittiva priva di spazi di separazione fra una voce e l'altra; l'etichetta è composta in maiuscoletto\tabularnewline
 \amb{sintassi}& Permette di scrivere la sintassi di uno o più comandi dentro un riquadro\tabularnewline
 \file{guidatematica.bst}& file di stile per la bibliografia da gestire con \pack{natbib} e che ha i riferimenti nello stile autore-anno\tabularnewline
 \file{guidatematica.ist}& file di stile per gli indici analitici con i gruppi di  voci che iniziano con la stessa lettera separati dal titolo formato dalla lettera iniziale\tabularnewline 
@@ -371,7 +372,7 @@ I comandi seguenti fanno uso dei comandi precedenti e, se è richiesta la compos
 
 \section{Nuovi ambienti}
 
-Grazie al pacchetto \pack{enumitem} si sono fortemente estese le possibilità di personalizzare le liste rispetto a quanto si può fare con i comandi di personalizzazione di \class{memoir}. I suoi ambienti standard \ambstyle{descriptioon} e \ambstyle{block\-descritption}, sono stati modificati per avere la loro etichetta composta in maiuscoletto; inoltre sono state definite altre liste che si descrivono qui di seguito.
+Grazie al pacchetto \pack{enumitem} si sono fortemente estese le possibilità di personalizzare le liste rispetto a quanto si può fare con i comandi di personalizzazione di \class{memoir}. I suoi ambienti standard \ambstyle{description} e \ambstyle{block\-description}, sono stati modificati per avere la loro etichetta composta in maiuscoletto; inoltre sono state definite altre liste che si descrivono qui di seguito.
 
 Si noti che per le liste descrittive si può cambiare a piacere il modo di scrivere l'oggetto da descrivere, e questo torna molto utile in una classe come \class{guidatematica}, dove vengono descritti spesso oggetti della stessa ``categoria'', che spesso debbono essere composti in uno stile particolare oppure devono venire inviati all'indice analitico. Si veda poco oltre alcuni esempi di questi usi che ricorrono alla comoda sintassi del pacchetto \pack{enumitem}, basata su espressioni del tipo \meta{chiave} = \meta{valore}.
 \begin{blockdescription}[before={\renewcommand\blockdescriptionlabel[1]{\normalfont\scshape##1\index{ambiente!##1@\ambstyle{##1}}}}]
@@ -431,7 +432,7 @@ Per la bibliografia si usa lo stile predefinito \file{guidatematica.bst}, del ti
 
 Molto importante per una guida di questo genere è l'ambiente \amb{sintassi} predisposto per specificare la sintassi dei comandi dentro un ambiente sbandierato con l'allineamento a sinistra; di per sé questo ambiente definisce l'ambiente \amb{flushleft} e una cornice  dentro la quale specificare la sintassi che si desidera descrivere; di solito si tratta di una riga soltanto, ma se dovesse richiedere più righe allora l'utente sarebbe facilitato se in apertura dell'ambiente specificasse il comando \cs{obeylines} che trasforma ogni fine riga in un ``a capo'' esplicito. Per esempio si può descrivere l'impostazione di un documento con la sintassi seguente:
 \begin{sintassi}\obeylines
-\cs{documenclass}\oarg{opzioni}\marg{classe}
+\cs{documentclass}\oarg{opzioni}\marg{classe}
 \meta{preambolo}
 \Bambiente{document}
 \meta{corpo del documento}
