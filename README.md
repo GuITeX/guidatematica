@@ -6,7 +6,14 @@ Descrizione
 
 *guidatematica.cls* è una classe LaTeX per scrivere [guide tematiche](http://www.guitex.org/home/it/guide-tematiche/la-filosofia-delle-guide-a-tema) per il [GuIT — Gruppo Utilizzatori Italiani di TeX](http://www.guitex.org/home/).
  
-L'autore della classe e della documentazione è Claudio Beccari.
+L'autore della classe e della documentazione a corredo è Claudio Beccari.
+
+Installazione
+----------
+
+La modalità per usare la classe è riportata nel file
+*GuidaTematica-doc.pdf*. In più, c'è un Makefile da usare su *GNU/Linux* e un
+*Makefile.bat* da usare su Windows.
 
 Licenza
 ----------
