@@ -192,7 +192,7 @@ Entità	& Descrizione\\
 \cs{showindexmarks}& mostra le parole indicizzate nella parte superiore del margine esterno della pagina; talvolta fallisce se le corrispondenti stringhe  sono troppo lunghe;\setcopymark{Composizione del \today}\afterpage{\expandafter\gdef\csname @copymark\endcsname{}}\tabularnewline
 \cs{hideindexmarks}& nasconde l'indicazione delle parole indicizzate\tabularnewline
 \cs{texttm}& comando testuale per comporre col font typewriter monospaziato anche quando fosse in vigore quello proporzionale\tabularnewline
-\cs{textttv}& comando testuale per comporre col font typewriter proporzionale anche qhando fosse in vigore quello monospaziato\tabularnewline
+\cs{texttv}& comando testuale per comporre col font typewriter proporzionale anche qhando fosse in vigore quello monospaziato\tabularnewline
 \cs{tvfamily}& dichiarazione corrispondente al comando \cs{texttv}\tabularnewline
 \cs{textl}& comando per comporre  con i font type\-writer con le cifre ``maiuscole'' anche quando fosse in vigore lo stile \texttt{OldStyle} per le cifre\verb|\textl{123}|\lra\textl{123} a confronto con \verb|123|\lra123\tabularnewline
 \cs{prebibhook}& comando per inserire un (breve) testo fra il titolo della bibliografia e l'elenco bibliografico\tabularnewline
@@ -214,7 +214,7 @@ Entità	& Descrizione\\
 \cs{conta}& compone il nome di un contatore nello stile \cs{contastyle} e manda le informazioni all'indice analitico  sotto la voce ``contatore''\tabularnewline
 \cs{stile}& compone il nome di uno stile di pagina nello stile \cs{stilestyle} e manda le informazioni all'indice analitico  sotto la voce ``stile della pagina''\tabularnewline
 \cs{numeri}& compone il nome di uno stile di numerazione nello stile \comando{\numeri\-style} e manda le informazioni all'indice analitico  sotto la voce ``numerazione''\tabularnewline
-\cs{misura}& compone il nome di una unità di misura nello stile \comando{\umisurasty\-le} e manda le informazioni all'indice analitico  sotto la voce ``unità di misura''\tabularnewline
+\cs{umisura}& compone il nome di una unità di misura nello stile \comando{\umisurasty\-le} e manda le informazioni all'indice analitico  sotto la voce ``unità di misura''\tabularnewline
 \cs{chiave}& compone il nome di una chiave nello stile \cs{chiavestyle} e manda le informazioni all'indice analitico  sotto la voce ``chiave''\tabularnewline
 \cs{descrittore}& compone il codice di un descrittore di colonna nello stile \cs{descrittorestyle} e manda le informazioni all'indice analitico  sotto la voce ``descrittore di colonna''\tabularnewline
 \cs{posizione}& compone il codice di posizionamento di un oggetto mobile nello stile \cs{posizionestyle} e manda le informazioni all'indice analitico  sotto la voce ``posizione degli oggetti flottanti''\tabularnewline
@@ -344,7 +344,7 @@ I comandi seguenti definiscono lo stile di scrittura di determinate entità e pe
 \item[allineamentostyle] serve per comporre i simboli dell'allineamento verticale di tabelle, matrici,  ambienti \amb{minipage}, e simili in carattere typewriter monospaziato diritto; per esempio: \allineamentostyle{c}.
 \end{compactdescription}
 
-Va detto che l'uso di questi comandi non è necessario quando non si compongono gli indici analitici per i quali sono funzionali nel senso di comporre la parola nel testo e nell'indice usando lo stesso stile; potrebbe essere necessario usarli nei comandi di sezionamento quando si vuole evitare che i collegamenti ipertestuali generati da \pack{hypertext} (non precaricato nella classe, ma da richiedere espressamente da parte dell'utente mediante l'opzione di classe \opz{iperteso}) non abbiano da ``singhiozzare'' perché certi comandi non sono accettabili nei testi che possono costituire dei bookmark. In questo caso si dovrebbe procedere usando il comando \cs{texorpdfstring} in questo modo:
+Va detto che l'uso di questi comandi non è necessario quando non si compongono gli indici analitici per i quali sono funzionali nel senso di comporre la parola nel testo e nell'indice usando lo stesso stile; potrebbe essere necessario usarli nei comandi di sezionamento quando si vuole evitare che i collegamenti ipertestuali generati da \pack{hyperref} (non precaricato nella classe, ma da richiedere espressamente da parte dell'utente mediante l'opzione di classe \opz{ipertesto}) non abbiano da ``singhiozzare'' perché certi comandi non sono accettabili nei testi che possono costituire dei bookmark. In questo caso si dovrebbe procedere usando il comando \cs{texorpdfstring} in questo modo:
 \begin{Verbatim}
 \subsection{L'uso della chiave %
             \texorpdfstring{\chiavestyle}{}{angle}}
@@ -542,7 +542,7 @@ Chiaramente la scelta dell'uno o dell'altro programma dipende esclusivamente dal
 
 Disponendo di \prog{XeLaTeX} (e con le distribuzioni del sistema \TeX\ successive al 2006 tutte contengono \XeLaTeX\ e i motori di composizione sono disponibili per tutte le piattaforme di elaborazione Windows, Linux, Mac), queste acrobazie con i font si possono evitare facilmente usando, appunto, \prog{XeLaTeX}.
 
-\item[Il formato di uscita] Sia \prog{pdfLaTeX} sia \prog{XeLaTeX} producono l'uscita in formato PDF; il primo  produce quel formato in modo diretto, mentre il secondo passa attraverso una versione estesa  e modificata del formato DVI e provvede ad eseguire la conversione in formato PDF mediante il programma esteso \prog{xdvpdfmx}; siccome il formato DVI, seppure esteso, non consente alcune della funzionalità del formato PDF, la conversione anche se ben fatta, non può introdurre nel file PDF quello che non c'era nel file DVI esteso. Passando, quindi, per \prog{XeLaTeX} si perdono alcune funzionalità.
+\item[Il formato di uscita] Sia \prog{pdfLaTeX} sia \prog{XeLaTeX} producono l'uscita in formato PDF; il primo  produce quel formato in modo diretto, mentre il secondo passa attraverso una versione estesa  e modificata del formato DVI e provvede ad eseguire la conversione in formato PDF mediante il programma esteso \prog{xdvipdfmx}; siccome il formato DVI, seppure esteso, non consente alcune della funzionalità del formato PDF, la conversione anche se ben fatta, non può introdurre nel file PDF quello che non c'era nel file DVI esteso. Passando, quindi, per \prog{XeLaTeX} si perdono alcune funzionalità.
 
 
 \item[Il formato PDF archiviabile] Non so quanto sia importante per le guide tematiche del \GuIT, ma con \prog{XeLaTeX} non si può produrre il file di uscita in formato PDF compatibile con il formato archiviabile, corrispondente alla norma ISO 19005-1:2005; oggi poi esiste un aggiornamento della norma, ISO 19005-2:2011, e a maggior ragione il file PDF generato con \prog{XeLaTeX} non è conforme con le norme ISO citate. Tuttavia ricorrendo a \prog{ghostscript} è possibile ottenere la conversione in formato archiviabile in modo corretto; nella sezione di Documentazione del sito del \GuIT\ esistono alcuni testi che descrivono il modo di procedere. Sembra che con la versione 9.x di \prog{ghostscript} sia possibile generare un file PDF archiviabile conforme alla norma del 2011, ma chi scrive non è ancora in grado di confermarlo.
