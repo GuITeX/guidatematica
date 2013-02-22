@@ -11,14 +11,19 @@ L'autore della classe e della documentazione a corredo è Claudio Beccari.
 Installazione
 ----------
 
-La modalità per usare la classe è riportata nel file
-*GuidaTematica-doc.pdf*. In più, c'è un *Makefile* da usare su *GNU/Linux* e un
-*Makefile.bat* da usare su Windows.
+La classe è la sua documentazione sono generate dai sorgenti *guidatematica.dtx* e *GuidaTematica-doc.tex*:
+
+* per creare la classe *guidatematica.cls* si deve compilare *guidatematica.dtx* mediante `pdflatex`; 
+* per creare la guida di supporto si deve compilare *GuidaTematica-doc.tex* con `xelatex` più `bibtex` per la bibliografia; l'indice analitico è invece creato in modo sincrono grazie al pacchetto [imakeidx](http://www.ctan.org/pkg/imakeidx).
+
+Se si è interessati ad installare la classe nel proprio albero personale con una distribuzione TeX Live, sono disponibili un
+* *Makefile* da usare su *GNU/Linux* mediante il programma [make](http://www.gnu.org/software/make/);
+* *Makefile.bat* da usare su Windows (si deve aprire il `Prompt dei comandi` e scrivere `Makefile`).
 
 Licenza
 ----------
 
-La classe *guidatematica* e questa documentazione sono soggette alla licenza **LPPL**, LaTeX Project Public Licence, versione 1.3 o successive; il testo della licenza è sempre contenuto in qualunque distribuzione del sistema TeX, e nel sito [http://www.latex-project.org/lppl.txt](http://www.latex-project.org/lppl.txt)
+La classe *guidatematica* e la guida di supporto sono soggette alla licenza **LPPL**, LaTeX Project Public Licence, versione 1.3 o successive; il testo della licenza è sempre contenuto in qualunque distribuzione del sistema TeX, e nel sito [http://www.latex-project.org/lppl.txt](http://www.latex-project.org/lppl.txt)
 
 Solo per utenti [GNU Emacs](http://www.gnu.org/software/emacs/)
 ----------
