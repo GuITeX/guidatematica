@@ -1,0 +1,36 @@
+#
+# Cartelle che riguardano Emacs
+#
+auto/*
+style/*
+#
+# File di backup
+#
+Makefile~
+*.bat~
+*.bib~
+*.cls~
+*.dtx~
+*.ist~
+*.tex~
+*.md~
+*.gitignore~
+#
+# File di compilazione ausiliari
+#
+*.aux
+*.bbl
+*.blg
+*.idx
+*.ilg
+*.ind
+*.log
+*.out
+*.toc
+*.synctex.gz
+#
+# File *non* sorgenti.
+#
+*.cls
+guidatematica.pdf
+GuidaTematica-doc.pdf

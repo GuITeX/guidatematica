@@ -1,6 +1,7 @@
+% Compilare con -*- TeX-engine:xetex -*-
+
 % !TEX encoding = UTF-8 Unicode
 % !TEX TS-program = XeLaTeX
-
 
 \documentclass[b5paper,oneside,11pt,ipertesto]{guidatematica}
 \ProvidesFile{GuidaTematica-doc.tex}[2012/12/12 v.1.3 Documentazione della classe guidatematica.cls]
@@ -191,7 +192,7 @@ Entità	& Descrizione\\
 \cs{showindexmarks}& mostra le parole indicizzate nella parte superiore del margine esterno della pagina; talvolta fallisce se le corrispondenti stringhe  sono troppo lunghe;\setcopymark{Composizione del \today}\afterpage{\expandafter\gdef\csname @copymark\endcsname{}}\tabularnewline
 \cs{hideindexmarks}& nasconde l'indicazione delle parole indicizzate\tabularnewline
 \cs{texttm}& comando testuale per comporre col font typewriter monospaziato anche quando fosse in vigore quello proporzionale\tabularnewline
-\cs{textttv}& comando testuale per comporre col font typewriter proporzionale anche qhando fosse in vigore quello monospaziato\tabularnewline
+\cs{texttv}& comando testuale per comporre col font typewriter proporzionale anche quando fosse in vigore quello monospaziato\tabularnewline
 \cs{tvfamily}& dichiarazione corrispondente al comando \cs{texttv}\tabularnewline
 \cs{textl}& comando per comporre  con i font type\-writer con le cifre ``maiuscole'' anche quando fosse in vigore lo stile \texttt{OldStyle} per le cifre\verb|\textl{123}|\lra\textl{123} a confronto con \verb|123|\lra123\tabularnewline
 \cs{prebibhook}& comando per inserire un (breve) testo fra il titolo della bibliografia e l'elenco bibliografico\tabularnewline
@@ -208,12 +209,12 @@ Entità	& Descrizione\\
 \cs{chiavestyle}& comando per comporre il nome delle chiavi nella sintassi \meta{chiave} = \meta{valore}con un certo stile di scrittura \verb|\chiavestyle{angle}|\lra\chiavestyle{angle}\tabularnewline
 \cs{descrittorestyle}& comando per comporre il codice dei descrittori delle colonne con un certo stile di scrittura \verb|\descrittorestyle{c}|\lra\descrittorestyle{c}\tabularnewline
 \cs{posizionestyle}& comando per comporre il codice dei posizionamenti degli oggetti mobili con un certo stile di scrittura \verb|\posizionestyle{t}|\lra\posizionestyle{t}\tabularnewline
-\cs{allineamentostyle}& comando per comporre il codice degli allineamenti degli ambineti \amb{tabular}, \amb{array} e simili con un certo stile di scrittura \verb|\allineamentostyle{b}|\lra\allineamentostyle{b}\tabularnewline
+\cs{allineamentostyle}& comando per comporre il codice degli allineamenti degli ambienti \amb{tabular}, \amb{array} e simili con un certo stile di scrittura \verb|\allineamentostyle{b}|\lra\allineamentostyle{b}\tabularnewline
 \cs{opz}& compone una opzione nello stile \cs{opzstyle} e manda le informazioni all'indice analitico sotto la voce ``opzione''\tabularnewline
 \cs{conta}& compone il nome di un contatore nello stile \cs{contastyle} e manda le informazioni all'indice analitico  sotto la voce ``contatore''\tabularnewline
 \cs{stile}& compone il nome di uno stile di pagina nello stile \cs{stilestyle} e manda le informazioni all'indice analitico  sotto la voce ``stile della pagina''\tabularnewline
 \cs{numeri}& compone il nome di uno stile di numerazione nello stile \comando{\numeri\-style} e manda le informazioni all'indice analitico  sotto la voce ``numerazione''\tabularnewline
-\cs{misura}& compone il nome di una unità di misura nello stile \comando{\umisurasty\-le} e manda le informazioni all'indice analitico  sotto la voce ``unità di misura''\tabularnewline
+\cs{umisura}& compone il nome di una unità di misura nello stile \comando{\umisurasty\-le} e manda le informazioni all'indice analitico  sotto la voce ``unità di misura''\tabularnewline
 \cs{chiave}& compone il nome di una chiave nello stile \cs{chiavestyle} e manda le informazioni all'indice analitico  sotto la voce ``chiave''\tabularnewline
 \cs{descrittore}& compone il codice di un descrittore di colonna nello stile \cs{descrittorestyle} e manda le informazioni all'indice analitico  sotto la voce ``descrittore di colonna''\tabularnewline
 \cs{posizione}& compone il codice di posizionamento di un oggetto mobile nello stile \cs{posizionestyle} e manda le informazioni all'indice analitico  sotto la voce ``posizione degli oggetti flottanti''\tabularnewline
@@ -224,11 +225,11 @@ Entità	& Descrizione\\
 \cs{pack}& compone il nome di un pacchetto nello stile \cs{packstyle} e manda le informazioni all'indice analitico sotto la voce ``pacchetto''\tabularnewline
 \cs{prog}& compone il nome di un programma nello stile \cs{progstyle} e manda le informazioni all'indice analitico sotto la voce ``programma''\tabularnewline
 \amb{description}& si riferisce al solito ambente di \LaTeX\ salvo che l'etichetta della voce da descrivere è composta in maiuscoletto\tabularnewline
-\amb{blockdescritption}& si riferisce ad un ambiente simile a \amb{description} privo però del rientro del margine sinistro; l'etichetta è composta in maiuscoletto\tabularnewline
+\amb{blockdescription}& si riferisce ad un ambiente simile a \amb{description} privo però del rientro del margine sinistro; l'etichetta è composta in maiuscoletto\tabularnewline
 \amb{plaindescription}& si riferisce ad un ambiente simile a \amb{description} con il rientro del margine sinistro; l'etichetta è composta in font normale, non in neretto come nell'ambiente descrittivo di \LaTeX\tabularnewline
 \amb{compactitemize}& si riferisce ad una lista semplice (puntata) priva di spazi di separazione fra una voce e la successiva\tabularnewline
 \amb{compactenumerate}& si riferisce ad una lista enumerativa priva di spazi separazione fra una voce e l'altra\tabularnewline
-\amb{compactdescritption}& si riferisce ad una lista descrittiva priva di spazi di separazione fra una voce e l'altra; l'etichetta è composta in maiuscoletto\tabularnewline
+\amb{compactdescription}& si riferisce ad una lista descrittiva priva di spazi di separazione fra una voce e l'altra; l'etichetta è composta in maiuscoletto\tabularnewline
 \amb{sintassi}& Permette di scrivere la sintassi di uno o più comandi dentro un riquadro\tabularnewline
 \file{guidatematica.bst}& file di stile per la bibliografia da gestire con \pack{natbib} e che ha i riferimenti nello stile autore-anno\tabularnewline
 \file{guidatematica.ist}& file di stile per gli indici analitici con i gruppi di  voci che iniziano con la stessa lettera separati dal titolo formato dalla lettera iniziale\tabularnewline 
@@ -343,7 +344,7 @@ I comandi seguenti definiscono lo stile di scrittura di determinate entità e pe
 \item[allineamentostyle] serve per comporre i simboli dell'allineamento verticale di tabelle, matrici,  ambienti \amb{minipage}, e simili in carattere typewriter monospaziato diritto; per esempio: \allineamentostyle{c}.
 \end{compactdescription}
 
-Va detto che l'uso di questi comandi non è necessario quando non si compongono gli indici analitici per i quali sono funzionali nel senso di comporre la parola nel testo e nell'indice usando lo stesso stile; potrebbe essere necessario usarli nei comandi di sezionamento quando si vuole evitare che i collegamenti ipertestuali generati da \pack{hypertext} (non precaricato nella classe, ma da richiedere espressamente da parte dell'utente mediante l'opzione di classe \opz{iperteso}) non abbiano da ``singhiozzare'' perché certi comandi non sono accettabili nei testi che possono costituire dei bookmark. In questo caso si dovrebbe procedere usando il comando \cs{texorpdfstring} in questo modo:
+Va detto che l'uso di questi comandi non è necessario quando non si compongono gli indici analitici per i quali sono funzionali nel senso di comporre la parola nel testo e nell'indice usando lo stesso stile; potrebbe essere necessario usarli nei comandi di sezionamento quando si vuole evitare che i collegamenti ipertestuali generati da \pack{hyperref} (non precaricato nella classe, ma da richiedere espressamente da parte dell'utente mediante l'opzione di classe \opz{ipertesto}) non abbiano da ``singhiozzare'' perché certi comandi non sono accettabili nei testi che possono costituire dei bookmark. In questo caso si dovrebbe procedere usando il comando \cs{texorpdfstring} in questo modo:
 \begin{Verbatim}
 \subsection{L'uso della chiave %
             \texorpdfstring{\chiavestyle}{}{angle}}
@@ -371,7 +372,7 @@ I comandi seguenti fanno uso dei comandi precedenti e, se è richiesta la compos
 
 \section{Nuovi ambienti}
 
-Grazie al pacchetto \pack{enumitem} si sono fortemente estese le possibilità di personalizzare le liste rispetto a quanto si può fare con i comandi di personalizzazione di \class{memoir}. I suoi ambienti standard \ambstyle{descriptioon} e \ambstyle{block\-descritption}, sono stati modificati per avere la loro etichetta composta in maiuscoletto; inoltre sono state definite altre liste che si descrivono qui di seguito.
+Grazie al pacchetto \pack{enumitem} si sono fortemente estese le possibilità di personalizzare le liste rispetto a quanto si può fare con i comandi di personalizzazione di \class{memoir}. I suoi ambienti standard \ambstyle{description} e \ambstyle{block\-description}, sono stati modificati per avere la loro etichetta composta in maiuscoletto; inoltre sono state definite altre liste che si descrivono qui di seguito.
 
 Si noti che per le liste descrittive si può cambiare a piacere il modo di scrivere l'oggetto da descrivere, e questo torna molto utile in una classe come \class{guidatematica}, dove vengono descritti spesso oggetti della stessa ``categoria'', che spesso debbono essere composti in uno stile particolare oppure devono venire inviati all'indice analitico. Si veda poco oltre alcuni esempi di questi usi che ricorrono alla comoda sintassi del pacchetto \pack{enumitem}, basata su espressioni del tipo \meta{chiave} = \meta{valore}.
 \begin{blockdescription}[before={\renewcommand\blockdescriptionlabel[1]{\normalfont\scshape##1\index{ambiente!##1@\ambstyle{##1}}}}]
@@ -431,7 +432,7 @@ Per la bibliografia si usa lo stile predefinito \file{guidatematica.bst}, del ti
 
 Molto importante per una guida di questo genere è l'ambiente \amb{sintassi} predisposto per specificare la sintassi dei comandi dentro un ambiente sbandierato con l'allineamento a sinistra; di per sé questo ambiente definisce l'ambiente \amb{flushleft} e una cornice  dentro la quale specificare la sintassi che si desidera descrivere; di solito si tratta di una riga soltanto, ma se dovesse richiedere più righe allora l'utente sarebbe facilitato se in apertura dell'ambiente specificasse il comando \cs{obeylines} che trasforma ogni fine riga in un ``a capo'' esplicito. Per esempio si può descrivere l'impostazione di un documento con la sintassi seguente:
 \begin{sintassi}\obeylines
-\cs{documenclass}\oarg{opzioni}\marg{classe}
+\cs{documentclass}\oarg{opzioni}\marg{classe}
 \meta{preambolo}
 \Bambiente{document}
 \meta{corpo del documento}
@@ -541,7 +542,7 @@ Chiaramente la scelta dell'uno o dell'altro programma dipende esclusivamente dal
 
 Disponendo di \prog{XeLaTeX} (e con le distribuzioni del sistema \TeX\ successive al 2006 tutte contengono \XeLaTeX\ e i motori di composizione sono disponibili per tutte le piattaforme di elaborazione Windows, Linux, Mac), queste acrobazie con i font si possono evitare facilmente usando, appunto, \prog{XeLaTeX}.
 
-\item[Il formato di uscita] Sia \prog{pdfLaTeX} sia \prog{XeLaTeX} producono l'uscita in formato PDF; il primo  produce quel formato in modo diretto, mentre il secondo passa attraverso una versione estesa  e modificata del formato DVI e provvede ad eseguire la conversione in formato PDF mediante il programma esteso \prog{xdvpdfmx}; siccome il formato DVI, seppure esteso, non consente alcune della funzionalità del formato PDF, la conversione anche se ben fatta, non può introdurre nel file PDF quello che non c'era nel file DVI esteso. Passando, quindi, per \prog{XeLaTeX} si perdono alcune funzionalità.
+\item[Il formato di uscita] Sia \prog{pdfLaTeX} sia \prog{XeLaTeX} producono l'uscita in formato PDF; il primo  produce quel formato in modo diretto, mentre il secondo passa attraverso una versione estesa  e modificata del formato DVI e provvede ad eseguire la conversione in formato PDF mediante il programma esteso \prog{xdvipdfmx}; siccome il formato DVI, seppure esteso, non consente alcune della funzionalità del formato PDF, la conversione anche se ben fatta, non può introdurre nel file PDF quello che non c'era nel file DVI esteso. Passando, quindi, per \prog{XeLaTeX} si perdono alcune funzionalità.
 
 
 \item[Il formato PDF archiviabile] Non so quanto sia importante per le guide tematiche del \GuIT, ma con \prog{XeLaTeX} non si può produrre il file di uscita in formato PDF compatibile con il formato archiviabile, corrispondente alla norma ISO 19005-1:2005; oggi poi esiste un aggiornamento della norma, ISO 19005-2:2011, e a maggior ragione il file PDF generato con \prog{XeLaTeX} non è conforme con le norme ISO citate. Tuttavia ricorrendo a \prog{ghostscript} è possibile ottenere la conversione in formato archiviabile in modo corretto; nella sezione di Documentazione del sito del \GuIT\ esistono alcuni testi che descrivono il modo di procedere. Sembra che con la versione 9.x di \prog{ghostscript} sia possibile generare un file PDF archiviabile conforme alla norma del 2011, ma chi scrive non è ancora in grado di confermarlo.
