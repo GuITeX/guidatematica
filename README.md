@@ -11,10 +11,10 @@ L'autore della classe e della documentazione a corredo è Claudio Beccari.
 Installazione
 ----------
 
-La classe è la sua documentazione sono generate dai sorgenti *guidatematica.dtx* e *GuidaTematica-doc.tex*:
+La classe è la sua documentazione sono generate dai sorgenti *guidatematica.dtx* e *guidatematica-doc.tex*:
 
 * per creare la classe *guidatematica.cls* si deve compilare *guidatematica.dtx* mediante `pdflatex`; 
-* per creare la guida di supporto si deve compilare *GuidaTematica-doc.tex* con `xelatex` più `bibtex` per la bibliografia; l'indice analitico è invece creato in modo sincrono grazie al pacchetto [imakeidx](http://www.ctan.org/pkg/imakeidx).
+* per creare la guida di supporto si deve compilare *guidatematica-doc.tex* con `xelatex` più `bibtex` per la bibliografia; l'indice analitico è invece creato in modo sincrono grazie al pacchetto [imakeidx](http://www.ctan.org/pkg/imakeidx).
 
 Se si è interessati ad installare la classe nel proprio albero personale con una distribuzione TeX Live, sono disponibili un
 * *Makefile* da usare su *GNU/Linux* mediante il programma [make](http://www.gnu.org/software/make/);
