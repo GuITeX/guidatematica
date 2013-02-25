@@ -9,7 +9,7 @@
   ________________________________________
   The guidatematica class for typesetting books in the GuIT series 
   "Guide Tematiche"
-  Copyright (C) 2012 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
+  Copyright (C) 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
   All rights reserved
   
   http://www.guitex.org
@@ -18,7 +18,7 @@
 
 \endpreamble
 \postamble
-Copyright 2012 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
+Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 
 	Distributable under the LaTeX Project Public License,
 	version 1.3c or higher (your choice). The latest version of
@@ -51,7 +51,7 @@ Copyright 2012 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %<class>\NeedsTeXFormat{LaTeX2e}[2009/01/01]
 %<class>\ProvidesClass{guidatematica}%
 %<*class>
-   [2012/12/12 v.0.6c Classe per comporre testi della collana 
+   [2013/01/30 v.1.0 Classe simmetrica per comporre testi della collana 
    Guide Tematiche del GuIT]
 %</class>
 %<*driver>
@@ -93,12 +93,17 @@ Copyright 2012 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % \fi
 %
 %
-% \CheckSum{933}
+% \CheckSum{936}
 % \begin{abstract}
-% Questa classe serve per comporre testi da pubblicare
-% nella collana Guide Tematiche del GuIT.
+% Questa classe \texttt{guidatematica} serve per comporre
+% testi da pubblicare nella collana “Guide Tematiche” del GuIT.
 % Si appoggia alla classe \texttt{memoir} ma include 
 % molte personalizzazioni e i pacchetti necessari.
+% Differisce dalla classe \texttt{guidatematica} per il fatto
+% che il disegno della pagina è simmetrico e quindi si
+% presta ugualmente bene per comporre (e stampare) oneside
+% o twoside. Solo le note marginali mostrano la differente
+% impostazione.
 % \end{abstract}
 %
 % \section{Caratteristiche della classe}
@@ -120,7 +125,7 @@ Copyright 2012 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %	guide, benché previste per essere lette prevalentemente
 %	sullo schermo del proprio PC, hanno bisogno di collegamenti
 %	ipertestuali interni ed esterni. Quindi caricare questo
-%	pacchetto è una scelta esclusiva dell'utente.
+%	pacchetto è una scelta esclusiva dell'autore della guida.
 %	\item La classe funziona sia con pdfLaTeX sia con XeLaTeX;
 %	le impostazioni sono prefissate e i margini per ulteriori 
 %	personalizzazioni sono ridotti al minimo; lo scopo della 
@@ -145,7 +150,7 @@ Copyright 2012 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %	per esempio: se si deve scrivere una parola in russo, 
 %	basta caricare esplicitamente il file del suo encoding con
 %	|\input{t2enc.def}| e poi specificare la codifica |T2| con
-%	|\fontencoding{T2}| seguito dai comandi per scegliere
+%	|\fontencoding{T2}| seguito, se occorre, dai comandi per scegliere
 %	famiglia, serie, forma e corpo del font cirillico che 
 %	si vuole usare.
 %	\item Con pdfLaTeX il pacchetto \texttt{babel} viene caricato
@@ -158,7 +163,7 @@ Copyright 2012 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %	\item Con XeLaTeX viene caricato il pacchetto |polyglossia|
 %	e l'italiano viene impostato come la lingua principale; 
 %	altre lingue possono venire specificate mediante il comando 
-%	|\setotherlanguages| o con lingue particolari con 
+%	|\setotherlanguages| o, con lingue particolari, con 
 %	|\setotherlanguage| con le opzioni specifiche per la lingua.
 %	Se questa richiede un alfabeto particolare bisogna ricordassi
 %	di specificarne una famiglia di font che contenga l'alfabeto 
@@ -173,7 +178,16 @@ Copyright 2012 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % \section{Codice commentato}
 % Le due righe contenti il formato e l'identificazione della classe
 % sono già state inserite prima; ora possiamo passare alla gestione
-% delle opzioni che vengono tutte passate alla classe \texttt{memoir}
+% delle opzioni che vengono tutte passate alla classe \texttt{memoir}.
+% Viene definita l'opzione |ipertesto| per caricare il pacchetto |hypertext|
+% che non non viene caricato di default, perché va caricato per ultimo
+% solo se viene specificata l'opzione suddetta.
+% L'autore potrebbe avere bisogno di caricare ulteriori pacchetti nel
+% preambolo, quindi è meglio che |hyperref| venga caricato dopo questi
+% ulteriori  pacchetti. Per fare ciò basta che l'autore specifichi
+% l'opzione |ipertesto| alla classe che provvede a caricare il pacchetto
+% |hyperref| come ultima cosa al momento di iniziare la composizione
+% della guida tematica.
 % \iffalse
 %<*class>
 % \fi
@@ -235,22 +249,15 @@ Copyright 2012 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 	\RequirePackage[tt={oldstyle=false,tabular,monowidth}]{cfr-lm}
 \fi
 %    \end{macrocode}
-
-% Si caricano poi i pacchetti ritenuti necessari; non si è caricato
-% espressamente il pacchetto |hyperref| perché va caricato per ultimo.
-% L'utente potrebbe avere bisogno di caricare ulteriori pacchetti nel
-% preambolo, quindi è meglio che |hyperref| venga caricato dall'utente
-% dopo i pacchetti di cui ha bisogno. Per fare ciò basta specificare
-% l'opzione |ipertesto| alla classe che automaticamente carica il
-% pacchetto |hyperref| come ultima cosa al momento di iniziare la
-% composizione della guida tematica che si desidera comporre.
 %
-% In questa versione non viene caricato il pacchetto |guit.sty| perché
+%
+% Si caricano poi i pacchetti ritenuti necessari; in questa versione
+% della classe non viene caricato il pacchetto |guit.sty| perché
 % è incompatibile con |XeLaTeX|; certo lo si sarebbe potuto caricare
 % nel ramo |\else| del test |\ifxetex| e la definizione del logo del
 % gruppo in forma grafica (immagine pdf) la si sarebbe potuta limitare
 % all'uso con |XeLaTeX| siccome alla data attuale il pacchetto
-% |guit.sty| è sottoposto a revisione per l'uso con |XeLaTeX| è molto
+% |guit.sty| è sottoposto a revisione per l'uso con |XeLaTeX|, è molto
 % meglio usare temporaneamente l'immagine in entrambi i casi e modificare
 % questa classe solo con l'aggiunta di un nuovo pacchetto quando 
 % |guit.sty| sarà diventato compatibile con entrambi i programmi di
@@ -277,10 +284,24 @@ Copyright 2012 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %
 % Il disegno della pagina viene fatto con il pacchetto |canoniclayout|
 % piuttosto classico, ma adattissimo sia al formato A4, sia a quello B5.
+% Però è stato osservato che se si compone in modo |oneside| la lettura
+% a schermo è agevole, ma la stampa della guida risulta mal composta
+% in fronte retro.
+%
+% Per ovviare a questo inconveniente necessita centrare orizzontalmente
+% la gabbia e definire successivamente le testatine e i piedini in forma
+% simmetrica così da rendere le pagine pari identiche a quelle dispari;
+% la lettura a schermo e la stampa risultano pertanto identiche. Per
+% testatine e piedini si veda più avanti. Per simmetria la gabbia 
+% viene centrata anche verticalmente.
 %
 %    \begin{macrocode}
 \RequirePackage{canoniclayout}
+\oddsidemargin=\dimexpr(\oddsidemargin+\evensidemargin)/2\relax
+\evensidemargin=\oddsidemargin
 \marginparwidth=0.8\dimexpr\evensidemargin+1in-\marginparsep\relax
+\topmargin=\dimexpr(\paperheight-\textheight-\headheight-\headsep
+   -2\baselineskip)/2-1in\relax
 %    \end{macrocode}
 %
 % Viene ora recuperato il comando |\GetFileInfo| dal pacchetto |doc.sty|
@@ -318,12 +339,16 @@ Copyright 2012 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 \let\@copymark\@empty % Di default è vuoto
 \newcommand*\setcopymark[1]{\gdef\@copymark{#1}}
 \newcommand*\@insertcopymark{%
-	\begin{picture}(0,0)\unitlength=1mm\relax\if@openright
-	\put(10,9.5){\rotatebox{90}{\makebox(0,0)[l]{\@copymark}}}%
+	\begin{picture}(0,0)\unitlength=1mm\relax
+	\if@twoside
+		\ifodd\value{page}
+			\put(10,9.5){\rotatebox{90}{\makebox(0,0)[l]{\@copymark}}}
+		\else
+			\put(-10,9.5){\rotatebox{90}{\makebox(0,0)[l]{\@copymark}}}
+		\fi
 	\else
-	\ifodd\value{page}\put(10,9.5){\rotatebox{90}{%
-	   \makebox(0,0)[l]{\@copymark}}}\else
-	\put(-10,9.5){\rotatebox{90}{\makebox(0,0)[l]{\@copymark}}}\fi\fi
+		\put(10,9.5){\rotatebox{90}{\makebox(0,0)[l]{\@copymark}}}
+	\fi
 	\end{picture}%
 }
 %    \end{macrocode}
@@ -382,35 +407,33 @@ Copyright 2012 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % piedino dal testo. Si vuole però che il |\@copymark| sia sempre presente
 % nel piedino: vuol dire che se questa macro è vuota non viene stampato
 % niente.
+% Nei piedini il numero di pagina viene composto in maiuscoletto: 
+% la cosa non è importantissima, ma all'occorrenza i numeri di pagina
+% romani minuscoli vengono composti col minuscolo del maiuscoletto e non
+% hanno quell'aspetto orribile dei numeri romani composti in tondo
+% minuscolo.
 %
 %    \begin{macrocode}
 \nouppercaseheads
 %\renewcommand{\footruleheight}{\normalrulethickness}
 \renewcommand{\footruleskip}{0pt}
+\makeheadrule{headings}{\textwidth}{0pt}
+\makeheadrule{myheadings}{\textwidth}{0pt}
 %\makefootrule{empty}{0pt}{0pt}{0pt}
 \makeevenfoot{plain}{\@insertcopymark}{\textsc{\thepage}}{}
 \makeoddfoot{plain}{}{\textsc{\thepage}}{\@insertcopymark}
-\makeevenfoot{headings}{\@insertcopymark}{}{}
-\makeoddfoot{headings}{}{}{\@insertcopymark}
-\makeevenfoot{myheadings}{\@insertcopymark}{}{}
-\makeoddfoot{myheadings}{}{}{\@insertcopymark}
-\makeheadrule{headings}{\textwidth}{0pt}
-\makeheadrule{myheadings}{\textwidth}{0pt}
+\makeevenfoot{headings}{\@insertcopymark}{\textsc{\thepage}}{}
+\makeoddfoot{headings}{}{\textsc{\thepage}}{\@insertcopymark}
+\makeevenfoot{myheadings}{\@insertcopymark}{\textsc{\thepage}}{}
+\makeoddfoot{myheadings}{}{\textsc{\thepage}}{\@insertcopymark}
 %    \end{macrocode}
-% Nelle testatine il numero di pagina viene composto in maiuscoletto: 
-% la cosa non è importantissima, ma all'occorrenza i numeri di pagina
-% romani minuscoli vengono composti col minuscolo del maiuscoletto e non
-% hanno quell'aspetto orribile dei numeri romani composti in tondo
-% minuscolo.
+% I mark delle pagine destre e sinistre sono composti centrati
+% sia nelle pagine destre sia in quelle sinistre.
 %    \begin{macrocode}
-\makeevenhead{headings}%
-   {{\textsc{\thepage}\quad}}{\textsc{\small\leftmark}}{}
-\makeoddhead{headings}%
-   {}{\textsc{\small\rightmark}}{{\quad\textsc{\thepage}}}
-\makeevenhead{myheadings}%
-   {{\textsc{\thepage}\quad}}{\textsc{\small\leftmark}}{}
-\makeoddhead{myheadings}%
-   {}{\textsc{\small\rightmark}}{{\quad\textsc{\thepage}}}
+\makeevenhead{headings}{}{\textsc{\small\leftmark}}{}
+\makeoddhead{headings}{}{\textsc{\small\rightmark}}{}
+\makeevenhead{myheadings}{}{\textsc{\small\leftmark}}{}
+\makeoddhead{myheadings}{}{\textsc{\small\rightmark}}{}
 %    \end{macrocode}
 % Vengono definiti i comandi per ``decorare'' le intestazioni delle testatine.
 %    \begin{macrocode}
@@ -424,12 +447,10 @@ Copyright 2012 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % argomenti di |\thispagestyle|.
 %    \begin{macrocode}
 \makepagestyle{headingslayout}
-\makeevenhead{headingslayout}{\cblayoutsinistro
-   \textsc{\thepage}\quad\textsc{\small\leftmark}}{}{}
-\makeevenfoot{headingslayout}{\@insertcopymark}{}{}
-\makeoddhead{headingslayout}{\cblayoutdestro
-   \hfill\null}{}{\textsc{\small\rightmark}{\quad\textsc{\thepage}}}
-\makeoddfoot{headingslayout}{}{}{\@insertcopymark}
+\makeevenhead{headingslayout}{\cblayoutsinistro}{\textsc{\small\leftmark}}{}
+\makeevenfoot{headingslayout}{\@insertcopymark}{\textsc{\thepage}}{}
+\makeoddhead{headingslayout}{\cblayoutdestro}{\textsc{\small\rightmark}}{}
+\makeoddfoot{headingslayout}{}{\textsc{\thepage}}{\@insertcopymark}
 %    \end{macrocode}
 %
 % Viene definito lo stile per comporre la pagina iniziale dei capitoli;
@@ -542,7 +563,7 @@ leftmargin=\z@,labelsep*=0.5em,labelindent=\z@,labelwidth=\z@}
    noitemsep, partopsep=\z@, topsep=.25\onelineskip}
 
 \newlist{compactitemize}{itemize}{4}
-\setlist[compactitemize]{label=*,
+\setlist[compactitemize]{label=•,
    noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 
 \newlist{compactdescription}{description}{1}
@@ -669,8 +690,8 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 %    \end{macrocode}
 %
 % Per l'indice o gli indici analitici non dovrebbero esserci
-% problemi, nel senso che il pacchetto |imakeidx| li
-% ridefinisce a sua volta per poterli gestire a modo suo.
+% problemi, nel senso che il pacchetto |imakeidx| ridefinisce
+% a sua volta quelli analitici per poterli gestire a modo suo.
 % Probabilmente è del tutto inutile la ridefinizione fatta
 % in questa classe, ma non dà nessun fastidio, quindi la
 % si lascia lo stesso.
@@ -687,6 +708,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 	\parskip\z@ \@plus .3\p@\relax
 	\let\item\@idxitem
 	\begin{multicols}{\imki@columns}[\imki@idxprologue]
+	\raggedright
 }
 {%
 	\end{multicols}\gdef\imki@idxprologue{}\clearpage
@@ -733,7 +755,6 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 %    \begin{macrocode}
 \newenvironment{titlepage}{\clearpage
 \pagestyle{titlepage}
-	\oddsidemargin=\dimexpr(\oddsidemargin+\evensidemargin)/2\relax
 	\makeoddhead{titlepage}{}{\smash{\Large\scshape\@author}}{}
 	\makeoddfoot{titlepage}{}{\smash{\large\scshape\@date}}{}
 }{\clearpage}
@@ -792,7 +813,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 % al fine di semplificare la scrittura delle parti di testo
 % corrente e differenziare gli argomenti generici; quelli
 % obbligatori e quelli facoltativi; dovendo descrivere
-% delle cose riguardanti il, disegno programmato, le
+% delle cose riguardanti il disegno programmato, le
 % coordinate spesso vengono distinte con due valori,
 % separati da una virgola e racchiusi fra parentesi tonde;
 % anche in questo caso siamo di fronte alla descrizione di
@@ -853,7 +874,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 % necessità di uno o più indici analitici; la
 % documentazione \emph{guidatematica-doc.pdf} contiene
 % maggiori dettagli. Qui vale la pena di sottolineare
-% che i comandi il cui nome terrina con |style| servono
+% che i comandi il cui nome termina con |style| servono
 % solo per gestire lo stile di composizione; quelli
 % invece che cominciano con la stessa ``parola'' ma
 % non terminano con |style| compongono nel testo la
@@ -864,7 +885,11 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 % |\jobname.idx| per essere poi elaborati con il
 % programma |makeidx| per avere le varie voci in ordine
 % alfabetico gerarchico, al fine di poter comporre
-% l'indice analitico come prescritto.
+% l'indice analitico come prescritto. I comandi che
+% seguono permettono di inserire le voci in un unico
+% indice analitico; se ne occorre più di uno essi
+% possono o debbono venire ridefiniti in modo da inviare
+% la voce all'indice desiderato.
 %    \begin{macrocode}
 \DeclareRobustCommand*\ambstyle[1]{\textsf{\slshape#1}}
 \DeclareRobustCommand*\classstyle[1]{\texttv{\itshape#1}}
