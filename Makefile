@@ -7,7 +7,7 @@ SHELL = /bin/sh
 ### Descrizione: Makefile per l'installazione della classe guidatematica
 ###		 nell'albero personale di una distribuzione TeX Live. 
 ###
-### Versione: v0.0
+### Versione: v.1.0
 ###
 ### Riferimenti: [1] https://bitbucket.org/josephwright/siunitx/ (su
 ###		      segnalazione di Mosè Giordano)
@@ -33,10 +33,10 @@ help:
 #
 
 MAIN		= guidatematica
-MAIN_DOC	= GuidaTematica-doc
+MAIN_DOC	= $(MAIN)-doc
 CLASSE 		= $(MAIN).cls
 CLASSE_DOC	= $(MAIN_DOC).pdf
-FIGURE		= LogoGuITlineare.pdf LogoGuITtondo.pdf
+FIGURE		= logoguitlineare.pdf logoguittondo.pdf
 STILIIDX	= $(wildcard *.ist)
 ALBEROPERS	= $(shell kpsewhich -var-value TEXMFHOME)
 AUSILIARI	= *.aux *.log *.out *.toc *.bbl *.blg *.idx *.ilg *.ind
