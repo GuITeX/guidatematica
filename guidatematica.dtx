@@ -51,7 +51,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %<class>\NeedsTeXFormat{LaTeX2e}[2009/01/01]
 %<class>\ProvidesClass{guidatematica}%
 %<*class>
-   [2013/01/30 v.1.0 Classe simmetrica per comporre testi della collana 
+   [2013/02/04 v.1.1 Classe simmetrica per comporre testi della collana 
    Guide Tematiche del GuIT]
 %</class>
 %<*driver>
@@ -93,29 +93,34 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % \fi
 %
 %
-% \CheckSum{936}
+% \CheckSum{1029}
 % \begin{abstract}
 % Questa classe \texttt{guidatematica} serve per comporre
 % testi da pubblicare nella collana “Guide Tematiche” del GuIT.
 % Si appoggia alla classe \texttt{memoir} ma include 
 % molte personalizzazioni e i pacchetti necessari.
-% Differisce dalla classe \texttt{guidatematica} per il fatto
+% Differisce dalla classe \texttt{guidatematica} delle
+% versioni precedenti per il fatto
 % che il disegno della pagina è simmetrico e quindi si
 % presta ugualmente bene per comporre (e stampare) oneside
-% o twoside. Solo le note marginali mostrano la differente
-% impostazione.
+% o twoside. Solo le note marginali eventualmente presenti
+% mostrano la differente impostazione.
 % \end{abstract}
 %
 % \section{Caratteristiche della classe}
 %   La classe \texttt{guidatematica.cls} serve per comporre
 %   libri in italiano con le seguenti specifiche:
-%	\begin{itemize}
-%	\item La classe di supporto è la classe  
+% \begin{itemize}
+% \item La classe di supporto è la classe  
 %	\texttt{memoir.cls} facente parte del sistema TeX
 %	in qualsiasi distribuzione completa.
-%	\item Tutte le opzioni inserite nell'istruzione
+% \item Tutte le opzioni inserite nell'istruzione
 %	|\documentclass| vengono trasferite integralmente
-%	alla classe \texttt{memoir}. Solo l'opzione |ipertesto| è
+%	alla classe \texttt{memoir}; alcune opzioni per il
+%   formato della ``carta'', sono state ridefinite, ma
+%   l'utente non dovrebbe osservare nessuna variazione
+%   rispetto all'impostazione che si avrebbe senza queste
+%   ridefinizioni. Solo l'opzione |ipertesto| è
 %	specifica della classe; serve all'utente per caricare il
 %	pacchetto |hyperref| con alcune personalizzazioni,
 %	ritardandone il caricamento al momento di eseguire il
@@ -126,49 +131,49 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %	sullo schermo del proprio PC, hanno bisogno di collegamenti
 %	ipertestuali interni ed esterni. Quindi caricare questo
 %	pacchetto è una scelta esclusiva dell'autore della guida.
-%	\item La classe funziona sia con pdfLaTeX sia con XeLaTeX;
+% \item La classe funziona sia con pdfLaTeX sia con XeLaTeX;
 %	le impostazioni sono prefissate e i margini per ulteriori 
 %	personalizzazioni sono ridotti al minimo; lo scopo della 
 %	classe è quello di dare una veste comune alle guide 
 %	tematiche della collana, facendo sì che siano riconoscibili 
-%	a prima vista grazie alla loro uniformità di composizione.
-%	\item La classe riconosce da sola il motore di composizione
+%	a prima vista grazie al loro stile uniforme di composizione.
+% \item La classe riconosce da sola il motore di composizione
 %	e imposta direttamente quanto occorre nella forma richiesta 
 %	dal programma di composizione.
-%	\item La codifica di entrata deve essere \texttt{utf8}; per
+% \item La codifica di entrata deve essere \texttt{utf8}; per
 %	XeLaTeX essa è implicita; con pdfLaTeX essa viene 
 %	preimpostata e non è possibile con questa classe specificare
 %	una codifica differente.
-%	\item La codifica dei font di uscita con pdfLaTeX è 
+% \item La codifica dei font di uscita con pdfLaTeX è 
 %	\texttt{T1} e non è possibile specificare una codifica 
 %	differente, cosa che sarebbe quanto mai sgradevole per 
 %	comporre in italiano dove sono presenti molte lettere 
 %	accentate. Per altro se fosse necessario comporre qualcosa
 %	in una lingua che usa un alfabeto diverso, basta caricare 
 %	i suoi pacchetti specifici; per scrivere una parola o due
-%	basta caricare l'encoding dei font specifici  in modo diretto:
+%	basta caricare l'encoding dei font specifici in modo diretto:
 %	per esempio: se si deve scrivere una parola in russo, 
 %	basta caricare esplicitamente il file del suo encoding con
 %	|\input{t2enc.def}| e poi specificare la codifica |T2| con
 %	|\fontencoding{T2}| seguito, se occorre, dai comandi per scegliere
 %	famiglia, serie, forma e corpo del font cirillico che 
 %	si vuole usare.
-%	\item Con pdfLaTeX il pacchetto \texttt{babel} viene caricato
+% \item Con pdfLaTeX il pacchetto \texttt{babel} viene caricato
 %	con la sola opzione \texttt{italian}; nei rari casi in cui
-%	sia necessario usare anche altre lingue, esse vanno
+%	fosse necessario usare anche altre lingue, esse vanno
 %	specificate come opzione alla classe, perché non si può
 %	chiamare \texttt{babel} due volte con opzioni diverse.
 %	Le opzioni della classe sono globali e vengono passate
 %	automaticamente a tutti i pacchetti che sanno che cosa farne.
-%	\item Con XeLaTeX viene caricato il pacchetto |polyglossia|
+% \item Con XeLaTeX viene caricato il pacchetto |polyglossia|
 %	e l'italiano viene impostato come la lingua principale; 
 %	altre lingue possono venire specificate mediante il comando 
 %	|\setotherlanguages| o, con lingue particolari, con 
 %	|\setotherlanguage| con le opzioni specifiche per la lingua.
 %	Se questa richiede un alfabeto particolare bisogna ricordassi
-%	di specificarne una famiglia di font che contenga l'alfabeto 
+%	di specificare una famiglia di font che contenga l'alfabeto 
 %	desiderato.
-%	\item Sono stati introdotti molti nuovi comandi e sono stati
+% \item Sono stati introdotti molti nuovi comandi e sono stati
 %	definiti molti nuovi ambienti. Per maggiori informazioni si 
 %	rimanda al documento \emph{guidatematica-doc.pdf} distribuito
 %	con il ``kit'' |GuidaTematica.zip|.
@@ -178,16 +183,24 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % \section{Codice commentato}
 % Le due righe contenti il formato e l'identificazione della classe
 % sono già state inserite prima; ora possiamo passare alla gestione
-% delle opzioni che vengono tutte passate alla classe \texttt{memoir}.
+% delle opzioni che vengono quasi tutte passate alla classe \texttt{memoir}.
 % Viene definita l'opzione |ipertesto| per caricare il pacchetto |hypertext|
 % che non non viene caricato di default, perché va caricato per ultimo
 % solo se viene specificata l'opzione suddetta.
+%
 % L'autore potrebbe avere bisogno di caricare ulteriori pacchetti nel
 % preambolo, quindi è meglio che |hyperref| venga caricato dopo questi
 % ulteriori  pacchetti. Per fare ciò basta che l'autore specifichi
 % l'opzione |ipertesto| alla classe che provvede a caricare il pacchetto
 % |hyperref| come ultima cosa al momento di iniziare la composizione
 % della guida tematica.
+%
+% Vengono reimpostate le opzioni |a4paper|, |a5paper| e |\b5paper|
+% e viene definita l'opzione |tablet|, per poter in tutti questi casi
+% creare il layout della pagina in modo simile e non persoanlizzabile.
+% Per tutte questo opzioni bisogna ricorrere ad opportuni comandi
+% condizionali, per poter ritardare la loro esecuzione ad un momento
+% successivo al caricamento della classe |memoir|.
 % \iffalse
 %<*class>
 % \fi
@@ -196,19 +209,20 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 \AtBeginDocument{\RequirePackage[colorlinks,linkcolor={blue},
   citecolor={blue!80!black},urlcolor={blue}]{hyperref}}
 }
+
+\newif\iftablet\tabletfalse
+\DeclareOption{tablet}{\tablettrue\Aivfalse\Bvfalse\Avfalse}
+\newif\ifAiv \Aivfalse
+\DeclareOption{a4paper}{\Aivtrue\tabletfalse\Bvfalse\Avfalse}
+\newif\ifBv \Bvtrue
+\DeclareOption{b5paper}{\Aivfalse\Bvtrue\tabletfalse\Avfalse}
+\newif\ifAv \Avfalse
+\DeclareOption{a5paper}{\Avtrue\Aivfalse\Bvfalse\tabletfalse}
+
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions*\relax
 
 \LoadClassWithOptions{memoir}
-%    \end{macrocode}
-% Poi si specificano le informazioni per il formato di carta che
-% sono richieste da |memoir|.
-%    \begin{macrocode}
-\pdfpagewidth=\paperwidth
-\pdfpageheight=\paperheight
-
-\stockwidth=\paperwidth
-\stockheight=\paperheight
 %    \end{macrocode}
 %
 % Si carica subito il pacchetto |ifxetex| per poter distinguere
@@ -225,28 +239,28 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % della lingua italiana.
 %    \begin{macrocode}
 \ifxetex
-	\RequirePackage{fontspec}
-	\setmainfont[Ligatures=TeX,Numbers=OldStyle]{Latin Modern Roman}
-	\setsansfont[Ligatures=TeX,Numbers=OldStyle]{Latin Modern Sans}
-	\setmonofont[Numbers=Lining]{Latin Modern Mono}
-	\newfontfamily{\tvfamily}[Numbers=Lining]{Latin Modern Mono Prop}
-	\newfontfamily{\scfamily}%
-	   [Ligatures=TeX,Numbers=OldStyle]{Latin Modern Roman Caps}
-	\DeclareRobustCommand\scshape{\scfamily}
-	\DeclareTextFontCommand{\texttm}{\ttfamily}
-	\DeclareTextFontCommand{\texttv}{\tvfamily}
-	\DeclareTextFontCommand{\textsc}{\scshape}
-	\def\textl#1{{\addfontfeature{Numbers=Lining}#1}}
-	\RequirePackage{unicode-math}
-	\setmathfont{Latin Modern Math}
+    \RequirePackage{fontspec}
+    \setmainfont[Ligatures=TeX,Numbers=OldStyle]{Latin Modern Roman}
+    \setsansfont[Ligatures=TeX,Numbers=OldStyle]{Latin Modern Sans}
+    \setmonofont[Numbers=Lining]{Latin Modern Mono}
+    \newfontfamily{\tvfamily}[Numbers=Lining]{Latin Modern Mono Prop}
+    \newfontfamily{\scfamily}%
+       [Ligatures=TeX,Numbers=OldStyle]{Latin Modern Roman Caps}
+    \DeclareRobustCommand\scshape{\scfamily}
+    \DeclareTextFontCommand{\texttm}{\ttfamily}
+    \DeclareTextFontCommand{\texttv}{\tvfamily}
+    \DeclareTextFontCommand{\textsc}{\scshape}
+    \def\textl#1{{\addfontfeature{Numbers=Lining}#1}}
+    \RequirePackage{unicode-math}
+    \setmathfont{Latin Modern Math}
 %
-	\RequirePackage{polyglossia}
-	\setmainlanguage{italian}
+    \RequirePackage{polyglossia}
+    \setmainlanguage{italian}
 \else
-	\RequirePackage[utf8]{inputenc}
-	\RequirePackage[T1]{fontenc}
-	\RequirePackage[italian]{babel}
-	\RequirePackage[tt={oldstyle=false,tabular,monowidth}]{cfr-lm}
+    \RequirePackage[utf8]{inputenc}
+    \RequirePackage[T1]{fontenc}
+    \RequirePackage[italian]{babel}
+    \RequirePackage[tt={oldstyle=false,tabular,monowidth}]{cfr-lm}
 \fi
 %    \end{macrocode}
 %
@@ -282,26 +296,49 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 \lstloadlanguages{[LaTeX]TeX}
 %    \end{macrocode}
 %
-% Il disegno della pagina viene fatto con il pacchetto |canoniclayout|
-% piuttosto classico, ma adattissimo sia al formato A4, sia a quello B5.
+% Il disegno della gabbia del testo è ispirato al pacchetto |canoniclayout|.
 % Però è stato osservato che se si compone in modo |oneside| la lettura
 % a schermo è agevole, ma la stampa della guida risulta mal composta
-% in fronte retro.
+% in fronte retro. Se invece si compone in modo |twoside| da una pagina
+% all'altra il testo si sposterebbe alternativamnte  a destra e un po' a
+% sinistra a seconda della parità del numero di pagine, visto che il
+% disegno della pagina prodotto da |canoniclayout| è asimmetrico.
 %
-% Per ovviare a questo inconveniente necessita centrare orizzontalmente
-% la gabbia e definire successivamente le testatine e i piedini in forma
-% simmetrica così da rendere le pagine pari identiche a quelle dispari;
-% la lettura a schermo e la stampa risultano pertanto identiche. Per
-% testatine e piedini si veda più avanti. Per simmetria la gabbia 
-% viene centrata anche verticalmente.
+% Per ovviare a questi inconvenient contemporaneamente necessita centrare
+% orizzontalmente la gabbia e definire successivamente le testatine e
+% i piedini in forma simmetrica così da rendere le pagine pari identiche
+% a quelle dispari; la lettura a schermo e la stampa risultano pertanto
+% identiche. Per testatine e piedini si veda più avanti. Per simmetria
+% la gabbia viene centrata anche verticalmente.
+%
+% Prima però bisogna definire il formato della carta a seconda del formato
+% specificato con l'apposita opzione. Poi, visto che la classe |memoir|
+% è già stata caricata, si possono usare i suoi comandi specifici per
+% definire gabbia, margini e le altre dimensioni. Si sfruttano registri
+% già definiti da |memoir| e si usano alcuni comandi specifici della classe.
 %
 %    \begin{macrocode}
-\RequirePackage{canoniclayout}
-\oddsidemargin=\dimexpr(\oddsidemargin+\evensidemargin)/2\relax
-\evensidemargin=\oddsidemargin
-\marginparwidth=0.8\dimexpr\evensidemargin+1in-\marginparsep\relax
-\topmargin=\dimexpr(\paperheight-\textheight-\headheight-\headsep
-   -2\baselineskip)/2-1in\relax
+\normalfont
+\iftablet\setstocksize{120mm}{90mm}\fi
+\ifBv\setstocksize{250mm}{176mm}\fi
+\ifAiv\setstocksize{293mm}{210mm}\fi
+\ifAv\setstocksize{210mm}{146mm}\fi
+\settrims{0pt}{0pt}
+
+\setlength{\paperwidth}{\stockwidth}\setlength{\paperheight}{\stockheight}
+\setlength{\textwidth}{\dimexpr\paperwidth*\paperwidth/\paperheight}
+\setlength{\textheight}{\paperwidth}
+\setlength{\spinemargin}{\dimexpr(\paperwidth-\textwidth)/2}
+\setlength{\foremargin}{\spinemargin}
+\setlength{\uppermargin}{\dimexpr(\paperheight-\textheight)/2}
+\setlength{\lowermargin}{\uppermargin}
+\dimen256=\@memptsize\p@
+\setlength{\headheight}{1.24\dimen256}
+\setlength\footskip{2\onelineskip}
+\setlength\headsep{\onelineskip}
+\setlength{\marginparsep}{7pt}
+\setlength{\marginparwidth}{\dimexpr\foremargin-3em}
+\checkandfixthelayout[nearest]
 %    \end{macrocode}
 %
 % Viene ora recuperato il comando |\GetFileInfo| dal pacchetto |doc.sty|
@@ -342,12 +379,15 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 	\begin{picture}(0,0)\unitlength=1mm\relax
 	\if@twoside
 		\ifodd\value{page}
-			\put(10,9.5){\rotatebox{90}{\makebox(0,0)[l]{\@copymark}}}
+            \put(\strip@pt\dimexpr\foremargin/2\relax,\strip@pt\footskip)%
+            {\rotatebox{90}{\makebox(0,0)[l]{\@copymark}}}
 		\else
-			\put(-10,9.5){\rotatebox{90}{\makebox(0,0)[l]{\@copymark}}}
+            \put(-\strip@pt\dimexpr\foremargin/2\relax,\strip@pt\footskip)%
+            {\rotatebox{90}{\makebox(0,0)[l]{\@copymark}}}
 		\fi
 	\else
-		\put(10,9.5){\rotatebox{90}{\makebox(0,0)[l]{\@copymark}}}
+            \put(\strip@pt\dimexpr\foremargin/2\relax,\strip@pt\footskip)%
+            {\rotatebox{90}{\makebox(0,0)[l]{\@copymark}}}
 	\fi
 	\end{picture}%
 }
@@ -355,8 +395,9 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %
 % Si definisce il comando per inserire il layout della pagina sotto
 % il testo di una pagina specifica. Vengono specificati i comandi
-% sia per la pagina destra sia per quella sinistra, anche se si raccomanda
-% di comporre con l'opzione |oneside|. Questi comandi sono completamente
+% sia per la pagina destra sia per quella sinistra, anche se si
+% suppone che la maggior parte delle guide tematiche sia composta
+% con l'opzione |oneside|. Questi comandi sono completamente
 % parametrizzati alle dimensioni del foglio rifilato e valgono per
 % qualunque formato.
 %    \begin{macrocode}
@@ -373,10 +414,10 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 \color{red}%
 \put(\strip@pt\dimen258,\strip@pt\dimen264){%
     \framebox(\strip@pt\textwidth,\strip@pt\textheight){}}%
-	\Line(0,0)(\strip@pt\paperwidth,\strip@pt\paperheight)%
-	\put(\strip@pt\dimexpr\paperwidth/2\relax,%
-	    \strip@pt\dimexpr\dimen264+\textheight/2\relax)%
-	    {\circle{\strip@pt\paperwidth}}%
+    \Line(0,0)(\strip@pt\paperwidth,\strip@pt\paperheight)%
+    \put(\strip@pt\dimexpr\paperwidth/2\relax,%
+        \strip@pt\dimexpr\dimen264+\textheight/2\relax)%
+        {\circle{\strip@pt\paperwidth}}%
 }
 \end{picture}}
 
@@ -393,13 +434,26 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 \color{red}%
 \put(\strip@pt\dimen258,\strip@pt\dimen264){%
     \framebox(\strip@pt\textwidth,\strip@pt\textheight){}}%
-	\Line(0,\strip@pt\paperheight)(\strip@pt\paperwidth,0)%
-	\put(\strip@pt\dimexpr\paperwidth/2\relax,%
-	   \strip@pt\dimexpr\dimen264+\textheight/2\relax)%
-	   {\circle{\strip@pt\paperwidth}}%
+    \Line(0,\strip@pt\paperheight)(\strip@pt\paperwidth,0)%
+    \put(\strip@pt\dimexpr\paperwidth/2\relax,%
+       \strip@pt\dimexpr\dimen264+\textheight/2\relax)%
+       {\circle{\strip@pt\paperwidth}}%
 }
 \end{picture}}
 %    \end{macrocode}
+% Si noti che non sempre il rettangolo che rappresenta la gabbia
+% è rasente agli ascendenti della prima riga della pagina e alla
+% linea di base dell'ultima linea; questo dipende dal fatto che
+% il layout della pagina creato da |memoir| prevede un piccolo
+% aggiustamento dell'altezza della gabbia affinché contenga un
+% numero intero di righe; si aggiunga che il programma di
+% composizione talvolta inserisce un salto di pagina quando il
+% ``goal'' di altezza della gabbia non è ancora raggiunto; questa
+% cosa generalmente dipende dal contenuto della pagina stessa che
+% potrebbe contenere oggetti il cui ingombro sulla pagina non
+% corrisponde ad un numero intero di righe in corpo normale. Se
+% l'aggiustamento è irrisorio, la diagonale della gabbia del testo
+% coincide con la diagonale della pagina.
 %
 % Si specificano ora i comandi di configurazione per la classe |memoir|.
 % Non si vuole il maiuscolo nelle testatine, perché verrà usato il
@@ -407,6 +461,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % piedino dal testo. Si vuole però che il |\@copymark| sia sempre presente
 % nel piedino: vuol dire che se questa macro è vuota non viene stampato
 % niente.
+%
 % Nei piedini il numero di pagina viene composto in maiuscoletto: 
 % la cosa non è importantissima, ma all'occorrenza i numeri di pagina
 % romani minuscoli vengono composti col minuscolo del maiuscoletto e non
@@ -419,7 +474,6 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 \renewcommand{\footruleskip}{0pt}
 \makeheadrule{headings}{\textwidth}{0pt}
 \makeheadrule{myheadings}{\textwidth}{0pt}
-%\makefootrule{empty}{0pt}{0pt}{0pt}
 \makeevenfoot{plain}{\@insertcopymark}{\textsc{\thepage}}{}
 \makeoddfoot{plain}{}{\textsc{\thepage}}{\@insertcopymark}
 \makeevenfoot{headings}{\@insertcopymark}{\textsc{\thepage}}{}
@@ -466,9 +520,9 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
    \renewcommand*{\chapternamenum}{}
    \renewcommand*{\chaptitlefont}{%
        \fontsize{18}{16}\scshape}% sterlineato
-   \renewcommand*{\printchapternum}{%
-       \noindent\rlap{\makebox[\textwidth][r]{\rlap{\hskip10pt
-       \chapnumfont \thechapter}}}\printchaptertitle}
+   \renewcommand{\printchapternum}{%
+       \noindent\rlap{\makebox[\textwidth][r]{\rlap{\makebox[\foremargin][l]{%
+       \chapnumfont \thechapter}}}}\printchaptertitle}
    \renewcommand*{\afterchapternum}{}
 }
 \AtBeginDocument{\chapterstyle{guidatematica}}
@@ -581,8 +635,9 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 %    \end{macrocode}
 %
 % Viene ora definita la virgola intelligente; si veda una
-% descrizione più dettagliata della sua utilità in matematica.
-% Qui si commenta solo il codice.
+% descrizione più dettagliata della sua utilità in matematica
+% per esempio della documentazioone di questa classe
+% |gidatematica-doc.pdf|. Qui si commenta solo il codice.
 %
 % La prima parte del codice serve per rendere attiva la virgola
 % solo in modo matematico e solo quando la lingua principale
@@ -644,7 +699,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 % quindi abbiamo la certezza che si tratti di un carattere
 % esplicito di categoria 12; bisogna ora testare se si tratta
 % di una cifra. I due test |\ifnum`#1<`0| e |\ifnum`#1>`9|
-% controllano se il carattere in questione è estero o interno
+% controllano se il carattere in questione è esterno o interno
 % all'intervallo ASCII delle cifre; se esso è esterno ci
 % vuole la virgola interpuntiva, altrimenti la virgola decimale.
 %
@@ -702,16 +757,16 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 {%
 	\clearforchapter
     \csname phantomsection\endcsname
-	\chapter{\indexname}%
-	\indexmark%
-	\parindent\z@
-	\parskip\z@ \@plus .3\p@\relax
-	\let\item\@idxitem
-	\begin{multicols}{\imki@columns}[\imki@idxprologue]
-	\raggedright
+    \chapter{\indexname}%
+    \indexmark%
+    \parindent\z@
+    \parskip\z@ \@plus .3\p@\relax
+    \let\item\@idxitem
+    \begin{multicols}{\imki@columns}[\imki@idxprologue]
+    \raggedright
 }
 {%
-	\end{multicols}\gdef\imki@idxprologue{}\clearpage
+    \end{multicols}\gdef\imki@idxprologue{}\clearpage
 }
 %    \end{macrocode}
 %
@@ -747,7 +802,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 % è definita con la classe |memoir|; qui la si definisce
 % apposta e funzionalmente per questa classe, non è un
 % comando da usare da parte dell'utente; egli deve
-% invece limitarsi a dare i comandi |author| un solo
+% invece limitarsi a dare i comandi |author|, un solo
 % autore, o una lista di autori separati da virgole o
 % altri spaziatori; |\title| con il titolo della guida;
 % |\subtitle| per un eventuale sottotitolo; |\date| con
@@ -755,23 +810,23 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 %    \begin{macrocode}
 \newenvironment{titlepage}{\clearpage
 \pagestyle{titlepage}
-	\makeoddhead{titlepage}{}{\smash{\Large\scshape\@author}}{}
-	\makeoddfoot{titlepage}{}{\smash{\large\scshape\@date}}{}
+    \makeoddhead{titlepage}{}{\smash{\Large\scshape\@author}}{}
+    \makeoddfoot{titlepage}{}{\smash{\large\scshape\@date}}{}
 }{\clearpage}
 
 \providecommand\subtitle[1]{\gdef\@subtitle{#1}}
 \let\@subtitle\empty
 
 \renewcommand\maketitle{
-	\begin{titlepage}
-	\vspace*{\stretch{.7}}
-	{\centering\LARGE\scshape\@title\par}
-	\ifdefvoid{\@subtitle}{}{\vspace{2\onelineskip}
-	{\centering\scshape\Large\@subtitle\par}}
-	\vspace{\stretch{.7}}
-	{\centering\includegraphics[width=40mm]{LogoGuITtondo}\par}
-	\vspace*{\stretch{.7}}
-	\end{titlepage}
+    \begin{titlepage}
+    \vspace*{\stretch{.7}}
+    {\centering\LARGE\scshape\@title\par}
+    \ifdefvoid{\@subtitle}{}{\vspace{2\onelineskip}
+    {\centering\scshape\Large\@subtitle\par}}
+    \vspace{\stretch{.7}}
+    {\centering\includegraphics[width=0.23\paperwidth]{LogoGuITtondo}\par}
+    \vspace*{\stretch{.7}}
+    \end{titlepage}
 }
 %    \end{macrocode}
 %
@@ -825,7 +880,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 % |\marg| per un \marg{argomento obbligatorio}; |\oarg| per un
 % \oarg{argomento facoltativo}; |\garg| per le
 % \garg{coordinate,geometriche}; |\comando| per un
-% \comando{\comando} completa del suo backslash; |\cs| per il
+% \comando{\comando} completo del suo backslash; |\cs| per il
 % nome (senza backslash) di un \cs{comando} al quale viene
 % anteposto il suo necessario backslash quando esso viene
 % composto; |\Sambiente| per descrivere la sintassi di uno
@@ -891,10 +946,15 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 % possono o debbono venire ridefiniti in modo da inviare
 % la voce all'indice desiderato.
 %    \begin{macrocode}
+%
 \DeclareRobustCommand*\ambstyle[1]{\textsf{\slshape#1}}
 \DeclareRobustCommand*\classstyle[1]{\texttv{\itshape#1}}
 \DeclareRobustCommand*\filestyle[1]{\texttm{\textl{#1}}}
-\DeclareRobustCommand*\packstyle[1]{\texttm{\itshape\textl{#1}}}
+\ifxetex
+    \DeclareRobustCommand*\packstyle[1]{\texttm{\itshape{#1}}}
+\else
+    \DeclareRobustCommand*\packstyle[1]{\texttm{\itshape\textl{#1}}}
+\fi
 \DeclareRobustCommand*\progstyle[1]{\textsf{#1}}
 \DeclareRobustCommand*\prog[1]{\progstyle{#1}%
    \index{programma!#1@\progstyle{#1}}}
@@ -916,7 +976,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 \DeclareRobustCommand*\descrittorestyle[1]{\texttm{#1}}
 \DeclareRobustCommand*\posizionestyle[1]{\texttm{#1}}
 \DeclareRobustCommand*\allineamentostyle[1]{\texttm{#1}}
-
+%
 \DeclareRobustCommand*\opz[1]{\opzstyle{#1}%
    \index{opzione!#1@\opzstyle{#1}}}
 \DeclareRobustCommand*\conta[1]{\contastyle{#1}%
@@ -939,6 +999,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 %
 % Finalmente la macro |\GuIT| per gestire l'immagine del logo del GuIT.
 %    \begin{macrocode}
+%
 \DeclareRobustCommand*\GuIT{{\dimen@=\f@size\p@\dimen2=20.88\p@
 \edef\guitscale{\strip@pt\dimexpr\dimen@*\p@/\dimen2\relax}%
 \raisebox{-0.93ex}[\z@][\z@]{%
