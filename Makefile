@@ -59,7 +59,7 @@ $(CLASSE): $(MAIN).dtx
 
 doc: $(CLASSE_DOC)
 
-$(CLASSE_DOC): $(MAIN_DOC).tex
+$(CLASSE_DOC): $(CLASSE) $(MAIN_DOC).tex
 	echo "Compilazione di $< ..."
 	xelatex $< > /dev/null
 	bibtex	$(MAIN_DOC) > /dev/null
