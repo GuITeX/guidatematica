@@ -5,7 +5,7 @@ SHELL = /bin/sh
 ### Autore: Orlando Iovino.
 ###
 ### Descrizione: Makefile per l'installazione della classe guidatematica
-###		 nell'albero personale di una distribuzione TeX Live. 
+###		 nell'albero personale di una distribuzione TeX Live.
 ###
 ### Versione: v.1.0
 ###
@@ -59,7 +59,7 @@ $(CLASSE): $(MAIN).dtx
 
 doc: $(CLASSE_DOC)
 
-$(CLASSE_DOC): $(CLASSE) $(MAIN_DOC).tex
+$(CLASSE_DOC): $(MAIN_DOC).tex $(CLASSE)
 	echo "Compilazione di $< ..."
 	xelatex $< > /dev/null
 	bibtex	$(MAIN_DOC) > /dev/null
