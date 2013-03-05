@@ -22,7 +22,7 @@ L'autore della classe e della documentazione a corredo è Claudio Beccari.
 Installazione
 ----------
 
-La classe è la sua documentazione sono generate dai sorgenti
+La classe e la sua documentazione sono generate dai sorgenti
 *guidatematica.dtx* e *guidatematica-doc.tex*:
 
 * per creare la classe *guidatematica.cls* si deve compilare
