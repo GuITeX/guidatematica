@@ -1,3 +1,9 @@
+# NOTA BENE #
+Questo repository ha cambiato nome, cosi` come i vari files: dal plurale
+'guidet<strong>e</strong>matic<strong>he</strong>'
+al singolare 'guid<strong>a</strong>tematic<strong>a</strong>'.
+Siete pregati di aggiornare i vostri documenti.
+
 guidatematica
 ==============
 
