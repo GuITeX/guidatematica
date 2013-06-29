@@ -7,7 +7,7 @@ rem
 rem Descrizione: Script per l'installazione della classe guidatematica
 rem              nell'albero personale di una distribuzione TeX Live.
 rem
-rem Versione: v.2.0
+rem Versione: v.2.1
 rem
 rem Riferimenti: [1] https://bitbucket.org/josephwright/siunitx/ (su
 rem                  segnalazione di Mosè Giordano)
@@ -87,7 +87,7 @@ if not "%1" == "" goto :variabili
 rem
 rem Stile bibliografico
 rem
-		set TDSDIR=doc\latex\%MAIN%
+		set TDSDIR=bibtex\bst\%MAIN%
 		echo ... %ALBEROPERS%\bibtex\bst\%MAIN% ...
 		if not exist %ALBEROPERS%\%TDSDIR% mkdir %ALBEROPERS%\%TDSDIR%
 		xcopy /q /y %MAIN%.bst "%ALBEROPERS%\%TDSDIR%\" > nul
