@@ -1,7 +1,4 @@
 % \iffalse
-%
-% -*- coding: utf-8 -*-
-%
 % !TEX encoding = UTF-8 Unicode
 % !TEX TS-program = pdflatex
 %<*system>
@@ -54,7 +51,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %<class>\NeedsTeXFormat{LaTeX2e}[2009/01/01]
 %<class>\ProvidesClass{guidatematica}%
 %<*class>
-   [2013/02/04 v.1.1 Classe simmetrica per comporre testi della collana 
+   [2013/06/25 v.1.2 Classe simmetrica per comporre testi della collana 
    Guide Tematiche del GuIT]
 %</class>
 %<*driver>
@@ -96,7 +93,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % \fi
 %
 %
-% \CheckSum{1029}
+% \CheckSum{1048}
 % \begin{abstract}
 % Questa classe \texttt{guidatematica} serve per comporre
 % testi da pubblicare nella collana “Guide Tematiche” del GuIT.
@@ -107,7 +104,9 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % che il disegno della pagina è simmetrico e quindi si
 % presta ugualmente bene per comporre (e stampare) oneside
 % o twoside. Solo le note marginali eventualmente presenti
-% mostrano la differente impostazione.
+% mostrano la differente impostazione. Inoltre è costruita
+% in modo da poter lavorare indifferentemente con pdf\LaTeX,
+% Xe\LaTeX\ e Lua\LaTeX,
 % \end{abstract}
 %
 % \section{Caratteristiche della classe}
@@ -199,8 +198,8 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % della guida tematica.
 %
 % Vengono reimpostate le opzioni |a4paper|, |a5paper| e |\b5paper|
-% e viene definita l'opzione |tablet|, per poter in tutti questi casi
-% creare il layout della pagina in modo simile e non persoanlizzabile.
+% e vengono definite le opzioni |tablet| e |pad|, per poter in tutti questi casi
+% creare il layout della pagina in modo simile e non personalizzabile.
 % Per tutte questo opzioni bisogna ricorrere ad opportuni comandi
 % condizionali, per poter ritardare la loro esecuzione ad un momento
 % successivo al caricamento della classe |memoir|.
@@ -213,14 +212,16 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
   citecolor={blue!80!black},urlcolor={blue}]{hyperref}}
 }
 
+\newif\ifPAD\PADfalse
+\DeclareOption{pad}{\PADtrue\tabletfalse\Aivfalse\Bvfalse\Avfalse}
 \newif\iftablet\tabletfalse
-\DeclareOption{tablet}{\tablettrue\Aivfalse\Bvfalse\Avfalse}
+\DeclareOption{tablet}{\tablettrue\Aivfalse\Bvfalse\Avfalse\PADfalse}
 \newif\ifAiv \Aivfalse
-\DeclareOption{a4paper}{\Aivtrue\tabletfalse\Bvfalse\Avfalse}
+\DeclareOption{a4paper}{\Aivtrue\tabletfalse\Bvfalse\Avfalse\PADfalse}
 \newif\ifBv \Bvtrue
-\DeclareOption{b5paper}{\Aivfalse\Bvtrue\tabletfalse\Avfalse}
+\DeclareOption{b5paper}{\Aivfalse\Bvtrue\tabletfalse\Avfalse\PADfalse}
 \newif\ifAv \Avfalse
-\DeclareOption{a5paper}{\Avtrue\Aivfalse\Bvfalse\tabletfalse}
+\DeclareOption{a5paper}{\Avtrue\Aivfalse\Bvfalse\tabletfalse\PADfalse}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{memoir}}
 \ProcessOptions*\relax
@@ -228,11 +229,10 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 \LoadClassWithOptions{memoir}
 %    \end{macrocode}
 %
-% Si carica subito il pacchetto |ifxetex| per poter distinguere
-% nelle impostazioni quelle da eseguire con il programma |xetex|
-% rispetto a quelle da eseguire col programma |pdftex|.
+% Si carica subito il pacchetto |iftex|  che permette di distinguere 
+% quale motore di composizione si sta usando fra |pdftex|, |xetex|, oppure |luatex|.
 %    \begin{macrocode}
-\RequirePackage{ifxetex}
+\RequirePackage{iftex}
 %    \end{macrocode}
 % Con |xetex| si carica il pacchetto |fontspec| e si impostano le varie forme 
 % dei font Latin Modern OpenType, generando anche i comandi necessari per la
@@ -241,29 +241,28 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % Si provvede nei due casi di caricare i pacchetti necessari per la gestione
 % della lingua italiana.
 %    \begin{macrocode}
-\ifxetex
-    \RequirePackage{fontspec}
-    \setmainfont[Ligatures=TeX,Numbers=OldStyle]{Latin Modern Roman}
-    \setsansfont[Ligatures=TeX,Numbers=OldStyle]{Latin Modern Sans}
-    \setmonofont[Numbers=Lining]{Latin Modern Mono}
-    \newfontfamily{\tvfamily}[Numbers=Lining]{Latin Modern Mono Prop}
-    \newfontfamily{\scfamily}%
-       [Ligatures=TeX,Numbers=OldStyle]{Latin Modern Roman Caps}
-    \DeclareRobustCommand\scshape{\scfamily}
-    \DeclareTextFontCommand{\texttm}{\ttfamily}
-    \DeclareTextFontCommand{\texttv}{\tvfamily}
-    \DeclareTextFontCommand{\textsc}{\scshape}
-    \def\textl#1{{\addfontfeature{Numbers=Lining}#1}}
-    \RequirePackage{unicode-math}
-    \setmathfont{Latin Modern Math}
-%
-    \RequirePackage{polyglossia}
-    \setmainlanguage{italian}
+\ifPDFTeX
+	\RequirePackage[utf8]{inputenc}
+	\RequirePackage[T1]{fontenc}
+	\RequirePackage[italian]{babel}
+	\RequirePackage[tt={oldstyle=false,tabular,monowidth}]{cfr-lm}
 \else
-    \RequirePackage[utf8]{inputenc}
-    \RequirePackage[T1]{fontenc}
-    \RequirePackage[italian]{babel}
-    \RequirePackage[tt={oldstyle=false,tabular,monowidth}]{cfr-lm}
+	\RequirePackage{fontspec}
+	\setmainfont[Ligatures=TeX,Numbers=OldStyle]{Latin Modern Roman}
+	\setsansfont[Ligatures=TeX,Numbers=OldStyle]{Latin Modern Sans}
+	\setmonofont[Numbers=Lining]{Latin Modern Mono}
+	\newfontfamily{\tvfamily}[Numbers=Lining]{Latin Modern Mono Prop}
+	\newfontfamily{\scfamily}%
+	   [Ligatures=TeX,Numbers=OldStyle]{Latin Modern Roman Caps}
+	\DeclareRobustCommand\scshape{\scfamily}
+	\DeclareTextFontCommand{\texttm}{\ttfamily}
+	\DeclareTextFontCommand{\texttv}{\tvfamily}
+	\DeclareTextFontCommand{\textsc}{\scshape}
+	\def\textl#1{{\addfontfeature{Numbers=Lining}#1}}
+	\RequirePackage{unicode-math}
+	\setmathfont{Latin Modern Math}
+	\RequirePackage{polyglossia}
+	\setmainlanguage{italian}
 \fi
 %    \end{macrocode}
 %
@@ -271,13 +270,13 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % Si caricano poi i pacchetti ritenuti necessari; in questa versione
 % della classe non viene caricato il pacchetto |guit.sty| perché
 % è incompatibile con |XeLaTeX|; certo lo si sarebbe potuto caricare
-% nel ramo |\else| del test |\ifxetex| e la definizione del logo del
+% nel ramo |true| del test |\ifPDFTeX| e la definizione del logo del
 % gruppo in forma grafica (immagine pdf) la si sarebbe potuta limitare
-% all'uso con |XeLaTeX| siccome alla data attuale il pacchetto
-% |guit.sty| è sottoposto a revisione per l'uso con |XeLaTeX|, è molto
-% meglio usare temporaneamente l'immagine in entrambi i casi e modificare
+% all'uso con |XeLaTeX| o di |Lua\LaTeX|; siccome alla data attuale il pacchetto
+% |guit.sty| è sottoposto a revisione per l'uso con i font OpenType, è molto
+% meglio usare temporaneamente l'immagine in ogni caso e modificare
 % questa classe solo con l'aggiunta di un nuovo pacchetto quando 
-% |guit.sty| sarà diventato compatibile con entrambi i programmi di
+% |guit.sty| sarà diventato compatibile con tuttii i programmi di
 % composizione. Il logo tondo, il ``timbro'', del GuIT viene invece
 % allegato come immagine, visto che si tratta di una variante 
 % nella quale le lettere della scritta attorno al bordo non appaiono
@@ -303,16 +302,16 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % Però è stato osservato che se si compone in modo |oneside| la lettura
 % a schermo è agevole, ma la stampa della guida risulta mal composta
 % in fronte retro. Se invece si compone in modo |twoside| da una pagina
-% all'altra il testo si sposterebbe alternativamnte  a destra e un po' a
-% sinistra a seconda della parità del numero di pagine, visto che il
+% all'altra il testo si sposterebbe alternativamente a destra e a
+% sinistra a seconda della parità del numero di pagina, visto che il
 % disegno della pagina prodotto da |canoniclayout| è asimmetrico.
 %
 % Per ovviare a questi inconvenient contemporaneamente necessita centrare
-% orizzontalmente la gabbia e definire successivamente le testatine e
-% i piedini in forma simmetrica così da rendere le pagine pari identiche
-% a quelle dispari; la lettura a schermo e la stampa risultano pertanto
-% identiche. Per testatine e piedini si veda più avanti. Per simmetria
-% la gabbia viene centrata anche verticalmente.
+% orizzontalmente la gabbia e definire successivamente le testatine e i 
+% piedini in forma simmetrica così da rendere il layout delle pagine pari 
+% identiche a quelle dispari; la lettura a schermo e la stampa risultano
+% pertanto identiche. Per testatine e piedini si veda più avanti. Per
+% simmetria la gabbia viene centrata anche verticalmente.
 %
 % Prima però bisogna definire il formato della carta a seconda del formato
 % specificato con l'apposita opzione. Poi, visto che la classe |memoir|
@@ -322,6 +321,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %
 %    \begin{macrocode}
 \normalfont
+\ifPAD\setstocksize{160mm}{120mm}\fi
 \iftablet\setstocksize{120mm}{90mm}\fi
 \ifBv\setstocksize{250mm}{176mm}\fi
 \ifAiv\setstocksize{293mm}{210mm}\fi
@@ -649,7 +649,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 %    \begin{macrocode}
  \DeclareMathSymbol{\virgola}{\mathpunct}{letters}{"3B}
  \DeclareMathSymbol{\virgoladecimale}{\mathord}{letters}{"3B}
-\ifxetex
+\unless\ifPDFTeX
  \AtBeginDocument{\ifcsstring{xpg@main@language}{english}{\relax}{%
     \mathcode`\,=\string"8000}}
 \else
@@ -795,7 +795,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 % rientrare tutti i capoversi, anche quelli che seguono
 % ogni comando di sezionamento.
 %    \begin{macrocode}
-\ifxetex
+\unless\ifPDFTeX
    \ifcsstring{xpg@main@language}{italian}%
      {\csgappto{init@extras@italian}{\nofrench@indent}}{}%
 \fi}
@@ -827,7 +827,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
     \ifdefvoid{\@subtitle}{}{\vspace{2\onelineskip}
     {\centering\scshape\Large\@subtitle\par}}
     \vspace{\stretch{.7}}
-    {\centering\includegraphics[width=0.23\paperwidth]{logoguittondo}\par}
+    {\centering\includegraphics[width=0.23\paperwidth]{LogoGuITtondo}\par}
     \vspace*{\stretch{.7}}
     \end{titlepage}
 }
@@ -953,7 +953,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 \DeclareRobustCommand*\ambstyle[1]{\textsf{\slshape#1}}
 \DeclareRobustCommand*\classstyle[1]{\texttv{\itshape#1}}
 \DeclareRobustCommand*\filestyle[1]{\texttm{\textl{#1}}}
-\ifxetex
+\unless\ifPDFTeX
     \DeclareRobustCommand*\packstyle[1]{\texttm{\itshape{#1}}}
 \else
     \DeclareRobustCommand*\packstyle[1]{\texttm{\itshape\textl{#1}}}
@@ -1006,7 +1006,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 \DeclareRobustCommand*\GuIT{{\dimen@=\f@size\p@\dimen2=20.88\p@
 \edef\guitscale{\strip@pt\dimexpr\dimen@*\p@/\dimen2\relax}%
 \raisebox{-0.93ex}[\z@][\z@]{%
-   \includegraphics[scale=\guitscale]{logoguitlineare}}}}
+   \includegraphics[scale=\guitscale]{LogoGuITlineare}}}}
 \let\guit\GuIT
 %    \end{macrocode}
 % \iffalse

@@ -33,7 +33,7 @@ help:
 #
 # VARIABILI
 #
-
+ENGINE      = pdflatex
 MAIN		= guidatematica
 MAIN_DOC	= $(MAIN)-doc
 CLASSE 		= $(MAIN).cls
@@ -61,10 +61,10 @@ doc: $(CLASSE_DOC)
 
 $(CLASSE_DOC): $(MAIN_DOC).tex $(CLASSE)
 	echo "Compilazione di $< ..."
-	xelatex $< > /dev/null
+	$(ENGINE) $< > /dev/null
 	bibtex	$(MAIN_DOC) > /dev/null
-	xelatex $< > /dev/null
-	xelatex $< > /dev/null
+	$(ENGINE) $< > /dev/null
+	$(ENGINE) $< > /dev/null
 	echo "... Fatto!"
 
 
