@@ -51,7 +51,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %<class>\NeedsTeXFormat{LaTeX2e}[2009/01/01]
 %<class>\ProvidesClass{guidatematica}%
 %<*class>
-   [2013/06/25 v.1.2 Classe simmetrica per comporre testi della collana 
+   [2014/03/14 v.1.3 Classe simmetrica per comporre testi della collana 
    Guide Tematiche del GuIT]
 %</class>
 %<*driver>
@@ -93,7 +93,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % \fi
 %
 %
-% \CheckSum{1048}
+% \CheckSum{1084}
 % \begin{abstract}
 % Questa classe \texttt{guidatematica} serve per comporre
 % testi da pubblicare nella collana “Guide Tematiche” del GuIT.
@@ -294,6 +294,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 \RequirePackage{fancyvrb}
 \RequirePackage{afterpage}
 \RequirePackage{enumitem}
+\RequirePackage{eurosym}
 \RequirePackage{listings}
 \lstloadlanguages{[LaTeX]TeX}
 %    \end{macrocode}
@@ -457,6 +458,54 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % corrisponde ad un numero intero di righe in corpo normale. Se
 % l'aggiustamento è irrisorio, la diagonale della gabbia del testo
 % coincide con la diagonale della pagina.
+%
+% Si specifica ora il comando |\contribguit| che realizza una pagina
+% con le informazioni relative all'iscrizione nel gruppo. Il comando
+% può essere utilizzato a inizio o fine documento. Tuttavia, 
+% per garantire maggiore visibilità, si consiglia di inserire 
+% |\contribguit| dopo |\frontmatter| e prima del capitolo di 
+% introduzione o eventuali pagine con informazioni sulle licenze d'uso.
+%    \begin{macrocode}
+\newcommand{\contribguit}{
+\thispagestyle{empty}
+\noindent{\Large
+Associati anche tu al \GuIT
+\hspace{1.2875cm}
+\setlength{\unitlength}{1cm}
+ \begin{picture}(4,0.2)(-1,-0.65)
+  \setlength{\fboxsep}{0pt}
+  \put(-0.9,-0.95){\colorbox{gray!30}{\framebox(5,0.65){}}} % 
+  \put(-1,-0.85){\colorbox{white}{\framebox(5,0.65){%
+   \href{http://www.guitex.org/home/it/diventa-socio/associarsi-a-guit}{%
+    Fai click per associarti}}}}
+ \end{picture}%
+}
+\bigskip
+
+L'associazione per la diffusione di \TeX{} in Italia riconosciuta 
+ufficialmente in ambito internazionale, si sostiene \emph{unicamente} 
+con le quote sociali.
+
+Se anche tu trovi che questa guida tematica gratuita ti sia stata utile, 
+il mezzo principale per ringraziare gli autori è diventare socio.
+\medskip
+
+Divenendo soci riceverete gratuitamente:
+\begin{itemize}
+\item
+l'abbonamento alla rivista \Ars;
+\item
+il DVD \TeX{} Collection;
+\item
+l'esclusivo tipometro realizzato da Massimo Caschili.
+\end{itemize}
+
+L'adesione al \GuIT{} prevede un quota associativa compresa tra \EUR{12,00} 
+e \EUR{70,00} a seconda della tipologia di adesione prescelta ed ha 
+validità per l'anno solare in corso.
+\newpage
+}
+%    \end{macrocode}
 %
 % Si specificano ora i comandi di configurazione per la classe |memoir|.
 % Non si vuole il maiuscolo nelle testatine, perché verrà usato il
