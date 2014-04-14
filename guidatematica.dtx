@@ -93,7 +93,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % \fi
 %
 %
-% \CheckSum{1084}
+% \CheckSum{1086}
 % \begin{abstract}
 % Questa classe \texttt{guidatematica} serve per comporre
 % testi da pubblicare nella collana “Guide Tematiche” del GuIT.
@@ -294,7 +294,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 \RequirePackage{fancyvrb}
 \RequirePackage{afterpage}
 \RequirePackage{enumitem}
-\RequirePackage{eurosym}
+\RequirePackage[right]{eurosym}
 \RequirePackage{listings}
 \lstloadlanguages{[LaTeX]TeX}
 %    \end{macrocode}
@@ -466,18 +466,18 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % |\contribguit| dopo |\frontmatter| e prima del capitolo di 
 % introduzione o eventuali pagine con informazioni sulle licenze d'uso.
 %    \begin{macrocode}
-\newcommand{\contribguit}{
+\newcommand{\contribguit}{\newpage
 \thispagestyle{empty}
 \noindent{\Large
 Associati anche tu al \GuIT
-\hspace{1.2875cm}
-\setlength{\unitlength}{1cm}
- \begin{picture}(4,0.2)(-1,-0.65)
+\hfill
+\setlength{\unitlength}{1mm}
+ \begin{picture}(55,2)
   \setlength{\fboxsep}{0pt}
-  \put(-0.9,-0.95){\colorbox{gray!30}{\framebox(5,0.65){}}} % 
-  \put(-1,-0.85){\colorbox{white}{\framebox(5,0.65){%
+  \put(1,-3){\colorbox{gray}{\framebox(55,6.5){}}}  
+  \put(0,-2){\colorbox{white}{\framebox(55,6.5){%
    \href{http://www.guitex.org/home/it/diventa-socio/associarsi-a-guit}{%
-    Fai click per associarti}}}}
+    Clicca qui per associarti}}}}
  \end{picture}%
 }
 \bigskip
@@ -490,18 +490,18 @@ Se anche tu trovi che questa guida tematica gratuita ti sia stata utile,
 il mezzo principale per ringraziare gli autori è diventare socio.
 \medskip
 
-Divenendo soci riceverete gratuitamente:
+Divenendo soci si ricevono gratuitamente:
 \begin{itemize}
 \item
 l'abbonamento alla rivista \Ars;
 \item
-il DVD \TeX{} Collection;
+il DVD \TeX\ Collection;
 \item
 l'esclusivo tipometro realizzato da Massimo Caschili.
 \end{itemize}
 
 L'adesione al \GuIT{} prevede un quota associativa compresa tra \EUR{12,00} 
-e \EUR{70,00} a seconda della tipologia di adesione prescelta e ha 
+e \EUR{70,00} a seconda della tipologia di adesione prescelta ed ha 
 validità per l'anno solare in corso.
 \newpage
 }

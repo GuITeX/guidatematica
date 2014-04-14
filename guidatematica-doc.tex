@@ -1,4 +1,4 @@
-% !TEX TS-program = XeLaTeX
+% !TEX TS-program = pdfLaTeX
 % !TEX encoding = UTF-8 Unicode
 
 % Composizione in vari formati a seconda dell'opzione: a4paper, a5paper, b5paper, tablet
@@ -314,7 +314,7 @@ Alcuni pacchetti precaricati sono funzionali alla classe stessa, altri sono o po
 \item[afterpage] serve per trattenere l'esecuzione di una sezione di codice fino alla fine della pagina corrente; molto utile in certe circostanze, ma qui finalizzato soltanto all'uso di questa classe.
 \item[enumitem] serve per personalizzare le liste, crearne di nuove, specificare ogni dettaglio di composizione delle etichette, eccetera; con le funzionalità di questo pacchetto si sono ridefiniti numerosi ambienti utili non solo per comporre questo documento, ma anche per l'autore in generale che usa la classe \class{guidatematica} per descrivere un tema particolare inerente il mondo di \TeX\ ed abbia bisogno di nuovi tipi di liste. La consultazione della documentazione di \pack{enumitem} diventa quindi utile e necessaria per usare i comandi di personalizzazione in modo corretto ed efficiente.
 \item[listings] è il pacchetto principe per comporre listati di comandi di vari programmi; in questa classe esso è già configurato per usare la sintassi valida per il linguaggio \TeX\ nel suo `dialetto' \LaTeX. Possono venire caricati altri dialetti come si possono caricare altri linguaggi. Si possono anche estendere le liste di parole chiave secondo le modalità descritte nella documentazione del pacchetto \pack{listings}.
-\item[eurosym] è il pacchetto per utilizzare correttamente il simbolo \officialeuro. 
+\item[eurosym] è il pacchetto per utilizzare correttamente il simbolo \officialeuro, Si è usata l'opzione \texttt{right} (che agisce solo sul comando \cs{EUR}) come per il tedesco, visto che in un contesto informale il numero precede l'unità di misura; d'altra perte questa posizione è prescritta per tutte le unità di misura. Se per qualche motivo si deve scrivere il simbolo dell'euro prima del valore numerico si può sempre usare il comando \cs{officialeuro} senza argomento, invece del comando \cs{EUR} che ha come argomento il valore monetario.
 \iffalse % eliminata la chiamata a canoniclayout il 4/2/2013
 \item[canoniclayout] è funzionale alla classe e definisce il layout della pagina qualunque sia il formato della `carta'. Il layout della pagina di questa classe è indicato graficamente nella pagina~\pageref{pag:layout}.
 \fi
