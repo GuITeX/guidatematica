@@ -79,34 +79,34 @@ if not "%1" == "" goto :variabili
 
 	if not exist %CLASSE_DOC% call :doc
 
-    echo.
-    echo Copia dei file in ...
-    rem
-    rem Stile bibliografico
-    rem
+	echo.
+	echo Copia dei file in ...
+rem
+rem Stile bibliografico
+rem
 		set TDSDIR=bibtex\bst\%MAIN%
 		echo ... %ALBEROPERS%\%TDSDIR% ...
 		if not exist %ALBEROPERS%\%TDSDIR% mkdir %ALBEROPERS%\%TDSDIR%
 		xcopy /q /y %MAIN%.bst "%ALBEROPERS%\%TDSDIR%\" > nul
-    rem
-    rem Codice sorgente della classe (.dtx)
-    rem
+rem
+rem Codice sorgente della classe (.dtx)
+rem
 		set TDSDIR=source\latex\%MAIN%
 		echo ... %ALBEROPERS%\%TDSDIR% ...
 		if not exist %ALBEROPERS%\%TDSDIR% mkdir %ALBEROPERS%\%TDSDIR%
 		xcopy /q /y %MAIN%.dtx "%ALBEROPERS%\%TDSDIR%\" > nul
-    rem
-    rem Codice della classe (.cls) e file accessori
-    rem
+rem
+rem Codice della classe (.cls) e file accessori
+rem
 		set TDSDIR=tex\latex\%MAIN%
 		echo ... %ALBEROPERS%\%TDSDIR% ...
 		if not exist %ALBEROPERS%\%TDSDIR% mkdir %ALBEROPERS%\%TDSDIR%
 		xcopy /q /y %CLASSE%   "%ALBEROPERS%\%TDSDIR%\" > nul
 		for %%f in (%FIGURE%)   do xcopy /q /y %%f "%ALBEROPERS%\%TDSDIR%\" > nul
 		for %%f in (%STILIIDX%) do xcopy /q /y %%f "%ALBEROPERS%\%TDSDIR%\" > nul
-    rem
-    rem Documentazione
-    rem
+rem
+rem Documentazione
+rem
 		set TDSDIR=doc\latex\%MAIN%
 		echo ... %ALBEROPERS%\%TDSDIR% ...
 		if not exist %ALBEROPERS%\%TDSDIR% mkdir %ALBEROPERS%\%TDSDIR%
@@ -117,14 +117,14 @@ if not "%1" == "" goto :variabili
 		echo ... Fatto!
 		echo.
 
-	rem Controllo la non esistenza di TeX Live. Se è vero concludo che è
-    rem installato MiKTeX (RIVEDERE).
+rem Controllo la non esistenza di TeX Live. Se è vero concludo che è
+rem installato MiKTeX (RIVEDERE).
 	if not exist %HOMEDRIVE%\texlive (
-        echo Configurazione di MiKTeX ...
-        initexmf --register-root=%ALBEROPERS%
-        initexmf --update-fndb
-        echo ... Fatto! La cartella %ALBEROPERS% e' stata registrata.
-        echo.
+		echo Configurazione di MiKTeX ...
+		initexmf --register-root=%ALBEROPERS%
+		initexmf --update-fndb
+		echo ... Fatto! La cartella %ALBEROPERS% e' stata registrata.
+		echo.
     )
 
 	echo  Happy TeXing con guidatematica.cls
@@ -133,7 +133,7 @@ if not "%1" == "" goto :variabili
 
 :clean
 
-    for %%I in (%AUSILIARI%) do ( if exist *.%%I del /q *.%%I )
+	for %%I in (%AUSILIARI%) do ( if exist *.%%I del /q *.%%I )
 	goto :EOF
 
 :xclean
