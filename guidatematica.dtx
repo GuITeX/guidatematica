@@ -608,14 +608,14 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 \renewcommand\blockdescriptionlabel[1]{\normalfont\scshape #1}
 \providecommand\plaindescriptionlabel[1]{\hspace\labelsep\normalfont #1}
 
-\renewlist{blockdescription}{description}{1}
+\renewlist{blockdescription}{description}{4}
 \setlist[blockdescription]{before={\let\makelabel\blockdescriptionlabel},
 leftmargin=\z@,labelsep*=0.5em,labelindent=\z@,labelwidth=\z@}
 
-\newlist{plaindescription}{description}{1}
+\newlist{plaindescription}{description}{4}
 \setlist[plaindescription]{before={\let\makelabel\plaindescriptionlabel}}
 
-\newlist{compactenumerate}{enumerate}{1}
+\newlist{compactenumerate}{enumerate}{4}
 \setlist[compactenumerate,1]{label=\arabic*., 
    noitemsep, partopsep=\z@, topsep=.25\onelineskip}
 
@@ -623,7 +623,7 @@ leftmargin=\z@,labelsep*=0.5em,labelindent=\z@,labelwidth=\z@}
 \setlist[compactitemize]{label=•,
    noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 
-\newlist{compactdescription}{description}{1}
+\newlist{compactdescription}{description}{4}
 \setlist[compactdescription]{%
 style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 %    \end{macrocode}
