@@ -1,6 +1,6 @@
 SHELL = /bin/sh
 
-### Copyright (c) 2013 Orlando Iovino.
+### Copyright (C) 2013, 2014 Orlando Iovino.
 ###
 ### Autore: Orlando Iovino.
 ###
@@ -9,11 +9,7 @@ SHELL = /bin/sh
 ###
 ### Versione: v.1.0
 ###
-### Riferimenti: [1] https://bitbucket.org/josephwright/siunitx/ (su
-###		      segnalazione di Mosè Giordano)
-###
 ### Licenza: LaTeX Project Public License.
-###
 
 .SILENT:
 
@@ -33,7 +29,7 @@ help:
 #
 # VARIABILI
 #
-ENGINE      = pdflatex
+ENGINE      	= pdflatex
 MAIN		= guidatematica
 MAIN_DOC	= $(MAIN)-doc
 CLASSE 		= $(MAIN).cls
