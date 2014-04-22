@@ -1,9 +1,3 @@
-# NOTA BENE #
-Questo repository ha cambiato nome, cosi` come i vari files: dal plurale
-'guidet<strong>e</strong>matic<strong>he</strong>'
-al singolare 'guid<strong>a</strong>tematic<strong>a</strong>'.
-Siete pregati di aggiornare i vostri documenti.
-
 guidatematica
 ==============
 
@@ -16,7 +10,7 @@ Descrizione
  [guide tematiche](http://www.guitex.org/home/it/guide-tematiche/la-filosofia-delle-guide-a-tema)
  per il
  [GuIT — Gruppo Utilizzatori Italiani di TeX](http://www.guitex.org/home/).
- 
+
 L'autore della classe e della documentazione a corredo è Claudio Beccari.
 
 Installazione
@@ -27,19 +21,20 @@ La classe e la sua documentazione sono generate dai sorgenti
 
 * per creare la classe *guidatematica.cls* si deve compilare
   *guidatematica.dtx* mediante `pdflatex`;
-* per creare la guida di supporto si deve compilare *guidatematica-doc.tex*
-  con `xelatex` più `bibtex` per la bibliografia; l'indice analitico è invece
-  creato in modo sincrono grazie al pacchetto
+* per creare la guida di supporto si deve compilare *guidatematica-doc.tex* con
+  `pdflatex` (o con `xelatex`) più `bibtex` per la bibliografia; l'indice
+  analitico è invece creato in modo sincrono grazie al pacchetto
   [imakeidx](http://www.ctan.org/pkg/imakeidx).
 
-Se si è interessati ad installare la classe nel proprio albero personale con
-una distribuzione TeX Live, sono disponibili un
-* *Makefile* da usare su *GNU/Linux* mediante il programma
-   [make](http://www.gnu.org/software/make/);
+Se si è interessati ad installare la classe nell'albero personale della
+propria distribuzione, sono disponibili un
+* *Makefile* da usare su *GNU/Linux* o su sistemi di tipo *UNIX* mediante il
+   programma [make](http://www.gnu.org/software/make/);
 * *Makefile.bat* da usare su Windows (si deve aprire il `Prompt dei comandi` e
-   scrivere `Makefile`).
-   
-Per la corretta compilazione dei sorgenti si raccomanda una distribuzione `TeX Live` completa ed aggiornata.
+   scrivere `Makefile.bat`).
+
+Per la corretta compilazione dei sorgenti si raccomanda una distribuzione `TeX
+Live` o `MiKTeX` completa ed aggiornata.
 
 Licenza
 ----------
