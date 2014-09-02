@@ -51,7 +51,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %<class>\NeedsTeXFormat{LaTeX2e}[2009/01/01]
 %<class>\ProvidesClass{guidatematica}%
 %<*class>
-   [2014/03/14 v.1.3 Classe simmetrica per comporre testi della collana 
+   [2014/05/23 v.1.4 Classe simmetrica per comporre testi della collana 
    Guide Tematiche del GuIT]
 %</class>
 %<*driver>
@@ -93,7 +93,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % \fi
 %
 %
-% \CheckSum{1086}
+% \CheckSum{1100}
 % \begin{abstract}
 % Questa classe \texttt{guidatematica} serve per comporre
 % testi da pubblicare nella collana “Guide Tematiche” del GuIT.
@@ -466,18 +466,21 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % |\contribguit| dopo |\frontmatter| e prima del capitolo di 
 % introduzione o eventuali pagine con informazioni sulle licenze d'uso.
 %    \begin{macrocode}
+\providecommand*\Ars{%
+  \textsf{\lower -.48ex\hbox{\rotatebox{-20}{A}}\kern -.3em{rs}}\hskip0pt%
+  \kern -.05em\TeX\hskip0pt\kern -.17em\lower -.357ex\hbox{nica}}
 \newcommand{\contribguit}{\newpage
 \thispagestyle{empty}
 \noindent{\Large
 Associati anche tu al \GuIT
 \hfill
 \setlength{\unitlength}{1mm}
- \begin{picture}(55,2)
+ \begin{picture}(50,2)
   \setlength{\fboxsep}{0pt}
-  \put(1,-3){\colorbox{gray}{\framebox(55,6.5){}}}  
-  \put(0,-2){\colorbox{white}{\framebox(55,6.5){%
+  \put(1,-3){\colorbox{gray}{\framebox(50,6.5){}}}  
+  \put(0,-2){\colorbox{white}{\framebox(50,6.5){%
    \href{http://www.guitex.org/home/it/diventa-socio/associarsi-a-guit}{%
-    Clicca qui per associarti}}}}
+    Fai click per associarti}}}}
  \end{picture}%
 }
 \bigskip
@@ -657,14 +660,14 @@ validità per l'anno solare in corso.
 \renewcommand\blockdescriptionlabel[1]{\normalfont\scshape #1}
 \providecommand\plaindescriptionlabel[1]{\hspace\labelsep\normalfont #1}
 
-\renewlist{blockdescription}{description}{4}
+\renewlist{blockdescription}{description}{1}
 \setlist[blockdescription]{before={\let\makelabel\blockdescriptionlabel},
 leftmargin=\z@,labelsep*=0.5em,labelindent=\z@,labelwidth=\z@}
 
-\newlist{plaindescription}{description}{4}
+\newlist{plaindescription}{description}{1}
 \setlist[plaindescription]{before={\let\makelabel\plaindescriptionlabel}}
 
-\newlist{compactenumerate}{enumerate}{4}
+\newlist{compactenumerate}{enumerate}{1}
 \setlist[compactenumerate,1]{label=\arabic*., 
    noitemsep, partopsep=\z@, topsep=.25\onelineskip}
 
@@ -672,7 +675,7 @@ leftmargin=\z@,labelsep*=0.5em,labelindent=\z@,labelwidth=\z@}
 \setlist[compactitemize]{label=•,
    noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 
-\newlist{compactdescription}{description}{4}
+\newlist{compactdescription}{description}{1}
 \setlist[compactdescription]{%
 style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 %    \end{macrocode}
@@ -876,7 +879,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
     \ifdefvoid{\@subtitle}{}{\vspace{2\onelineskip}
     {\centering\scshape\Large\@subtitle\par}}
     \vspace{\stretch{.7}}
-    {\centering\includegraphics[width=0.23\paperwidth]{logoguittondo}\par}
+    {\centering\includegraphics[width=0.23\paperwidth]{LogoGuITtondo}\par}
     \vspace*{\stretch{.7}}
     \end{titlepage}
 }
@@ -1055,7 +1058,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 \DeclareRobustCommand*\GuIT{{\dimen@=\f@size\p@\dimen2=20.88\p@
 \edef\guitscale{\strip@pt\dimexpr\dimen@*\p@/\dimen2\relax}%
 \raisebox{-0.93ex}[\z@][\z@]{%
-   \includegraphics[scale=\guitscale]{logoguitlineare}}}}
+   \includegraphics[scale=\guitscale]{LogoGuITlineare}}}}
 \let\guit\GuIT
 %    \end{macrocode}
 % \iffalse

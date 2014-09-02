@@ -29,7 +29,7 @@ help:
 #
 # VARIABILI
 #
-ENGINE      	= pdflatex
+ENGINE		= pdflatex
 MAIN		= guidatematica
 MAIN_DOC	= $(MAIN)-doc
 CLASSE 		= $(MAIN).cls
@@ -43,7 +43,7 @@ AUSILIARI	= *.aux *.log *.out *.toc *.bbl *.blg *.idx *.ilg *.ind
 # REGOLE
 #
 
-.PHONY: clean xclean
+.PHONY: clean xclean cls
 
 cls: $(CLASSE)
 
