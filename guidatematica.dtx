@@ -7,11 +7,11 @@
 \keepsilent
 \preamble
   ________________________________________
-  The guidatematica class for typesetting books in the GuIT series 
+  The guidatematica class for typesetting books in the GuIT series
   "Guide Tematiche"
-  Copyright (C) 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
+  Copyright (C) 2012-2014 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
   All rights reserved
-  
+
   http://www.guitex.org
 
   License information appended
@@ -23,15 +23,15 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 	Distributable under the LaTeX Project Public License,
 	version 1.3c or higher (your choice). The latest version of
 	this license is at: http://www.latex-project.org/lppl.txt
-	
-	This Work has the status of `maintained' 
-	
+
+	This Work has the status of `maintained'
+
 	The Current Maintainer is the GuIT staff
-	
+
 	This work consists of this file guidatematica.dtx,
 	and the derived files guidatematica.cls and guidatematica.pdf
-	plus the associated documentation GuidaTematica-doc.tex 
-	and GuidaTematica-doc.pdf.
+	plus the associated documentation guidatematica-doc.tex
+	and guidatematica-doc.pdf.
 
 \endpostamble
 \askforoverwritefalse
@@ -51,7 +51,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %<class>\NeedsTeXFormat{LaTeX2e}[2009/01/01]
 %<class>\ProvidesClass{guidatematica}%
 %<*class>
-   [2014/05/23 v.1.4 Classe simmetrica per comporre testi della collana 
+   [2014/09/03 v.1.5 Classe simmetrica per comporre testi della collana
    Guide Tematiche del GuIT]
 %</class>
 %<*driver>
@@ -83,9 +83,9 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %
 \begin{document}\errorcontextlines=9
 \GetFileInfo{guidatematica.dtx}
-\title{La classe \texttt{\filename}\thanks{Version number \fileversion; 
+\title{La classe \texttt{\filename}\thanks{Version number \fileversion;
  ultima revisione \filedate.}}
-\author{GuIT\thanks{e-mail: \texttt{www.guitex.org}}}
+\author{GuIT\thanks{Web: \texttt{www.guitex.org}}}
  \maketitle
  \DocInput{guidatematica.dtx}
 \end{document}
@@ -93,11 +93,11 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % \fi
 %
 %
-% \CheckSum{1100}
+% \CheckSum{1073}
 % \begin{abstract}
 % Questa classe \texttt{guidatematica} serve per comporre
 % testi da pubblicare nella collana “Guide Tematiche” del GuIT.
-% Si appoggia alla classe \texttt{memoir} ma include 
+% Si appoggia alla classe \texttt{memoir} ma include
 % molte personalizzazioni e i pacchetti necessari.
 % Differisce dalla classe \texttt{guidatematica} delle
 % versioni precedenti per il fatto
@@ -113,7 +113,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %   La classe \texttt{guidatematica.cls} serve per comporre
 %   libri in italiano con le seguenti specifiche:
 % \begin{itemize}
-% \item La classe di supporto è la classe  
+% \item La classe di supporto è la classe
 %	\texttt{memoir.cls} facente parte del sistema TeX
 %	in qualsiasi distribuzione completa.
 % \item Tutte le opzioni inserite nell'istruzione
@@ -134,31 +134,31 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %	ipertestuali interni ed esterni. Quindi caricare questo
 %	pacchetto è una scelta esclusiva dell'autore della guida.
 % \item La classe funziona sia con pdfLaTeX sia con XeLaTeX;
-%	le impostazioni sono prefissate e i margini per ulteriori 
-%	personalizzazioni sono ridotti al minimo; lo scopo della 
-%	classe è quello di dare una veste comune alle guide 
-%	tematiche della collana, facendo sì che siano riconoscibili 
+%	le impostazioni sono prefissate e i margini per ulteriori
+%	personalizzazioni sono ridotti al minimo; lo scopo della
+%	classe è quello di dare una veste comune alle guide
+%	tematiche della collana, facendo sì che siano riconoscibili
 %	a prima vista grazie al loro stile uniforme di composizione.
 % \item La classe riconosce da sola il motore di composizione
-%	e imposta direttamente quanto occorre nella forma richiesta 
+%	e imposta direttamente quanto occorre nella forma richiesta
 %	dal programma di composizione.
 % \item La codifica di entrata deve essere \texttt{utf8}; per
-%	XeLaTeX essa è implicita; con pdfLaTeX essa viene 
+%	XeLaTeX essa è implicita; con pdfLaTeX essa viene
 %	preimpostata e non è possibile con questa classe specificare
 %	una codifica differente.
-% \item La codifica dei font di uscita con pdfLaTeX è 
-%	\texttt{T1} e non è possibile specificare una codifica 
-%	differente, cosa che sarebbe quanto mai sgradevole per 
-%	comporre in italiano dove sono presenti molte lettere 
+% \item La codifica dei font di uscita con pdfLaTeX è
+%	\texttt{T1} e non è possibile specificare una codifica
+%	differente, cosa che sarebbe quanto mai sgradevole per
+%	comporre in italiano dove sono presenti molte lettere
 %	accentate. Per altro se fosse necessario comporre qualcosa
-%	in una lingua che usa un alfabeto diverso, basta caricare 
+%	in una lingua che usa un alfabeto diverso, basta caricare
 %	i suoi pacchetti specifici; per scrivere una parola o due
 %	basta caricare l'encoding dei font specifici in modo diretto:
-%	per esempio: se si deve scrivere una parola in russo, 
+%	per esempio: se si deve scrivere una parola in russo,
 %	basta caricare esplicitamente il file del suo encoding con
 %	|\input{t2enc.def}| e poi specificare la codifica |T2| con
 %	|\fontencoding{T2}| seguito, se occorre, dai comandi per scegliere
-%	famiglia, serie, forma e corpo del font cirillico che 
+%	famiglia, serie, forma e corpo del font cirillico che
 %	si vuole usare.
 % \item Con pdfLaTeX il pacchetto \texttt{babel} viene caricato
 %	con la sola opzione \texttt{italian}; nei rari casi in cui
@@ -168,17 +168,17 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %	Le opzioni della classe sono globali e vengono passate
 %	automaticamente a tutti i pacchetti che sanno che cosa farne.
 % \item Con XeLaTeX viene caricato il pacchetto |polyglossia|
-%	e l'italiano viene impostato come la lingua principale; 
-%	altre lingue possono venire specificate mediante il comando 
-%	|\setotherlanguages| o, con lingue particolari, con 
+%	e l'italiano viene impostato come la lingua principale;
+%	altre lingue possono venire specificate mediante il comando
+%	|\setotherlanguages| o, con lingue particolari, con
 %	|\setotherlanguage| con le opzioni specifiche per la lingua.
 %	Se questa richiede un alfabeto particolare bisogna ricordassi
-%	di specificare una famiglia di font che contenga l'alfabeto 
+%	di specificare una famiglia di font che contenga l'alfabeto
 %	desiderato.
 % \item Sono stati introdotti molti nuovi comandi e sono stati
-%	definiti molti nuovi ambienti. Per maggiori informazioni si 
+%	definiti molti nuovi ambienti. Per maggiori informazioni si
 %	rimanda al documento \emph{guidatematica-doc.pdf} distribuito
-%	con il ``kit'' |GuidaTematica.zip|.
+%	con il ``kit'' |guidatematica.zip|.
 %	\end{itemize}
 % \StopEventually{}
 %
@@ -229,12 +229,12 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 \LoadClassWithOptions{memoir}
 %    \end{macrocode}
 %
-% Si carica subito il pacchetto |iftex|  che permette di distinguere 
+% Si carica subito il pacchetto |iftex|  che permette di distinguere
 % quale motore di composizione si sta usando fra |pdftex|, |xetex|, oppure |luatex|.
 %    \begin{macrocode}
 \RequirePackage{iftex}
 %    \end{macrocode}
-% Con |xetex| si carica il pacchetto |fontspec| e si impostano le varie forme 
+% Con |xetex| si carica il pacchetto |fontspec| e si impostano le varie forme
 % dei font Latin Modern OpenType, generando anche i comandi necessari per la
 % compatibilità con i comandi  da usare con |pdftex| quando si invoca
 % il pacchetto |cfr-lm| per la gestione estesa dei font Latin Modern Type~1.
@@ -248,21 +248,22 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 	\RequirePackage[tt={oldstyle=false,tabular,monowidth}]{cfr-lm}
 \else
 	\RequirePackage{fontspec}
-	\setmainfont[Ligatures=TeX,Numbers=OldStyle]{Latin Modern Roman}
-	\setsansfont[Ligatures=TeX,Numbers=OldStyle]{Latin Modern Sans}
-	\setmonofont[Numbers=Lining]{Latin Modern Mono}
-	\newfontfamily{\tvfamily}[Numbers=Lining]{Latin Modern Mono Prop}
-	\newfontfamily{\scfamily}%
-	   [Ligatures=TeX,Numbers=OldStyle]{Latin Modern Roman Caps}
-	\DeclareRobustCommand\scshape{\scfamily}
+	\defaultfontfeatures[\rmfamily,\sffamily]{Ligatures=TeX,Numbers=OldStyle}
+	\defaultfontfeatures[\ttfamily,\tvfamily]{Numbers=Lining}
+	\setmainfont{Latin Modern Roman}[SmallCapsFont={* Caps}]
+	\setsansfont{Latin Modern Sans}
+	\setmonofont{Latin Modern Mono}
+	\newfontfamily{\tvfamily}{Latin Modern Mono Prop}
 	\DeclareTextFontCommand{\texttm}{\ttfamily}
 	\DeclareTextFontCommand{\texttv}{\tvfamily}
-	\DeclareTextFontCommand{\textsc}{\scshape}
 	\def\textl#1{{\addfontfeature{Numbers=Lining}#1}}
 	\RequirePackage{unicode-math}
 	\setmathfont{Latin Modern Math}
 	\RequirePackage{polyglossia}
 	\setmainlanguage{italian}
+	\ifx\tmspace\@undefined
+	  \newlength{\tmspace}\tmspace=\z@
+	\fi
 \fi
 %    \end{macrocode}
 %
@@ -275,10 +276,10 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % all'uso con |XeLaTeX| o di |Lua\LaTeX|; siccome alla data attuale il pacchetto
 % |guit.sty| è sottoposto a revisione per l'uso con i font OpenType, è molto
 % meglio usare temporaneamente l'immagine in ogni caso e modificare
-% questa classe solo con l'aggiunta di un nuovo pacchetto quando 
+% questa classe solo con l'aggiunta di un nuovo pacchetto quando
 % |guit.sty| sarà diventato compatibile con tuttii i programmi di
 % composizione. Il logo tondo, il ``timbro'', del GuIT viene invece
-% allegato come immagine, visto che si tratta di una variante 
+% allegato come immagine, visto che si tratta di una variante
 % nella quale le lettere della scritta attorno al bordo non appaiono
 % mai capovolte.
 %    \begin{macrocode}
@@ -289,7 +290,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 \RequirePackage{etoolbox}
 \RequirePackage{xcolor}
 \RequirePackage{natbib}
-\RequirePackage{multicol} 
+\RequirePackage{multicol}
 \RequirePackage{imakeidx}
 \RequirePackage{fancyvrb}
 \RequirePackage{afterpage}
@@ -308,8 +309,8 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % disegno della pagina prodotto da |canoniclayout| è asimmetrico.
 %
 % Per ovviare a questi inconvenient contemporaneamente necessita centrare
-% orizzontalmente la gabbia e definire successivamente le testatine e i 
-% piedini in forma simmetrica così da rendere il layout delle pagine pari 
+% orizzontalmente la gabbia e definire successivamente le testatine e i
+% piedini in forma simmetrica così da rendere il layout delle pagine pari
 % identiche a quelle dispari; la lettura a schermo e la stampa risultano
 % pertanto identiche. Per testatine e piedini si veda più avanti. Per
 % simmetria la gabbia viene centrata anche verticalmente.
@@ -329,19 +330,12 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 \ifAv\setstocksize{210mm}{146mm}\fi
 \settrims{0pt}{0pt}
 
-\setlength{\paperwidth}{\stockwidth}\setlength{\paperheight}{\stockheight}
-\setlength{\textwidth}{\dimexpr\paperwidth*\paperwidth/\paperheight}
-\setlength{\textheight}{\paperwidth}
-\setlength{\spinemargin}{\dimexpr(\paperwidth-\textwidth)/2}
-\setlength{\foremargin}{\spinemargin}
-\setlength{\uppermargin}{\dimexpr(\paperheight-\textheight)/2}
-\setlength{\lowermargin}{\uppermargin}
-\dimen256=\@memptsize\p@
-\setlength{\headheight}{1.24\dimen256}
-\setlength\footskip{2\onelineskip}
-\setlength\headsep{\onelineskip}
-\setlength{\marginparsep}{7pt}
-\setlength{\marginparwidth}{\dimexpr\foremargin-3em}
+\settypeblocksize{\paperwidth}{\dimexpr\paperwidth*\paperwidth/\paperheight}{*}
+\setlrmargins{*}{*}{*}
+\setulmargins{*}{*}{*}
+\setheadfoot{\baselineskip}{2\onelineskip}
+\setheaderspaces{*}{\onelineskip}{*}
+\setmarginnotes{7pt}{\dimexpr\foremargin-3em}{5pt}
 \checkandfixthelayout[nearest]
 %    \end{macrocode}
 %
@@ -354,7 +348,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % estrarre le informazioni, specificato completo di estensione.
 % Il file deve essere già stato caricato prima di usare questo comando;
 % usandolo si recuperano nelle macro |\filename|, |\filedate| e
-% |\fileversion| le informazioni specifiche, che poi possono venire 
+% |\fileversion| le informazioni specifiche, che poi possono venire
 % usate come meglio si crede.
 %    \begin{macrocode}
 \def\GetFileInfo#1{%
@@ -407,7 +401,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %    \begin{macrocode}
 \def\cblayoutsinistro{%
 \dimen256=\dimexpr\headheight+\topmargin+1in-4pt-\paperheight\relax
-\dimen258=\dimexpr\evensidemargin+1in\relax 
+\dimen258=\dimexpr\evensidemargin+1in\relax
 \dimen262=1mm\relax
 \dimen260=\dimexpr \paperwidth*\p@/\dimen262\relax
 \dimen264=\dimexpr \paperheight-\topmargin-\headheight-1in
@@ -427,7 +421,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 
 \def\cblayoutdestro{%
 \dimen256=\dimexpr\headheight+\topmargin+1in-4pt-\paperheight\relax
-\dimen258=\dimexpr\oddsidemargin+1in\relax 
+\dimen258=\dimexpr\oddsidemargin+1in\relax
 \dimen262=1mm\relax
 \dimen260=\dimexpr \paperwidth*\p@/\dimen262\relax
 \dimen264=\dimexpr \paperheight-\topmargin-\headheight-1in
@@ -461,9 +455,9 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %
 % Si specifica ora il comando |\contribguit| che realizza una pagina
 % con le informazioni relative all'iscrizione nel gruppo. Il comando
-% può essere utilizzato a inizio o fine documento. Tuttavia, 
-% per garantire maggiore visibilità, si consiglia di inserire 
-% |\contribguit| dopo |\frontmatter| e prima del capitolo di 
+% può essere utilizzato a inizio o fine documento. Tuttavia,
+% per garantire maggiore visibilità, si consiglia di inserire
+% |\contribguit| dopo |\frontmatter| e prima del capitolo di
 % introduzione o eventuali pagine con informazioni sulle licenze d'uso.
 %    \begin{macrocode}
 \providecommand*\Ars{%
@@ -477,7 +471,7 @@ Associati anche tu al \GuIT
 \setlength{\unitlength}{1mm}
  \begin{picture}(50,2)
   \setlength{\fboxsep}{0pt}
-  \put(1,-3){\colorbox{gray}{\framebox(50,6.5){}}}  
+  \put(1,-3){\colorbox{gray}{\framebox(50,6.5){}}}
   \put(0,-2){\colorbox{white}{\framebox(50,6.5){%
    \href{http://www.guitex.org/home/it/diventa-socio/associarsi-a-guit}{%
     Fai click per associarti}}}}
@@ -485,11 +479,11 @@ Associati anche tu al \GuIT
 }
 \bigskip
 
-L'associazione per la diffusione di \TeX{} in Italia riconosciuta 
-ufficialmente in ambito internazionale, si sostiene \emph{unicamente} 
+L'associazione per la diffusione di \TeX{} in Italia riconosciuta
+ufficialmente in ambito internazionale, si sostiene \emph{unicamente}
 con le quote sociali.
 
-Se anche tu trovi che questa guida tematica gratuita ti sia stata utile, 
+Se anche tu trovi che questa guida tematica gratuita ti sia stata utile,
 il mezzo principale per ringraziare gli autori è diventare socio.
 \medskip
 
@@ -503,8 +497,8 @@ il DVD \TeX\ Collection;
 l'esclusivo tipometro realizzato da Massimo Caschili.
 \end{itemize}
 
-L'adesione al \GuIT{} prevede un quota associativa compresa tra \EUR{12,00} 
-e \EUR{70,00} a seconda della tipologia di adesione prescelta ed ha 
+L'adesione al \GuIT{} prevede un quota associativa compresa tra \EUR{12,00}
+e \EUR{70,00} a seconda della tipologia di adesione prescelta e ha
 validità per l'anno solare in corso.
 \newpage
 }
@@ -517,7 +511,7 @@ validità per l'anno solare in corso.
 % nel piedino: vuol dire che se questa macro è vuota non viene stampato
 % niente.
 %
-% Nei piedini il numero di pagina viene composto in maiuscoletto: 
+% Nei piedini il numero di pagina viene composto in maiuscoletto:
 % la cosa non è importantissima, ma all'occorrenza i numeri di pagina
 % romani minuscoli vengono composti col minuscolo del maiuscoletto e non
 % hanno quell'aspetto orribile dei numeri romani composti in tondo
@@ -660,22 +654,22 @@ validità per l'anno solare in corso.
 \renewcommand\blockdescriptionlabel[1]{\normalfont\scshape #1}
 \providecommand\plaindescriptionlabel[1]{\hspace\labelsep\normalfont #1}
 
-\renewlist{blockdescription}{description}{1}
+\renewlist{blockdescription}{description}{4}
 \setlist[blockdescription]{before={\let\makelabel\blockdescriptionlabel},
 leftmargin=\z@,labelsep*=0.5em,labelindent=\z@,labelwidth=\z@}
 
-\newlist{plaindescription}{description}{1}
+\newlist{plaindescription}{description}{4}
 \setlist[plaindescription]{before={\let\makelabel\plaindescriptionlabel}}
 
-\newlist{compactenumerate}{enumerate}{1}
-\setlist[compactenumerate,1]{label=\arabic*., 
+\newlist{compactenumerate}{enumerate}{4}
+\setlist[compactenumerate,1]{label=\arabic*.,
    noitemsep, partopsep=\z@, topsep=.25\onelineskip}
 
 \newlist{compactitemize}{itemize}{4}
 \setlist[compactitemize]{label=•,
    noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 
-\newlist{compactdescription}{description}{1}
+\newlist{compactdescription}{description}{4}
 \setlist[compactdescription]{%
 style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 %    \end{macrocode}
@@ -718,7 +712,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 % un carattere esplicito, una macro, un qualunque token di
 % categoria diversa da 11 e da 12. Il comando |\m@thcomma|
 % assorbe anche il primo token che la segue, purché non sia
-% uno spazio, eventualmente già memorizzato in |\let@token|. 
+% uno spazio, eventualmente già memorizzato in |\let@token|.
 % Lo scopo della virgola intelligente è quello di sapere se il
 % carattere che viene immediatamente dopo sia una cifra, che
 % è di categoria 12, come l'asterisco. Quindi per prima cosa
@@ -729,14 +723,14 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 % oppure un carattere implicito di categoria 12. In questo caso
 % non lo si può usare per verificare se il carattere implicito
 % sia una cifra; ma in matematica nessuno si sognerebbe mai di
-% indicare con un carattere implicito una qualunque delle 
+% indicare con un carattere implicito una qualunque delle
 % 10 cifre decimali; dunque se si tratta di un carattere implicito
 % esso rappresenta qualche carattere diverso da una cifra
 % e ci vuole la virgola interpuntiva. Solo che per sapere se
 % si tratta di un carattere implicito bisogna verificare se esso
 % ha la forma di una sequenza di controllo. Per fare questo
 % bisogna prendere la stringa che costituisce l'argomento di
-% |\m@thcomma|, togliergli il primo carattere (eventualmente 
+% |\m@thcomma|, togliergli il primo carattere (eventualmente
 % un backslash) e vedere se quel che resta costituisce il nome
 % di una sequenza di controllo a cui è stato assegnato un
 % significato; dunque se il token fosse per esempio
@@ -879,7 +873,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
     \ifdefvoid{\@subtitle}{}{\vspace{2\onelineskip}
     {\centering\scshape\Large\@subtitle\par}}
     \vspace{\stretch{.7}}
-    {\centering\includegraphics[width=0.23\paperwidth]{LogoGuITtondo}\par}
+    {\centering\includegraphics[width=0.23\paperwidth]{logoguittondo}\par}
     \vspace*{\stretch{.7}}
     \end{titlepage}
 }
@@ -897,7 +891,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 %
 % I secondo ambiente, |sintassi| è un medaglione adatto
 % per incorniciare i comandi e quindi per descrivere la
-% loro sintassi. Spesso l'ambiente sintassi contiene 
+% loro sintassi. Spesso l'ambiente sintassi contiene
 % la descrizione della sintassi di un solo comando;
 % dovendo indicare la sintassi di molti comandi è opportuno
 % sfruttare la composizione sbandierata con l'allineamento
@@ -1058,7 +1052,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 \DeclareRobustCommand*\GuIT{{\dimen@=\f@size\p@\dimen2=20.88\p@
 \edef\guitscale{\strip@pt\dimexpr\dimen@*\p@/\dimen2\relax}%
 \raisebox{-0.93ex}[\z@][\z@]{%
-   \includegraphics[scale=\guitscale]{LogoGuITlineare}}}}
+   \includegraphics[scale=\guitscale]{logoguitlineare}}}}
 \let\guit\GuIT
 %    \end{macrocode}
 % \iffalse

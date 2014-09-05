@@ -9,7 +9,7 @@
 %\documentclass[b5paper,11pt,ipertesto,oneside]{guidatematica}
 %\documentclass[tablet,9pt,ipertesto,openany]{guidatematica}
 \documentclass[b5paper,11pt,ipertesto,openany]{guidatematica}
-\ProvidesFile{GuidaTematica-doc.tex}[2014/08/21 v.1.4d Uso della classe guidatematica.cls]
+\ProvidesFile{guidatematica-doc.tex}[2014/09/03 v.1.4e Uso della classe guidatematica.cls]
 
 
 \usepackage{array,longtable,tabularx}
@@ -41,12 +41,10 @@
 \author{\LARGE\GuIT}
 \title{Guida d'uso alla classe \\\unless\ifPDFTeX\fontspec{Latin Modern Mono Caps}%
 \expandafter\slshape \else \expandafter\classstyle\fi{GuidaTematica}}
-\GetFileInfo{GuidaTematica-doc.tex}
+\GetFileInfo{guidatematica-doc.tex}
 \date{Versione \fileversion\ del \filedate}
 
 \maketitle
-
-
 
 \frontmatter*
 
@@ -66,7 +64,7 @@ Questa classe è costruita sulla classe \class{memoir} quindi l'autore può fare
 \vfill
 
 {\small \GetFileInfo{guidatematica.cls}
-Questa documentazione si riferisce alla classe \classstyle{\filename}, versione \fileversion, del \filedate. 
+Questa documentazione si riferisce alla classe \classstyle{\filename}, versione \fileversion, del \filedate.
 
 Essa è stata composta con \ifPDFTeX pdf\/\LaTeX\else\ifXeTeX\XeLaTeX\else Lua\LaTeX\fi\fi\ usando i font Latin Modern \ifPDFTeX di tipo Type~1 accessibili con il pacchetto \pack{cfr-lm}\else Opentype forniti insieme alla distribuzione di TeX Live 2012 e accessibili con i comandi propri di \ifXeTeX\XeLaTeX\else Lua\LaTeX\fi\fi.
 
@@ -75,7 +73,7 @@ Questa documentazione è soggetta alla licenza \LaTeX\ Project Public Licence, v
 \chapter{Ringraziamenti}
 Io ho scritto materialmente questa classe \class{guidatematica} cercando di mettermi nella veste del curatore di un lavoro collettivo del \GuIT\ e per il \GuIT; ho consultato quindi gli autori o coautori delle guide tematiche pubblicate finora, Claudio Fiandrino, Roberto Giacomelli e Tommaso Gordini, e ho seguito i suggerimenti di Ivan Valbusa. Orlando Iovino ha contribuito alla creazione delle procedure bash (Linux) o bat (Windows) per installare tutto il materiale sul proprio PC.
 
-Ringrazio tutti moltissimo del loro contributo, delle loro osservazioni, dei loro suggerimenti; questo è il miglior modo per contribuire al \GuIT, e quindi siamo tutti autori a pari merito di questa classe; se ne aggiungeranno altri col tempo e verranno aggiunti a questa breve lista dei ``fondatori''. 
+Ringrazio tutti moltissimo del loro contributo, delle loro osservazioni, dei loro suggerimenti; questo è il miglior modo per contribuire al \GuIT, e quindi siamo tutti autori a pari merito di questa classe; se ne aggiungeranno altri col tempo e verranno aggiunti a questa breve lista dei ``fondatori''.
 
 Speriamo tutti che questo lavoro collettivo prosegua anche e soprattutto per comporre guide tematiche attraenti, chiare e, specialmente, utili. Questa classe riguarda prevalentemente l'estetica delle guide; il contenuto spetta agli autori, ma speriamo tutti che una migliore veste grafica li invogli a produrre altre guide. I frequentatori del Forum \GuIT\ ne hanno bisogno.
 
@@ -102,7 +100,7 @@ La classe viene distribuita in un kit da installare ed usare come quello distrib
 La via più spiccia è quella di copiare il kit \file{guidatematica.zip} (scaricabile dal link specificato alla pagina del sito \GuIT\  \texttt{http:/\slash www.guitex.org\slash home\slash it\slash guide-tematiche\slash la\discretionary{}{-}{-}filosofia\discretionary{}{-}{-}delle\discretionary{}{-}{-}guide\discretionary{}{-}{-}a\discretionary{}{-}{-}tema}) nella cartella dove risiede il file sorgente (unico o principale) con cui si vuole comporre la propria guida tematica; in quella cartella si decomprime il kit e tutti i file, compresi quelli della documentazione, risiedono in quella stessa cartella e sono immediatamente usabili per la composizione \emph{solo} di quella guida tematica.\par}
 
 {\tolerance=3000
-Meglio sarebbe disporre dell'albero personale di \TeX; se non se ne dispone, lo si crea secondo le modalità descritte per il proprio sistema operativo e la propria distribuzione del sistema \TeX. Se se ne dispone già, basta creare le cartelle a cui si fa riferimento qui di seguito. Si decomprime il kit in una carrella qualsiasi, meglio se in\footnote{\texttt{\$HOME} indica la propria cartella che generalmente ha il nome dell'autore, ma dipende molto dal sistema operativo; qui si è usato per il separatore delle cartelle la barra diritta, come è normale per le macchine di tipo UNIX; per le macchine Windows basta sostituire la barra diritta con la barra rovescia.} \url{$HOME/texmf/source/latex/guidatematica/}. Poi si spostano i file \file{GuidaTematica-doc.pdf} e \file{guidatematica.pdf} nella cartella \url{$HOME/texmf/doc/latex/guidatematica/} e gli altri file in \url{$HOME/texmf/tex/latex/guidatematica/}, tranne il file \file{guidatematica.dtx} che resta nella cartella dove si è eseguita la decompressione. Se la distribuzione del sistema \TeX\ lo richiede anche per l'albero personale, bisogna ricordarsi di creare o di aggiornare il database dei nomi dei file di questo albero usando gli strumenti della propria distribuzione. A questo punto tutti i programmi di composizione del sistema \TeX\ sono in grado di trovare i file necessari per comporre \emph{qualsiasi} guida tematica, qualunque sia la cartella dove i suoi file sorgente risiedono.\par} 
+Meglio sarebbe disporre dell'albero personale di \TeX; se non se ne dispone, lo si crea secondo le modalità descritte per il proprio sistema operativo e la propria distribuzione del sistema \TeX. Se se ne dispone già, basta creare le cartelle a cui si fa riferimento qui di seguito. Si decomprime il kit in una carrella qualsiasi, meglio se in\footnote{\texttt{\$HOME} indica la propria cartella che generalmente ha il nome dell'autore, ma dipende molto dal sistema operativo; qui si è usato per il separatore delle cartelle la barra diritta, come è normale per le macchine di tipo UNIX; per le macchine Windows basta sostituire la barra diritta con la barra rovescia.} \url{$HOME/texmf/source/latex/guidatematica/}. Poi si spostano i file \file{GuidaTematica-doc.pdf} e \file{guidatematica.pdf} nella cartella \url{$HOME/texmf/doc/latex/guidatematica/} e gli altri file in \url{$HOME/texmf/tex/latex/guidatematica/}, tranne il file \file{guidatematica.dtx} che resta nella cartella dove si è eseguita la decompressione. Se la distribuzione del sistema \TeX\ lo richiede anche per l'albero personale, bisogna ricordarsi di creare o di aggiornare il database dei nomi dei file di questo albero usando gli strumenti della propria distribuzione. A questo punto tutti i programmi di composizione del sistema \TeX\ sono in grado di trovare i file necessari per comporre \emph{qualsiasi} guida tematica, qualunque sia la cartella dove i suoi file sorgente risiedono.\par}
 
 
 \section{Uso della classe}
@@ -122,7 +120,7 @@ Lo schema generale da usare per comporre una guida tematica è  il seguente:
 \cs{title}\marg{titolo}
 \cs{maketitle}
 ~
-\meta{tventuale pagina con l'invito a iscriversi al GuIT}
+\meta{eventuale pagina con l'invito a iscriversi al GuIT}
 ~
 \meta{eventuale pagina legale}
 ~
@@ -184,7 +182,7 @@ Successivamente nel predisporre le informazioni che il comando \cs{maketitle} us
 \cs{title}\marg{titolo}
 \cs{subtitle}\marg{eventuale sottotitolo}
 \cs{GetFileInfo}\marg{nome del file}
-\cs{date}\texttt{\{}Versione \cs{fileversion}\comando{\ }del 
+\cs{date}\texttt{\{}Versione \cs{fileversion}\comando{\ }del
 \cs{filedate}\texttt{\}}
 \cs{maketitle}
 \end{sintassi}
@@ -222,6 +220,7 @@ ripetendo il \meta{nome del file} completo di estensione solo nell'argomento di 
 \item[\cs{Arg}]per comporre un argomento specifico racchiuso fra graffe \verb|\Arg{argomento}|\lra\Arg{argomento}
 \item[\cs{GetFileInfo}] Per ricavare le informazioni relative ad un file provvisto al suo inizio del comando \comando{\Provides...}: \verb|\GetFileInfo{book.cls}|; non produce risultati compositivi, ma assegna nuovi valori alle variabili \cs{filename}, \cs{fileversion} e \cs{filedate}
 \item[\cs{setcopymark}] \raggedright scrive in verticale nel margine esterno quello che si desidera: \verb|\setcopymark{Composizione|\hskip0pt\verb| del \today}|\lra vedi la pagina~\pageref{page:copymark}
+\item[\cs{contribguit}] genera la pagina con le informazioni relative all'iscrizione al gruppo\lra vedi la pagina~\pageref{page:contribguit}
 \item[\cs{maketitle}] comando ridefinito in modo che componga la pagina del titolo in modo uniforme fra tutte le guide tematiche della collezione
 \item[\cs{subtitle}] \raggedright ulteriore comando per specificare un sottotitolo da comporre nella pagina del titolo: \verb|\subtitle{Sottotitolo della |\hskip0pt\linebreak\verb|guida}|
 \item[\cs{makeindex}] comando modificato per l'uso del pacchetto \pack{imakeidx}
@@ -229,7 +228,7 @@ ripetendo il \meta{nome del file} completo di estensione solo nell'argomento di 
 
 \item[\cs{hideindexmarks}] nasconde l'indicazione delle parole indicizzate
 \item[\cs{texttm}] comando testuale per comporre col font teletype monospaziato anche quando fosse in vigore quello proporzionale
-\item[\cs{texttv}] comando testuale per comporre col font teletype proporzionale anche qhando fosse in vigore quello monospaziato
+\item[\cs{texttv}] comando testuale per comporre col font teletype proporzionale anche quando fosse in vigore quello monospaziato
 \item[\cs{tvfamily}] dichiarazione corrispondente al comando \cs{texttv}
 \cs{textl}] comando per comporre  con i font type\-writer con le cifre ``maiuscole'' anche quando fosse in vigore lo stile \texttt{OldStyle} per le cifre \verb|\textl{123}|\lra\textl{123} a confronto con \verb|123|\lra123
 \item[\cs{prebibhook}] comando per inserire un (breve) testo fra il titolo della bibliografia e l'elenco bibliografico
@@ -269,7 +268,7 @@ ripetendo il \meta{nome del file} completo di estensione solo nell'argomento di 
 \item[\amb{compactdescription}] si riferisce ad una lista descrittiva priva di spazi di separazione fra una voce e l'altra; l'etichetta è composta in maiuscoletto
 \item[\amb{sintassi}] Permette di scrivere la sintassi di uno o più comandi dentro un riquadro
 \item[\file{guidatematica.bst}] file di stile per la bibliografia da gestire con \pack{natbib} e che ha i riferimenti nello stile autore-anno
-\item[\file{guidatematica.ist}] file di stile per gli indici analitici con i gruppi di  voci che iniziano con la stessa lettera separati dal titolo formato dalla lettera iniziale 
+\item[\file{guidatematica.ist}] file di stile per gli indici analitici con i gruppi di  voci che iniziano con la stessa lettera separati dal titolo formato dalla lettera iniziale
 \item[\file{guidatematicafiles.ist}] analogo ma per un indice analitico tematico relativo solo ai file (vedi pacchetto \pack{imakeidx})
 %\midrule % Commentato solo nella versione A5
 %\multicolumn2{p{\dimexpr\textwidth-\tabcolsep}}{%}
@@ -316,14 +315,14 @@ Alcuni pacchetti precaricati sono funzionali alla classe stessa, altri sono o po
 %
 \item[iftex] è funzionale per la classe, visto che si può usare come programma di compilazione sia \prog{pdfLaTeX}, sia \prog{XeLaTeX} sia \prog{LuaLaTeX}. Per esempio, alcuni dei pacchetti che seguono sono funzionali solo se si usa \prog{pdfLaTeX}, quindi essi sono caricati solo se si usa \prog{pdfLaTeX}.
 %
-\item[graphicx] serve per inserire e manipolare immagini; disponendo di una distribuzione del sistema \TeX\ (TeX Live o MiKTeX molto recente e aggiornata, oltre che completa -- non una distribuzione basic, tanto per intenderci) sia \prog{pdfLaTeX}, sia \prog{XeLaTeX} sia \prog{LuaLaTeX} possono inglobare lo stesso tipo di file grafici, cioè quelli con estensione \file{.pdf}, \file{.jpg}, \file{.png}, \file{.eps}, \file{.mps}. In una prima versione di questa classe si era caricato il pacchetto \pack{guit}, che a sua volta caricava \pack{graphicx}, ma poi si è scoperto che il disegno del logo \GuIT\ era incompatibile con \XeLaTeX; perciò si è preferito \emph{non} caricare questo pacchetto (e l'autore è avvisato di non caricarlo mai, se vuole usare \prog{XeLaTeX}, finché non sarà aggiornato per essere compatibile con \XeLaTeX). Al suo posto si è generata una immagine abbastanza grande del logo, e si è creata una macro che inserisca il logo nelle giuste proporzioni con il corpo del font in uso; cambiando il corpo dei font cambia corrispondentemente anche l'immagine riprodotta del logo \GuIT.   
+\item[graphicx] serve per inserire e manipolare immagini; disponendo di una distribuzione del sistema \TeX\ (TeX Live o MiKTeX molto recente e aggiornata, oltre che completa -- non una distribuzione basic, tanto per intenderci) sia \prog{pdfLaTeX}, sia \prog{XeLaTeX} sia \prog{LuaLaTeX} possono inglobare lo stesso tipo di file grafici, cioè quelli con estensione \file{.pdf}, \file{.jpg}, \file{.png}, \file{.eps}, \file{.mps}. In una prima versione di questa classe si era caricato il pacchetto \pack{guit}, che a sua volta caricava \pack{graphicx}, ma poi si è scoperto che il disegno del logo \GuIT\ era incompatibile con \XeLaTeX; perciò si è preferito \emph{non} caricare questo pacchetto (e l'autore è avvisato di non caricarlo mai, se vuole usare \prog{XeLaTeX}, finché non sarà aggiornato per essere compatibile con \XeLaTeX). Al suo posto si è generata una immagine abbastanza grande del logo, e si è creata una macro che inserisca il logo nelle giuste proporzioni con il corpo del font in uso; cambiando il corpo dei font cambia corrispondentemente anche l'immagine riprodotta del logo \GuIT.
 %
 \item[metalogo] serve per poter descrivere i loghi che vengono generalmente usati per indicare certi compilatori o certe indicazioni particolarmente frequenti quando si scrive di \LaTeX. Per esempio consente di usare il comando \cs{XeLaTeX} per scrivere correttamente \XeLaTeX\ con la `E' speculare.
 %
 \item[pict2e] nella versione aggiornata dopo il primo di giugno 2009; è funzionale  alla classe, ma potrebbe venire usato anche dall'autore.
 %
 \item[microtype] serve per usare pienamente la microtipografia se si usa \prog{pdfLaTeX}, sia \prog{LuaLaTeX} con la protrusione e l'espansione dei font; con \prog{XeLaTeX} funziona la protrusione ma non ancora l'espansione dei font.
-\item[etoolbox] è funzionale alla classe, ma non è escluso che possa essere utile anche all'autore. 
+\item[etoolbox] è funzionale alla classe, ma non è escluso che possa essere utile anche all'autore.
 %
 \item[xcolor] serve per usare i colori e per sfruttare la sua sintassi per definire i colori ``misti''; non è specificata nessuna opzione per i colori. L'autore è pregato di non caricare il pacchetto \pack{color} che vanifica in parte le funzionalità di \pack{xcolor} e può produrre incompatibilità.
 %
@@ -353,6 +352,8 @@ Alcuni pacchetti precaricati sono funzionali alla classe stessa, altri sono o po
 \item[enumitem] serve per personalizzare le liste, crearne di nuove, specificare ogni dettaglio di composizione delle etichette, eccetera; con le funzionalità di questo pacchetto si sono ridefiniti numerosi ambienti utili non solo per comporre questo documento, ma anche per l'autore in generale che usa la classe \class{guidatematica} per descrivere un tema particolare inerente il mondo di \TeX\ ed abbia bisogno di nuovi tipi di liste. La consultazione della documentazione di \pack{enumitem} diventa quindi utile e necessaria per usare i comandi di personalizzazione in modo corretto ed efficiente.
 %
 \item[listings] è il pacchetto principe per comporre listati di comandi di vari programmi; in questa classe esso è già configurato per usare la sintassi valida per il linguaggio \TeX\ nel suo `dialetto' \LaTeX. Possono venire caricati altri dialetti come si possono caricare altri linguaggi. Si possono anche estendere le liste di parole chiave secondo le modalità descritte nella documentazione del pacchetto \pack{listings}.
+%
+\item[eurosym] è il pacchetto per utilizzare correttamente il simbolo \officialeuro, Si è usata l'opzione \texttt{right} (che agisce solo sul comando \cs{EUR}) come per il tedesco, visto che in un contesto informale il numero precede l'unità di misura; d'altra perte questa posizione è prescritta per tutte le unità di misura. Se per qualche motivo si deve scrivere il simbolo dell'euro prima del valore numerico si può sempre usare il comando \cs{officialeuro} senza argomento, invece del comando \cs{EUR} che ha come argomento il valore monetario.
 %
 \iffalse % eliminata la chiamata a canoniclayout il 4/2/2013
 \item[canoniclayout] è funzionale alla classe e definisce il layout della pagina qualunque sia il formato della `carta'. Il layout della pagina di questa classe è indicato graficamente nella pagina~\pageref{pag:layout}.
@@ -391,11 +392,13 @@ Per ambienti che richiedono sia il numero di argomenti, sia il valore di default
 \begin{Verbatim}
 \setcopymark{%
     \textcolor{blue!50!white}{%
-    \filestyle{\filename}, 
-    \fileversion, 
+    \filestyle{\filename},
+    \fileversion,
     del \filedate}}
 \end{Verbatim}
-È ovvio, però, che questo genere di informazioni dovrebbe apparire su tutte le pagine di una bozza e dovrebbe venire cancellato solo per la versione definitiva.\end{compactdescription}%
+È ovvio, però, che questo genere di informazioni dovrebbe apparire su tutte le pagine di una bozza e dovrebbe venire cancellato solo per la versione definitiva.
+\item[contribguit] realizza una pagina con le informazioni relative all'iscrizione nel gruppo. Il comando può essere utilizzato indipendentemente a inizio o fine documento. Tuttavia, per garantire maggiore visibilità, si consiglia di inserire \cs{contribguit} dopo \cs{frontmatter} e prima del capitolo di introduzione o eventuali pagine con informazioni sulle licenze d'uso.\label{page:contribguit}
+\end{compactdescription}%
 
 
 I comandi seguenti definiscono lo stile di scrittura di determinate entità e per scriverle in quello stile; non mettono niente, eventualmente, negli indici analitici. Sarebbe opportuno non ridefinire questi comandi, perché sarebbe desiderabile che in tutte le guide tematiche i nomi delle classi venissero sempre composti in un dato carattere, i nomi dei pacchetti in un altro dato carattere, eccetera, altrimenti i lettori ne resterebbero confusi.%\thispagestyle{headingslayout}
@@ -457,13 +460,13 @@ Si noti che per le liste descrittive si può cambiare a piacere il modo di scriv
 \item[compactdescription] produce una lista descrittiva verticalmente compatta. Si è ritenuto che questo ambiente fosse quello più indicato per descrivere i nuovi comandi introdotti in questa classe e per crearne le corrispondenti voci nell'indice analitico. Lo si è fatto nel modo descritto qui di seguito.
 \item[plaindescription] differisce dall'ambiente \amb{description} solo perché il modo di scrivere l'etichetta è impostato a \cs{normalfont}; questo ambiente si presta particolarmente bene per usare stili diversi per le varie etichette degli oggetti da descrivere.
 \end{blockdescription}
-\begin{compactenumerate}  
+\begin{compactenumerate}
 \item Questo ambiente \amb{plaindescription} o l'ambiente \amb{compactdescription} (come d'altronde si può fare con qualunque altro ambiente gestito con il pacchetto \pack{enumitem}) sono particolarmente adatti per i tipi di ambiente che descrivono comandi o altre cose simili di un linguaggio di programmazione, di una classe, di un pacchetto, perché con il comando di apertura è semplice specificare come argomento facoltativo il modo di comporre l'etichetta dell'oggetto da descrivere; per esempio, se si volessero descrivere un certo numero di file, varrebbe la pena descriverli tutti con lo stile per comporre i nomi dei file; basta allora fare così:
 \begin{verbatim}
 \begin{[plaindescription}%
                   [format=\ttfamily]
 \end{verbatim}
-usando nella descrizione del formato solo delle dichiarazioni\footnote{Nella documentazione di \pack{enumitem} c'è scritto che l'ultimo comando che specifica la chiave \chiave{format}, o il suo sinonimo \chiave{font}, può accettare un argomento; quindi lascerebbe intendere che l'ultima sequenza di controllo potrebbe essere un comando, invece che una dichiarazione. Non spiega però come fare. Si fa così: basta racchiudere fra graffe il contenuto delle quadre che contengono l'oggetto da descrivere. Questo modo di procedere può essere fonte di dimenticanze (bisogna scrivere \comando{\item}\texttt{[\{\meta{voce}\}]}  invece che semplicemente  \cs{item}\oarg{voce}, quindi è facile dimenticare il  paio di graffe interne). Per quanto sia possibile seguire questa strada forse è preferibile seguirne un'altra descritta poco oltre.}; quali dichiarazioni? Quelle usate per definire \cs{filestyle}. Per la verità la definizione di \cs{filestyle} contiene una dichiarazione e un comando perché deve venire usata anche nelle specificazioni dell'oggetto da indicizzare, ma non è difficile aprire il file \file{guidatematica.cls}, cercare la definizione di \cs{filestyle} e ricavare da lì le dichiarazioni da usare. 
+usando nella descrizione del formato solo delle dichiarazioni\footnote{Nella documentazione di \pack{enumitem} c'è scritto che l'ultimo comando che specifica la chiave \chiave{format}, o il suo sinonimo \chiave{font}, può accettare un argomento; quindi lascerebbe intendere che l'ultima sequenza di controllo potrebbe essere un comando, invece che una dichiarazione. Non spiega però come fare. Si fa così: basta racchiudere fra graffe il contenuto delle quadre che contengono l'oggetto da descrivere. Questo modo di procedere può essere fonte di dimenticanze (bisogna scrivere \comando{\item}\texttt{[\{\meta{voce}\}]}  invece che semplicemente  \cs{item}\oarg{voce}, quindi è facile dimenticare il  paio di graffe interne). Per quanto sia possibile seguire questa strada forse è preferibile seguirne un'altra descritta poco oltre.}; quali dichiarazioni? Quelle usate per definire \cs{filestyle}. Per la verità la definizione di \cs{filestyle} contiene una dichiarazione e un comando perché deve venire usata anche nelle specificazioni dell'oggetto da indicizzare, ma non è difficile aprire il file \file{guidatematica.cls}, cercare la definizione di \cs{filestyle} e ricavare da lì le dichiarazioni da usare.
 
 Ci sono sostanzialmente due modi per sfruttare questi ambienti: il primo consiste nell'usare \amb{plaindescription} e scrivere ogni voce della lista nella forma, per esempio:
 \begin{flushleft}
@@ -471,8 +474,8 @@ Ci sono sostanzialmente due modi per sfruttare questi ambienti: il primo consist
 \end{flushleft}
 Il secondo modo consiste nell'usare l'argomento facoltativo del comando di apertura specificando con la sintassi \meta{chiave} = \meta{valore} le opzioni compositive dell'etichetta dell'oggetto da descrivere.
 
-Il vantaggio di seguire questa strada è che dopo aver specificato il \meta{valore} della chiave \chiave{format}, in tutta la lista si userà la normale sintassi \cs{item}\oarg{file} per avere tutti i nomi dei file, che iniziano ogni voce della descrizione, composti tutti con lo stesso carattere in modo omogeneo con qualunque altra istanza dello stesso nome di file in qualunque altro punto del documento. 
-\item {\sloppy In particolare, se si volessero descrivere delle entità particolari da raggruppare nell'indice analitico sotto una stessa voce si potrebbe invocare questo ambiente con il comando: 
+Il vantaggio di seguire questa strada è che dopo aver specificato il \meta{valore} della chiave \chiave{format}, in tutta la lista si userà la normale sintassi \cs{item}\oarg{file} per avere tutti i nomi dei file, che iniziano ogni voce della descrizione, composti tutti con lo stesso carattere in modo omogeneo con qualunque altra istanza dello stesso nome di file in qualunque altro punto del documento.
+\item {\sloppy In particolare, se si volessero descrivere delle entità particolari da raggruppare nell'indice analitico sotto una stessa voce si potrebbe invocare questo ambiente con il comando:
 \begin{verbatim}
 \begin{compactdescription}[before=%
   {\let\makelabel\indicizzafile}]
@@ -493,13 +496,13 @@ in modo che con l'una o l'altra definizione si potrebbe scrivere:
 ... i file di servizio sono:
 \begin{compactdescription}[before=%
     {...}]
-\item[fleqn.clo] serve per comporre 
- le equazioni ad una distanza fissa 
- dal margine sinistro della  pagina 
+\item[fleqn.clo] serve per comporre
+ le equazioni ad una distanza fissa
+ dal margine sinistro della  pagina
  invece che centrate.
-\item[leqno.clo] serve per scrivere 
- il numero di  ogni equazione 
- numerabile  a sinistra invece che  
+\item[leqno.clo] serve per scrivere
+ il numero di  ogni equazione
+ numerabile  a sinistra invece che
  a destra.
 ...
 \end{verbatim}
@@ -533,7 +536,7 @@ con i comandi:
 \end{sintassi}
 \end{verbatim}
 
-Inoltre la classe \class{memoir} non definisce l'ambiente \amb{titlepage} per una esplicita scelta del suo autore. Nel nostro caso, invece si vuole che la pagina del titolo sia composta in modo uniforme per tutte le guide tematiche del \GuIT. 
+Inoltre la classe \class{memoir} non definisce l'ambiente \amb{titlepage} per una esplicita scelta del suo autore. Nel nostro caso, invece si vuole che la pagina del titolo sia composta in modo uniforme per tutte le guide tematiche del \GuIT.
 
 Per questo scopo l'autore non deve usare esplicitamente questo ambiente; basta che usi il comando \cs{maketitle}, che a sua volta imposta l'ambiente. L'autore deve limitarsi a specificare nel preambolo i soliti comandi arricchiti dall'ulteriore comando \cs{subtitle}, il cui uso è evidentemente facoltativo:
 \begin{sintassi}\obeylines
@@ -557,14 +560,14 @@ Anche se la filosofia dell'uso del mark-up di \LaTeX\ è quella di sollevare il 
 
 {\sloppy La macro della virgola intelligente, dunque, usa la virgola decimale se e solo se è seguita da una cifra \emph{senza spazi interposti}, e usa la virgola interpuntiva nelle liste. L'unico caso in cui bisogna stare attenti ad inserire uno spazio dopo la virgola (nel file sorgente) è quando si usa una elencazione di numeri, come per esempio in \verb*|\forall\ i=1, 2, 3,\dots,\infty| che produce correttamente $\forall\ i=1, 2, 3,\dots,\infty$; in questo caso, infatti, il contesto non è abbastanza significativo per l'\,``\hz intelligenza'' della virgola al fine di decidere quale tipo di funzione essa svolga fra due cifre, se non ci fosse lo spazio interposto. Tralasciando gli spazi tra la virgola e la cifra che la segue si otterrebbe invece $\forall\ i=1,2,3,\dots,\infty$, che ha le spaziature evidentemente errate. Se ciò che segue la virgola non è una cifra, la definizione della virgola inserisce una virgola interpuntiva, come succede quando essa è seguita dalle sequenze di controllo \verb|\dots| e \verb|\infty|.\par}
 
-Forse è opportuno spiegare perché qui si usi la locuzione ``sequenza di controllo'' invece della parola ``macro'' o di altre espressioni più comuni: una sequenza di controllo è in generale un \emph{token complesso}, cioè un token il cui nome è formato da una o più lettere o simboli ed è preceduto dal carattere di escape, generalmente, ma non obbligatoriamente, rappresentato dal segno \texttt{\char92}\,; potrebbe andare bene qualunque altro carattere che abbia codice di categoria pari a zero. Una sequenza di controllo può essere: $(a)$ indefinita, se non le è mai stato assegnato un significato; $(b)$ una macro se le è stato assegnato un significato mediante il comando primitivo \cs{def} o un comando equivalente; $(c)$ qualcosa che può avere caratteristiche diverse da quelle di una macro se le è stato attribuito un significato mediante il comando primitivo \cs{let} o un comando equivalente. In quest'ultimo caso la sequenza di controllo, anche se ha tutto l'aspetto di una macro, può non essere affatto una macro: se per esempio mediante \cs{let} si rende \comando{\miocomando} equivalente a \comando{\newcommand},  \comando{\miocomando} diventa un sinonimo di \comando{\newcommand} e rappresenta quindi una macro; invece, se mediante \cs{let} si rende \comando{\miaA} equivalente ad \texttt{A}, \comando{\miaA} diventa un sinonimo di \texttt{A}, quindi rappresenta una lettera, non una macro; infatti in questo caso si dice che la sequenza di controllo è un \emph{carattere implicito}. 
+Forse è opportuno spiegare perché qui si usi la locuzione ``sequenza di controllo'' invece della parola ``macro'' o di altre espressioni più comuni: una sequenza di controllo è in generale un \emph{token complesso}, cioè un token il cui nome è formato da una o più lettere o simboli ed è preceduto dal carattere di escape, generalmente, ma non obbligatoriamente, rappresentato dal segno \texttt{\char92}\,; potrebbe andare bene qualunque altro carattere che abbia codice di categoria pari a zero. Una sequenza di controllo può essere: $(a)$ indefinita, se non le è mai stato assegnato un significato; $(b)$ una macro se le è stato assegnato un significato mediante il comando primitivo \cs{def} o un comando equivalente; $(c)$ qualcosa che può avere caratteristiche diverse da quelle di una macro se le è stato attribuito un significato mediante il comando primitivo \cs{let} o un comando equivalente. In quest'ultimo caso la sequenza di controllo, anche se ha tutto l'aspetto di una macro, può non essere affatto una macro: se per esempio mediante \cs{let} si rende \comando{\miocomando} equivalente a \comando{\newcommand},  \comando{\miocomando} diventa un sinonimo di \comando{\newcommand} e rappresenta quindi una macro; invece, se mediante \cs{let} si rende \comando{\miaA} equivalente ad \texttt{A}, \comando{\miaA} diventa un sinonimo di \texttt{A}, quindi rappresenta una lettera, non una macro; infatti in questo caso si dice che la sequenza di controllo è un \emph{carattere implicito}.
 
 Queste sono le situazioni delicate che talvolta rendono difficile la programmazione, perché è facile confondersi, e rendono difficili le spiegazioni, perché la lingua italiana sembra poco flessibile per descrivere questo genere di cose. In relazione a quanto si diceva poco sopra, \cs{dots} è una macro mente \cs{infty} ha le caratteristiche di una macro con pdf\/\LaTeX, ma quelle di un carattere implicito con \XeLaTeX; perciò la macro della virgola intelligente di questa classe deve saper distinguere le due situazioni sulla base del nome della sequenza di controllo, non solamente sul suo significato.
 
 \iffalse
 	\begin{align*}
 	a, 	&\quad b, 	\\
-	3, 	&\quad 4, 
+	3, 	&\quad 4,
 	\end{align*}
 \fi
 
@@ -587,7 +590,7 @@ Per questo motivo in questa guida l'unico indice analitico è configurato con il
 \makeindex[options=%
            {-s guidatematica.ist},intoc]
 \end{verbatim}
-Come si vede, l'argomento di \texttt{options} contiene la specificazione di usare lo stile \file{guidatematica.ist}, in modo che quando \prog{pdfLaTeX} o \prog{XeLaTeX} invia al sistema operativo il comando di eseguire \prog{makeindex} gli passa anche questa opzione. 
+Come si vede, l'argomento di \texttt{options} contiene la specificazione di usare lo stile \file{guidatematica.ist}, in modo che quando \prog{pdfLaTeX} o \prog{XeLaTeX} invia al sistema operativo il comando di eseguire \prog{makeindex} gli passa anche questa opzione.
 
 In questo indice analitico unico i file sono tutti elencati sotto la voce ``file" quindi anche le estensioni stanno bene raggruppate sotto questa voce.
 
@@ -602,7 +605,7 @@ La definizione preimpostata nella classe è infatti:
 Ma se si volesse predisporre un indice dei file usati separato dall'indice analitico generico, allora bisognerebbe specificare:
 \begin{verbatim}
 \makeindex[name=files, options=%
-   {-s guidatematicafiles.ist},intoc, 
+   {-s guidatematicafiles.ist},intoc,
    title=Indice dei file]
 \end{verbatim}
 e i nomi dei file o delle loro estensioni andrebbero specificati con il comando:
@@ -639,7 +642,7 @@ Chiaramente la scelta di uno dei tre programmi dipende esclusivamente dall'autor
 
 \item[Il formato PDF archiviabile] Non so quanto sia importante per le guide tematiche del \GuIT, ma con \prog{XeLaTeX} non si può produrre il file di uscita in formato PDF compatibile con il formato archiviabile, corrispondente alla norma ISO 19005-1:2005; oggi poi esiste un aggiornamento della norma, ISO 19005-2:2011, e a maggior ragione il file PDF generato con \prog{XeLaTeX} non è conforme con le norme ISO citate. Tuttavia ricorrendo a \prog{ghostscript} è possibile ottenere la conversione in formato archiviabile in modo corretto; nella sezione di Documentazione del sito del \GuIT\ esistono alcuni testi che descrivono il modo di procedere. Sembra che con la versione 9.x di \prog{ghostscript} sia possibile generare un file PDF archiviabile conforme alla norma del 2011, ma chi scrive non è ancora in grado di confermarlo. Chi scrive non ha verificato se con \prog{LuaLaTeX} è possibile produrre un file PDF conforme alle norme suddette.
 
-\item[La microtipografia] \prog{pdfLaTeX} e \prog{LuaLaTeX} possono sfruttare ogni artificio di microtipografia per comporre le pagine in modo praticamente perfetto; con i font in dotazione, possono comporre sfruttando sia la protrusione di certi segni completamente o parzialmente nei margini destro e sinistro, sia l'espansione dei font, tecnica che permette di espandere o comprimere i caratteri di una riga di quel poco che basta per passare inosservato ma che rende gli spazi nella riga molto più omogenei fra righe adiacenti, cosicché non appaiono i brutti ``ruscelli'' bianchi che serpeggiano tra le parole attraverso la pagina mal composta. 
+\item[La microtipografia] \prog{pdfLaTeX} e \prog{LuaLaTeX} possono sfruttare ogni artificio di microtipografia per comporre le pagine in modo praticamente perfetto; con i font in dotazione, possono comporre sfruttando sia la protrusione di certi segni completamente o parzialmente nei margini destro e sinistro, sia l'espansione dei font, tecnica che permette di espandere o comprimere i caratteri di una riga di quel poco che basta per passare inosservato ma che rende gli spazi nella riga molto più omogenei fra righe adiacenti, cosicché non appaiono i brutti ``ruscelli'' bianchi che serpeggiano tra le parole attraverso la pagina mal composta.
 \prog{XeLaTeX} può usare solo la protrusione dei segni, senza l'espansione dei caratteri. Molte delle raffinatezze che il pacchetto \pack{microtype} permette di fare con i caratteri (per esempio spazieggiare il maiuscoletto o il maiuscolo; definire e usare fattori di spazio diversi per i segni di interpunzione,~\dots) possono essere eseguiti anche con oculate impostazioni delle proprietà dei font OpenType, ma il risultato finale è comunque migliore con l'uso della espansione dei caratteri.
 
 \item[I font con i corpi ottici] Il sistema \TeX\ è nato con i font corredati dei corpi ottici; fin dall'inizio esistevano i font Computer Modern a 5, 6, 7, 8, 9, 10, 12, 14,4, \dots\ punti tipografici. Questo significa che al variare del corpo cambia anche un pochino il disegno dei segni in modo che i più piccoli siano ancora leggibili e i più grandi non appaiano troppo neri. I font Computer Modern sono stati via via sostituiti da font in codifiche diverse ma contenenti più segni (da 128 si è passati a 256); oggi quelli più ``moderni'' sono i font Latin Modern accessibili normalmente da \prog{pdfLaTeX} richiamando il pacchetto \pack{lmodern} oppure, ancor meglio, il pacchetto \pack{cfr-lm}; questo consente di selezionare sia font di forma e di serie diverse da quelle tradizionali, sia alcune particolarità non accessibili con il pacchetto tradizionale. Quasi tutti gli altri font accessibili con \prog{pdfLaTeX} sono dotati di un unico corpo e tutti gli altri corpi sono ottenuti per ingrandimento o rimpicciolimento proporzionale; il risultato è che spesso i corpi più piccoli sono quasi illeggibili perché i loro tratti sono diventati troppo sottili, e quelli più grandi di serie media ricordano più la serie nera che la serie media, visto che i tratti dei segni sono diventati troppo spessi rispetto allo spazio occupato da ogni singolo segno.
@@ -661,14 +664,14 @@ Con questa unica riga si dispone dell'intera collezione con le impostazioni di d
 
 Per avere le stesse funzionalità con \prog{XeLaTeX} e \prog{LuaLaTeX} si sono dovute specificare le famiglie dei font: principale (font proporzionale con grazie e le cifre minuscole); sans serif (font proporzionale sgraziato o lineare, che dir si voglia, con le cifre minuscole); teletype proporzionale con le cifre maiuscole; teletype a spaziatura fissa con le cifre maiuscole;  infine il maiuscoletto con le cifre minuscole.
 
-Con queste impostazioni si è però ridefinito il comando \cs{textl} per le cifre maiuscole tenendo conto delle particolarità dei font OpenType, e si sono dovuti definire con \cs{DeclareTextFontCommand} i comandi equivalenti a quelli disponibili con il pacchetto \pack{cfr-lm} usabile solo da \prog{pdfLaTeX}. 
+Con queste impostazioni si è però ridefinito il comando \cs{textl} per le cifre maiuscole tenendo conto delle particolarità dei font OpenType, e si sono dovuti definire con \cs{DeclareTextFontCommand} i comandi equivalenti a quelli disponibili con il pacchetto \pack{cfr-lm} usabile solo da \prog{pdfLaTeX}.
 \begin{Verbatim}[fontsize={\fontsize{9.5}{11.5}\selectfont}]
 \RequirePackage{fontspec}
 \setmainfont[Ligatures=TeX,Numbers=OldStyle]{Latin Modern Roman}
 \setsansfont[Ligatures=TeX,Numbers=OldStyle]{Latin Modern Sans}
 \setmonofont[Numbers=Lining]{Latin Modern Mono}
 \newfontfamily{\tvfamily}[Numbers=Lining]{Latin Modern Mono Prop}
-\newfontfamily{\scfamily}[Ligatures=TeX,Numbers=OldStyle]{Latin 
+\newfontfamily{\scfamily}[Ligatures=TeX,Numbers=OldStyle]{Latin
 					       Modern Roman Caps}
 \DeclareRobustCommand\scshape{\scfamily}
 \DeclareTextFontCommand{\texttm}{\ttfamily}
@@ -685,13 +688,11 @@ In compenso è stato possibile specificare gli stessi font Latin Modern adatti a
 \item[Velocità di composizione] I tre programmi di composizione hanno velocità di composizione dello stesso testo molto diverse; il più veloce è \prog{pdfLaTeX}; il più lento è \prog{LuaLaTeX}; nonostante \prog{XeLaTeX} produca un file DVI esteso e poi lo converta automaticamnate in PDF, la sua velocità di composizione è intermedia rispetto agli altri due programmi. Il compositore di una guida tematica deve quindi tenere conto anche di questo fatto e scegliere il programma di composizione a ragion veduta. È ovvio che \prog{LuaLaTeX} ha molte funzionalità in più rispetto agli altri due programmi, ma non vale la pena usarlo se non si ha veramente bisogno di quelle ulteriori funzionalità.
 \end{compactdescription}
 
-In questo modo comporre la documentazione con questa classe produce sostanzialmente gli stessi risultati che si usi \prog{pdfLaTeX}, \prog{XeLaTeX} oppure \prog{LuaLaTeX}. 
+In questo modo comporre la documentazione con questa classe produce sostanzialmente gli stessi risultati che si usi \prog{pdfLaTeX}, \prog{XeLaTeX} oppure \prog{LuaLaTeX}.
 
 Perché scegliere l'uno o l'altro programma di composizione? Dipende dal contenuto della guida tematica; se occorre fare uso di alfabeti diversi da quello latino (per esempio: greco, cirillico, arabo, eccetera) allora è opportuno, se non obbligatorio, ricorrere \prog{XeLaTeX} o a \prog{LuaLaTeX}, quest'ultimo solo nel caso che sia necessario servirsi delle sue maggiori funzionalità. Altrimenti è preferibile usare \prog{pdfLaTeX}.
 
 Questa guida composta con \prog{XeLaTeX} e con \prog{LuaLaTeX} presenta qualche piccola differenza nelle stesse pagine dovute al fatto che il motore \prog{LuaTeX} sfrutta appieno le funzionalità del pacchetto \pack{microtype}, compresa l'espansione dei font, che \prog{XeLaTeX} non può usare, ma queste differenze non sono tali da giustificare da sole l'uso di \prog{LuaLaTeX}; nello stesso tempo questa particolare guida non ha bisogno delle ulteriori funzionalità di \prog{LuaLaTeX}, anzi, la sua composizione con \prog{pdfLaTeX} è ottima e veloce con differenze trascurabili rispetto al prodotto di \prog{LuaLaTeX}. Questo non vuol dire che con altre guide non sia preferibile agire diversamente.
-
-
 
 \backmatter
 
@@ -706,6 +707,5 @@ Per concludere si riporta qui una bibliografia che si suppone sia utile per la d
 \bibliography{guidatematica}
 
 \printindex
-
 
 \end{document}
