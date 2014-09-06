@@ -9,7 +9,7 @@
 %\documentclass[b5paper,11pt,ipertesto,oneside]{guidatematica}
 %\documentclass[tablet,9pt,ipertesto,openany]{guidatematica}
 \documentclass[b5paper,11pt,ipertesto,openany]{guidatematica}
-\ProvidesFile{guidatematica-doc.tex}[2014/09/03 v.1.4e Uso della classe guidatematica.cls]
+\ProvidesFile{guidatematica-doc.tex}[2014/09/05 v.1.4f Uso della classe guidatematica.cls]
 
 
 \usepackage{array,longtable,tabularx}
@@ -46,9 +46,11 @@
 
 \maketitle
 
+\contribguit
+
+
 \frontmatter*
 
-\contribguit
 
 \chapter{Introduzione}
 Questa breve guida serve per descrivere la classe \class{guidatematica} predisposta per comporre le guide tematiche del \GuIT\ con uno stile comune, in modo che già il solo vedere il frontespizio permetta di riconoscere le guide tematiche dalle altre guide e dalle altre pubblicazioni del \GuIT.
@@ -72,6 +74,8 @@ Questa documentazione è soggetta alla licenza \LaTeX\ Project Public Licence, v
 
 \chapter{Ringraziamenti}
 Io ho scritto materialmente questa classe \class{guidatematica} cercando di mettermi nella veste del curatore di un lavoro collettivo del \GuIT\ e per il \GuIT; ho consultato quindi gli autori o coautori delle guide tematiche pubblicate finora, Claudio Fiandrino, Roberto Giacomelli e Tommaso Gordini, e ho seguito i suggerimenti di Ivan Valbusa. Orlando Iovino ha contribuito alla creazione delle procedure bash (Linux) o bat (Windows) per installare tutto il materiale sul proprio PC.
+
+Un grazie particolare a Enrico Spinielli e a Mosè Giordano che curano lo sviluppo di questa classe su GitHub, il sito dove è possibile coordinare il lavoro cooperativo di chiunque desideri contribuire al suo sviluppo. Il deposito per partecipare allo sviluppo di questa classe è \url{https://github.com/GuITeX/guidatematica}; per poter partecipare bisogna essere iscritti al sito.
 
 Ringrazio tutti moltissimo del loro contributo, delle loro osservazioni, dei loro suggerimenti; questo è il miglior modo per contribuire al \GuIT, e quindi siamo tutti autori a pari merito di questa classe; se ne aggiungeranno altri col tempo e verranno aggiunti a questa breve lista dei ``fondatori''.
 
@@ -667,16 +671,15 @@ Per avere le stesse funzionalità con \prog{XeLaTeX} e \prog{LuaLaTeX} si sono d
 Con queste impostazioni si è però ridefinito il comando \cs{textl} per le cifre maiuscole tenendo conto delle particolarità dei font OpenType, e si sono dovuti definire con \cs{DeclareTextFontCommand} i comandi equivalenti a quelli disponibili con il pacchetto \pack{cfr-lm} usabile solo da \prog{pdfLaTeX}.
 \begin{Verbatim}[fontsize={\fontsize{9.5}{11.5}\selectfont}]
 \RequirePackage{fontspec}
-\setmainfont[Ligatures=TeX,Numbers=OldStyle]{Latin Modern Roman}
-\setsansfont[Ligatures=TeX,Numbers=OldStyle]{Latin Modern Sans}
-\setmonofont[Numbers=Lining]{Latin Modern Mono}
-\newfontfamily{\tvfamily}[Numbers=Lining]{Latin Modern Mono Prop}
-\newfontfamily{\scfamily}[Ligatures=TeX,Numbers=OldStyle]{Latin
-					       Modern Roman Caps}
-\DeclareRobustCommand\scshape{\scfamily}
+\defaultfontfeatures[\rmfamily,\sffamily]%
+                                {Ligatures=TeX,Numbers=OldStyle}
+\defaultfontfeatures[\ttfamily,\tvfamily]{Numbers=Lining}
+\setmainfont{Latin Modern Roman}[SmallCapsFont={* Caps}]
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}
+\newfontfamily{\tvfamily}{Latin Modern Mono Prop}
 \DeclareTextFontCommand{\texttm}{\ttfamily}
 \DeclareTextFontCommand{\texttv}{\tvfamily}
-\DeclareTextFontCommand{\textsc}{\scfamily}
 \def\textl#1{{\addfontfeature{Numbers=Lining}#1}}
 \end{Verbatim}
 
