@@ -7,7 +7,7 @@ SHELL = /bin/sh
 ### Descrizione: Makefile per l'installazione della classe guidatematica
 ###		 nell'albero personale di una distribuzione TeX Live.
 ###
-### Versione: v.1.0
+### Versione: v.1.0.0.1
 ###
 ### Licenza: LaTeX Project Public License.
 
@@ -71,28 +71,28 @@ installa: $(CLASSE) $(CLASSE_DOC)
 #
 	echo "... $(ALBEROPERS)/bibtex/bst/$(MAIN) ..."
 	mkdir -p  $(ALBEROPERS)/bibtex/bst/$(MAIN)
-	cp -u $(MAIN).bst $(ALBEROPERS)/bibtex/bst/$(MAIN)
+	cp $(MAIN).bst $(ALBEROPERS)/bibtex/bst/$(MAIN)
 #
 # Codice sorgente della classe (.dtx)
 #
 	echo "... $(ALBEROPERS)/source/latex/$(MAIN) ..."
 	mkdir -p  $(ALBEROPERS)/source/latex/$(MAIN)
-	cp -u $(MAIN).dtx $(ALBEROPERS)/source/latex/$(MAIN)
+	cp $(MAIN).dtx $(ALBEROPERS)/source/latex/$(MAIN)
 #
 # Codice della classe (.cls) e file accessori
 #
 	echo "... $(ALBEROPERS)/tex/latex/$(MAIN) ..."
 	mkdir -p  $(ALBEROPERS)/tex/latex/$(MAIN)
-	cp -u $(MAIN).cls $(ALBEROPERS)/tex/latex/$(MAIN)
-	cp -u $(FIGURE)   $(ALBEROPERS)/tex/latex/$(MAIN)
-	cp -u $(STILIIDX) $(ALBEROPERS)/tex/latex/$(MAIN)
+	cp $(MAIN).cls $(ALBEROPERS)/tex/latex/$(MAIN)
+	cp $(FIGURE)   $(ALBEROPERS)/tex/latex/$(MAIN)
+	cp $(STILIIDX) $(ALBEROPERS)/tex/latex/$(MAIN)
 #
 # Documentazione
 #
 	echo "... $(ALBEROPERS)/doc/latex/$(MAIN) ..."
 	mkdir -p  $(ALBEROPERS)/doc/latex/$(MAIN)
-	cp -u $(MAIN).pdf $(ALBEROPERS)/doc/latex/$(MAIN)
-	cp -u $(MAIN_DOC).pdf $(MAIN_DOC).tex $(ALBEROPERS)/doc/latex/$(MAIN)
+	cp $(MAIN).pdf $(ALBEROPERS)/doc/latex/$(MAIN)
+	cp $(MAIN_DOC).pdf $(MAIN_DOC).tex $(ALBEROPERS)/doc/latex/$(MAIN)
 	echo "... Fatto!"
 	echo ""
 	echo "Happy TeXing con guidatematica.cls"

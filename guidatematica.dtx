@@ -9,29 +9,31 @@
   ________________________________________
   The guidatematica class for typesetting books in the GuIT series
   "Guide Tematiche"
-  Copyright (C) 2012-2014 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
+  Copyright (C) 2012-2021 GuIT, 
+     Gruppo utilizzatori Italiani di TeX e LaTeX
   All rights reserved
 
-  http://www.guitex.org
+  https://www.guitex.org
 
   License information appended
 
 \endpreamble
-\postamble
-Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
+\postambleƒ
+Copyright 2012, 2013-2020 GuIT, 
+   Gruppo utilizzatori Italiani di TeX e LaTeX
 
-	Distributable under the LaTeX Project Public License,
-	version 1.3c or higher (your choice). The latest version of
-	this license is at: http://www.latex-project.org/lppl.txt
+  Distributable under the LaTeX Project Public License,
+  version 1.3c or higher (your choice). The latest version of
+  this license is at: http://www.latex-project.org/lppl.txt
 
-	This Work has the status of `maintained'
+  This Work has the status of `maintained'
 
-	The Current Maintainer is the GuIT staff
+  The Current Maintainer is the GuIT staff
 
-	This work consists of this file guidatematica.dtx,
-	and the derived files guidatematica.cls and guidatematica.pdf
-	plus the associated documentation guidatematica-doc.tex
-	and guidatematica-doc.pdf.
+  This work consists of this file guidatematica.dtx,
+  and the derived files guidatematica.cls and guidatematica.pdf
+  plus the associated documentation guidatematica-doc.tex
+  and guidatematica-doc.pdf.
 
 \endpostamble
 \askforoverwritefalse
@@ -51,8 +53,8 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %<class>\NeedsTeXFormat{LaTeX2e}[2009/01/01]
 %<class>\ProvidesClass{guidatematica}%
 %<*class>
-   [2014/09/03 v.1.5 Classe simmetrica per comporre testi della collana
-   Guide Tematiche del GuIT]
+   [2021-04-12 v.2.2.00 Classe simmetrica per comporre testi della
+   collana Guide Tematiche del GuIT]
 %</class>
 %<*driver>
 \documentclass[a4paper]{ltxdoc}
@@ -63,15 +65,15 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 \hfuzz 10pt
 %
 \makeatletter
-\providecommand*\meta[1]{$\langle$\textit{#1}$\rangle$}
-\providecommand*\marg[1]{\texttt{\char123}\meta{#1}\texttt{\char125}}
-\providecommand*\oarg[1]{\texttt{[}\meta{#1}\texttt{]}}
+\providecommand*\meta[1]{{\normalfont$\langle$\textit{#1}$\rangle$}}
+\providecommand*\marg[1]{{\normalfont\texttt{\{}\meta{#1}\texttt{\}}}}
+\providecommand*\oarg[1]{{\normalfont\texttt{[}\meta{#1}\texttt{]}}}
 \def\GT@splitargs#1,#2!{\def\@tempA{#1}\def\@tempB{#2}}
 \newcommand\garg[1]{\GT@splitargs#1!%
    \texttt{(}\meta{\@tempA}\texttt{,}\meta{\@tempB}\texttt{)}}
-\newcommand*\comando[1]{\texttt{\string#1}}
+\newcommand*\comando[1]{{\normalfont\texttt{\string#1}}}
 \renewcommand*{\cs}[1]{%
-   \texttt{\char92#1}\index{#1@\texttt{\char92#1}}}
+   {\normalfont\texttt{\char92#1}\index{#1@\texttt{\char92#1}}}}
 \let\csindex\cs
 \newcommand*\Sambiente[2]{%
    \cs{begin}\marg{#1}\oarg{#2} \dots\ \cs{end}\marg{#1}}
@@ -83,8 +85,8 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %
 \begin{document}\errorcontextlines=9
 \GetFileInfo{guidatematica.dtx}
-\title{La classe \texttt{\filename}\thanks{Version number \fileversion;
- ultima revisione \filedate.}}
+\title{La classe \texttt{\filename}}
+\date{Versione \fileversion; ultima revisione \filedate.}
 \author{GuIT\thanks{Web: \texttt{www.guitex.org}}}
  \maketitle
  \DocInput{guidatematica.dtx}
@@ -93,7 +95,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % \fi
 %
 %
-% \CheckSum{1073}
+% \CheckSum{1287}
 % \begin{abstract}
 % Questa classe \texttt{guidatematica} serve per comporre
 % testi da pubblicare nella collana “Guide Tematiche” del GuIT.
@@ -110,85 +112,91 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % \end{abstract}
 %
 % \section{Caratteristiche della classe}
-%   La classe \texttt{guidatematica.cls} serve per comporre
-%   libri in italiano con le seguenti specifiche:
+%  La classe \texttt{guidatematica.cls} serve per comporre
+%  libri in italiano con le seguenti specifiche:
 % \begin{itemize}
 % \item La classe di supporto è la classe
-%	\texttt{memoir.cls} facente parte del sistema TeX
-%	in qualsiasi distribuzione completa.
+%  \texttt{memoir.cls} facente parte del sistema TeX
+%  in qualsiasi distribuzione completa.
 % \item Tutte le opzioni inserite nell'istruzione
-%	|\documentclass| vengono trasferite integralmente
-%	alla classe \texttt{memoir}; alcune opzioni per il
-%   formato della ``carta'', sono state ridefinite, ma
-%   l'utente non dovrebbe osservare nessuna variazione
-%   rispetto all'impostazione che si avrebbe senza queste
-%   ridefinizioni. Solo l'opzione |ipertesto| è
-%	specifica della classe; serve all'utente per caricare il
-%	pacchetto |hyperref| con alcune personalizzazioni,
-%	ritardandone il caricamento al momento di eseguire il
-%	comando |\begin{document}|; questo dipende dal fatto che
-%	il pacchetto |hyperref| deve sempre venire caricato per
-%	ultimo. Non è attivata di default, perché non tutte le
-%	guide, benché previste per essere lette prevalentemente
-%	sullo schermo del proprio PC, hanno bisogno di collegamenti
-%	ipertestuali interni ed esterni. Quindi caricare questo
-%	pacchetto è una scelta esclusiva dell'autore della guida.
-% \item La classe funziona sia con pdfLaTeX sia con XeLaTeX;
-%	le impostazioni sono prefissate e i margini per ulteriori
-%	personalizzazioni sono ridotti al minimo; lo scopo della
-%	classe è quello di dare una veste comune alle guide
-%	tematiche della collana, facendo sì che siano riconoscibili
-%	a prima vista grazie al loro stile uniforme di composizione.
+%  |\documentclass| vengono trasferite integralmente
+%  alla classe \texttt{memoir}; alcune opzioni per il
+%  formato della “carta”, sono state ridefinite, ma
+%  l'utente non dovrebbe osservare nessuna variazione
+%  rispetto all'impostazione che si avrebbe senza queste
+%  ridefinizioni. 
+%
+% \item Nelle versioni precedenti si poteva specificare anche
+% l'opzione |ipertesto|, ma è stata eliminata per questo motivo:
+% il suo scopo era quello di caricare il pacchetto |hyperref|
+% per ultimo, perché si riteneva che fosse utile per l'utente
+% non doversi preoccupare di questo pacchetto essendo sua scelta
+% personale quella di usare o non usare i collegamenti ipertestuali.
+% Ma, pur restando una raccomandazione importante quella di caricare
+% |hyperref| il più tardi possibile, esistono dei pacchetti,
+% come, per esempio, |glossaries|, che vanno caricati dopo.
+% Perciò ora al momento di eseguire il comando |\begin{document}|
+% questa classe imposta solo i colori dei link; l'utente è pregato
+% di non modificarli perché le guide tematiche devono avere gli
+% stessi aspetti generali.
+%
+% \item La classe funziona sia con pdfLaTeX, XeLaTeX e LuaLaTeX;
+%  le impostazioni sono prefissate e i margini per ulteriori
+%  personalizzazioni sono ridotti al minimo; lo scopo della
+%  classe è quello di dare una veste comune alle guide
+%  tematiche della collana, facendo sì che siano riconoscibili
+%  a prima vista grazie al loro stile uniforme di composizione.
 % \item La classe riconosce da sola il motore di composizione
-%	e imposta direttamente quanto occorre nella forma richiesta
-%	dal programma di composizione.
+%  e imposta direttamente quanto occorre nella forma richiesta
+%  dal programma di composizione.
 % \item La codifica di entrata deve essere \texttt{utf8}; per
-%	XeLaTeX essa è implicita; con pdfLaTeX essa viene
-%	preimpostata e non è possibile con questa classe specificare
-%	una codifica differente.
+%  XeLaTeX essa è implicita; con pdfLaTeX essa viene
+%  preimpostata e non è possibile con questa classe specificare
+%  una codifica differente.
 % \item La codifica dei font di uscita con pdfLaTeX è
-%	\texttt{T1} e non è possibile specificare una codifica
-%	differente, cosa che sarebbe quanto mai sgradevole per
-%	comporre in italiano dove sono presenti molte lettere
-%	accentate. Per altro se fosse necessario comporre qualcosa
-%	in una lingua che usa un alfabeto diverso, basta caricare
-%	i suoi pacchetti specifici; per scrivere una parola o due
-%	basta caricare l'encoding dei font specifici in modo diretto:
-%	per esempio: se si deve scrivere una parola in russo,
-%	basta caricare esplicitamente il file del suo encoding con
-%	|\input{t2enc.def}| e poi specificare la codifica |T2| con
-%	|\fontencoding{T2}| seguito, se occorre, dai comandi per scegliere
-%	famiglia, serie, forma e corpo del font cirillico che
-%	si vuole usare.
+%  \texttt{T1} e non è possibile specificare una codifica
+%  differente, cosa che sarebbe quanto mai sgradevole per
+%  comporre in italiano dove sono presenti molte lettere
+%  accentate. Per altro se fosse necessario comporre qualcosa
+%  in una lingua che usa un alfabeto diverso, basta caricare
+%  i suoi pacchetti specifici; per scrivere una parola o due
+%  basta caricare l'encoding dei font specifici in modo diretto:
+%  per esempio: se si deve scrivere una parola in russo,
+%  basta caricare esplicitamente il file del suo encoding con
+%  |\input{t2enc.def}| e poi specificare la codifica |T2| con
+%  |\fontencoding{T2}| seguito, se occorre, dai comandi per scegliere
+%  famiglia, serie, forma e corpo del font cirillico che
+%  si vuole usare.
 % \item Con pdfLaTeX il pacchetto \texttt{babel} viene caricato
-%	con la sola opzione \texttt{italian}; nei rari casi in cui
-%	fosse necessario usare anche altre lingue, esse vanno
-%	specificate come opzione alla classe, perché non si può
-%	chiamare \texttt{babel} due volte con opzioni diverse.
-%	Le opzioni della classe sono globali e vengono passate
-%	automaticamente a tutti i pacchetti che sanno che cosa farne.
-% \item Con XeLaTeX viene caricato il pacchetto |polyglossia|
-%	e l'italiano viene impostato come la lingua principale;
-%	altre lingue possono venire specificate mediante il comando
-%	|\setotherlanguages| o, con lingue particolari, con
-%	|\setotherlanguage| con le opzioni specifiche per la lingua.
-%	Se questa richiede un alfabeto particolare bisogna ricordassi
-%	di specificare una famiglia di font che contenga l'alfabeto
-%	desiderato.
+%  con le sole opzioni \texttt{italian} e \texttt{english}; nei rari
+%  casi in cui fosse necessario usare anche altre lingue, esse vanno
+%  specificate come opzione alla classe, perché non si può
+%  chiamare \texttt{babel} due volte con opzioni diverse.
+%  Le opzioni della classe sono globali e vengono passate
+%  automaticamente a tutti i pacchetti che sanno che cosa farne.
+% \item Con XeLaTeX e LuaLaTeX  viene caricato il pacchetto |polyglossia|
+%  e l'italiano viene impostato come la lingua principale, l'inglese
+%  come altra lingua; altre lingue possono venire specificate mediante
+%  il comando |\setotherlanguages| o, con lingue particolari, con
+%  |\setotherlanguage| con le opzioni specifiche per la lingua.
+%  Se questa richiede un alfabeto particolare bisogna ricordassi
+%  di specificare una famiglia di font che contenga l'alfabeto
+%  desiderato.
 % \item Sono stati introdotti molti nuovi comandi e sono stati
-%	definiti molti nuovi ambienti. Per maggiori informazioni si
-%	rimanda al documento \emph{guidatematica-doc.pdf} distribuito
-%	con il ``kit'' |guidatematica.zip|.
-%	\end{itemize}
+%  definiti molti nuovi ambienti. Per maggiori informazioni si
+%  rimanda al documento \emph{guidatematica-doc.pdf} distribuito
+%  con il “kit” |guidatematica.zip|.
+%  \end{itemize}
 % \StopEventually{}
 %
 % \section{Codice commentato}
 % Le due righe contenti il formato e l'identificazione della classe
 % sono già state inserite prima; ora possiamo passare alla gestione
-% delle opzioni che vengono quasi tutte passate alla classe \texttt{memoir}.
-% Viene definita l'opzione |ipertesto| per caricare il pacchetto |hypertext|
-% che non non viene caricato di default, perché va caricato per ultimo
-% solo se viene specificata l'opzione suddetta.
+% delle opzioni che vengono quasi tutte passate alla classe
+% \texttt{memoir}.
+% Viene definita l'opzione |ipertesto| per caricare il pacchetto
+% |hypertext| che non non viene caricato di default, perché va
+% caricato per ultimo solo se viene specificata l'opzione suddetta.
 %
 % L'autore potrebbe avere bisogno di caricare ulteriori pacchetti nel
 % preambolo, quindi è meglio che |hyperref| venga caricato dopo questi
@@ -198,19 +206,19 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % della guida tematica.
 %
 % Vengono reimpostate le opzioni |a4paper|, |a5paper| e |\b5paper|
-% e vengono definite le opzioni |tablet| e |pad|, per poter in tutti questi casi
-% creare il layout della pagina in modo simile e non personalizzabile.
-% Per tutte questo opzioni bisogna ricorrere ad opportuni comandi
-% condizionali, per poter ritardare la loro esecuzione ad un momento
-% successivo al caricamento della classe |memoir|.
+% e vengono definite le opzioni |tablet| e |pad|, per poter in tutti
+% questi casi creare il layout della pagina in modo simile e non
+% personalizzabile. Per tutte questo opzioni bisogna ricorrere ad
+% opportuni comandi condizionali, per poter ritardare la loro
+% esecuzione ad un momento successivo al caricamento della classe
+% |memoir|.
 % \iffalse
 %<*class>
 % \fi
-%    \begin{macrocode}
-\DeclareOption{ipertesto}{%
-\AtBeginDocument{\RequirePackage[colorlinks,linkcolor={blue},
-  citecolor={blue!80!black},urlcolor={blue}]{hyperref}}
-}
+%    \begin{macrocode}%
+\AtBeginDocument{\@ifpackageloaded{hyperref}{\hypersetup{colorlinks,linkcolor={blue},
+  citecolor={blue!80!black},urlcolor={blue}}}{}}
+
 
 \newif\ifPAD\PADfalse
 \DeclareOption{pad}{\PADtrue\tabletfalse\Aivfalse\Bvfalse\Avfalse}
@@ -230,40 +238,43 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %    \end{macrocode}
 %
 % Si carica subito il pacchetto |iftex|  che permette di distinguere
-% quale motore di composizione si sta usando fra |pdftex|, |xetex|, oppure |luatex|.
+% quale motore di composizione si sta usando fra |pdftex|, |xetex|,
+% oppure |luatex|.
 %    \begin{macrocode}
 \RequirePackage{iftex}
 %    \end{macrocode}
-% Con |xetex| si carica il pacchetto |fontspec| e si impostano le varie forme
-% dei font Latin Modern OpenType, generando anche i comandi necessari per la
-% compatibilità con i comandi  da usare con |pdftex| quando si invoca
-% il pacchetto |cfr-lm| per la gestione estesa dei font Latin Modern Type~1.
-% Si provvede nei due casi di caricare i pacchetti necessari per la gestione
-% della lingua italiana.
+% Con |xetex| si carica il pacchetto |fontspec| e si impostano le varie
+% forme dei font Latin Modern OpenType, generando anche i comandi
+% necessari per la compatibilità con i comandi  da usare con |pdftex|
+% quando si invoca il pacchetto |cfr-lm| per la gestione estesa dei
+% font Latin Modern Type~1. Si provvede nei due casi di caricare i
+% pacchetti necessari per la gestione della lingua italiana.
 %    \begin{macrocode}
 \ifPDFTeX
-	\RequirePackage[utf8]{inputenc}
-	\RequirePackage[T1]{fontenc}
-	\RequirePackage[italian]{babel}
-	\RequirePackage[tt={oldstyle=false,tabular,monowidth}]{cfr-lm}
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage[greek.ancien,english,italian]{babel}
+  \RequirePackage[tt={oldstyle=false,tabular,monowidth}]{cfr-lm}
 \else
-	\RequirePackage{fontspec}
-	\defaultfontfeatures[\rmfamily,\sffamily]{Ligatures=TeX,Numbers=OldStyle}
-	\defaultfontfeatures[\ttfamily,\tvfamily]{Numbers=Lining}
-	\setmainfont{Latin Modern Roman}[SmallCapsFont={* Caps}]
-	\setsansfont{Latin Modern Sans}
-	\setmonofont{Latin Modern Mono}
-	\newfontfamily{\tvfamily}{Latin Modern Mono Prop}
-	\DeclareTextFontCommand{\texttm}{\ttfamily}
-	\DeclareTextFontCommand{\texttv}{\tvfamily}
-	\def\textl#1{{\addfontfeature{Numbers=Lining}#1}}
-	\RequirePackage{unicode-math}
-	\setmathfont{Latin Modern Math}
-	\RequirePackage{polyglossia}
-	\setmainlanguage{italian}
-	\ifx\tmspace\@undefined
-	  \newlength{\tmspace}\tmspace=\z@
-	\fi
+  \RequirePackage{fontspec}
+  \defaultfontfeatures[\rmfamily,\sffamily]{Ligatures=TeX,Numbers=OldStyle}
+  \defaultfontfeatures[\ttfamily,\tvfamily]{Numbers=Lining}
+  \setmainfont{Latin Modern Roman}[SmallCapsFont={* Caps}]
+  \setsansfont{Latin Modern Sans}
+  \setmonofont{Latin Modern Mono}
+  \newfontfamily{\tvfamily}{Latin Modern Mono Prop}
+  \DeclareTextFontCommand{\texttm}{\ttfamily}
+  \DeclareTextFontCommand{\texttv}{\tvfamily}
+  \def\textl#1{{\addfontfeature{Numbers=Lining}#1}}
+  \RequirePackage{unicode-math}
+  \setmathfont{Latin Modern Math}
+  \RequirePackage{polyglossia}
+  \setmainlanguage[babelshorthands]{italian}
+  \setotherlanguage{english}
+  \setotherlanguage[variant=ancient]{greek}
+  \ifx\tmspace\@undefined
+    \newlength{\tmspace}\tmspace=\z@
+  \fi
 \fi
 %    \end{macrocode}
 %
@@ -272,14 +283,14 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % della classe non viene caricato il pacchetto |guit.sty| perché
 % è incompatibile con |XeLaTeX|; certo lo si sarebbe potuto caricare
 % nel ramo |true| del test |\ifPDFTeX| e la definizione del logo del
-% gruppo in forma grafica (immagine pdf) la si sarebbe potuta limitare
-% all'uso con |XeLaTeX| o di |Lua\LaTeX|; siccome alla data attuale il pacchetto
-% |guit.sty| è sottoposto a revisione per l'uso con i font OpenType, è molto
-% meglio usare temporaneamente l'immagine in ogni caso e modificare
-% questa classe solo con l'aggiunta di un nuovo pacchetto quando
-% |guit.sty| sarà diventato compatibile con tuttii i programmi di
+% gruppo in forma grafica la si sarebbe potuta limitare all'uso con
+% |XeLaTeX| o di |Lua\LaTeX|; siccome alla data attuale il pacchetto
+% |guit.sty| è sottoposto a revisione per l'uso con i font OpenType,
+% è molto meglio usare temporaneamente le macro in ogni caso e
+% modificare questa classe solo con l'aggiunta di un nuovo pacchetto
+% quando |guit.sty| sarà diventato compatibile con tutti i programmi di
 % composizione. Il logo tondo, il ``timbro'', del GuIT viene invece
-% allegato come immagine, visto che si tratta di una variante
+% allegato come codice, visto che si tratta di una variante
 % nella quale le lettere della scritta attorno al bordo non appaiono
 % mai capovolte.
 %    \begin{macrocode}
@@ -296,11 +307,13 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 \RequirePackage{afterpage}
 \RequirePackage{enumitem}
 \RequirePackage[right]{eurosym}
+\RequirePackage{fancyvrb}
 \RequirePackage{listings}
 \lstloadlanguages{[LaTeX]TeX}
 %    \end{macrocode}
 %
-% Il disegno della gabbia del testo è ispirato al pacchetto |canoniclayout|.
+% Il disegno della gabbia del testo è ispirato al pacchetto
+% |canoniclayout|.
 % Però è stato osservato che se si compone in modo |oneside| la lettura
 % a schermo è agevole, ma la stampa della guida risulta mal composta
 % in fronte retro. Se invece si compone in modo |twoside| da una pagina
@@ -326,7 +339,7 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 \ifPAD\setstocksize{160mm}{120mm}\fi
 \iftablet\setstocksize{120mm}{90mm}\fi
 \ifBv\setstocksize{250mm}{176mm}\fi
-\ifAiv\setstocksize{293mm}{210mm}\fi
+\ifAiv\setstocksize{297mm}{210mm}\fi
 \ifAv\setstocksize{210mm}{146mm}\fi
 \settrims{0pt}{0pt}
 
@@ -368,26 +381,25 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 % scritto nel margine esterno della pagina. Per altri usi di
 % dichiarazioni di diritti si ritiene che sia meglio usare l'Introduzione
 % invece del retrofrontespizio, visto che queste guide vengono per
-% lo più composte solo fronte (almeno così si suggerisce) per una lettura
-% confortevole a monitor.
+% lo più composte particolarmente per una lettura confortevole a monitor.
 %    \begin{macrocode}
 \let\@copymark\@empty % Di default è vuoto
 \newcommand*\setcopymark[1]{\gdef\@copymark{#1}}
 \newcommand*\@insertcopymark{%
-	\begin{picture}(0,0)\unitlength=1mm\relax
-	\if@twoside
-		\ifodd\value{page}
+  \begin{picture}(0,0)\unitlength=1pt\relax
+  \if@twoside
+    \ifodd\value{page}
             \put(\strip@pt\dimexpr\foremargin/2\relax,\strip@pt\footskip)%
             {\rotatebox{90}{\makebox(0,0)[l]{\@copymark}}}
-		\else
+    \else
             \put(-\strip@pt\dimexpr\foremargin/2\relax,\strip@pt\footskip)%
             {\rotatebox{90}{\makebox(0,0)[l]{\@copymark}}}
-		\fi
-	\else
+    \fi
+  \else
             \put(\strip@pt\dimexpr\foremargin/2\relax,\strip@pt\footskip)%
             {\rotatebox{90}{\makebox(0,0)[l]{\@copymark}}}
-	\fi
-	\end{picture}%
+  \fi
+  \end{picture}%
 }
 %    \end{macrocode}
 %
@@ -455,14 +467,31 @@ Copyright 2012, 2013 GuIT, Gruppo utilizzatori Italiani di TeX e LaTeX
 %
 % Si specifica ora il comando |\contribguit| che realizza una pagina
 % con le informazioni relative all'iscrizione nel gruppo. Il comando
-% può essere utilizzato a inizio o fine documento. Tuttavia,
-% per garantire maggiore visibilità, si consiglia di inserire
-% |\contribguit| dopo |\frontmatter| e prima del capitolo di
-% introduzione o eventuali pagine con informazioni sulle licenze d'uso.
+% viene usato in automatico nel retro del frontespizio. 
 %    \begin{macrocode}
 \providecommand*\Ars{%
   \textsf{\lower -.48ex\hbox{\rotatebox{-20}{A}}\kern -.3em{rs}}\hskip0pt%
   \kern -.05em\TeX\hskip0pt\kern -.17em\lower -.357ex\hbox{nica}}
+  
+\providecommand\@@title{\ClassError{guidatematica}{\MessageBreak%
+I comandi per la pagina del titolo\MessageBreak 
+vanno dati dopo \string\begin{document}}%
+{Premi S <return>, ma aspettati messaggi d'errore}}
+
+\AtBeginDocument{\let\originaltitle\title
+\renewcommand\title[1]{%
+\def\@@title{{\let\\\ \normalfont\normalsize#1}}\originaltitle{#1}}
+\let\originalauthor\author
+\renewcommand\author[2][\Large]{\def\@@author{#2}\originalauthor{{#1#2}}}
+\def\@@Copyright{}
+\DeclareRobustCommand\Copyright[1]{\edef\@@Copyright{#1}}
+\let\originalmaketitle\maketitle
+\renewcommand\maketitle{\frontmatter*\originalmaketitle
+\contribguit}}
+
+\let\@licenza\voidbox
+\newcommand\licenza[1]{\long\gdef\@licenza{#1}}
+
 \newcommand{\contribguit}{\newpage
 \thispagestyle{empty}
 \noindent{\Large
@@ -473,13 +502,13 @@ Associati anche tu al \GuIT
   \setlength{\fboxsep}{0pt}
   \put(1,-3){\colorbox{gray}{\framebox(50,6.5){}}}
   \put(0,-2){\colorbox{white}{\framebox(50,6.5){%
-   \href{http://www.guitex.org/home/it/diventa-socio/associarsi-a-guit}{%
+   \href{https://www.guitex.org/home/it/diventa-socio/associarsi-a-guit}{%
     Fai click per associarti}}}}
  \end{picture}%
 }
 \bigskip
 
-L'associazione per la diffusione di \TeX{} in Italia riconosciuta
+L'associazione per la diffusione di \TeX\ in Italia, riconosciuta
 ufficialmente in ambito internazionale, si sostiene \emph{unicamente}
 con le quote sociali.
 
@@ -494,12 +523,29 @@ l'abbonamento alla rivista \Ars;
 \item
 il DVD \TeX\ Collection;
 \item
-l'esclusivo tipometro realizzato da Massimo Caschili.
+un eventuale oggetto legato alle attività del \GuIT.
 \end{itemize}
 
-L'adesione al \GuIT{} prevede un quota associativa compresa tra \EUR{12,00}
+L'adesione al \GuIT\ prevede un quota associativa compresa tra \EUR{12,00}
 e \EUR{70,00} a seconda della tipologia di adesione prescelta e ha
 validità per l'anno solare in corso.
+
+\vspace{\stretch{1}}
+\providecommand\authorspace{ }
+{\parindent=\z@\let\authorspace\ %
+\ifx\@licenza\voidbox
+\noindent\@@title\\
+Copyright \textcopyright\ \ifcsvoid{@@Copyright}{\the\year}{\@@Copyright}, %
+  \@@author\\[\baselineskip]
+%
+  Questa documentazione è soggetta alla licenza LPPL (\LaTeX\ Project 
+  Public Licence), versione 1.3 o successive; il testo della licenza è 
+  sempre contenuto in qualunque distribuzione del sistema \TeX\ e nel 
+  sito \url{http://www.latex-project.org/lppl.txt}.\\[\baselineskip]
+  Questo documento è curato da \@@author.
+\else
+  \@licenza
+\fi\par}
 \newpage
 }
 %    \end{macrocode}
@@ -570,7 +616,8 @@ validità per l'anno solare in corso.
    \renewcommand*{\chaptitlefont}{%
        \fontsize{18}{16}\scshape}% sterlineato
    \renewcommand{\printchapternum}{%
-       \noindent\rlap{\makebox[\textwidth][r]{\rlap{\makebox[\foremargin][l]{%
+       \noindent\rlap{\makebox[\textwidth][r]{%
+         \rlap{\makebox[\foremargin][l]{%
        \chapnumfont \thechapter}}}}\printchaptertitle}
    \renewcommand*{\afterchapternum}{}
 }
@@ -587,9 +634,13 @@ validità per l'anno solare in corso.
 \renewcommand*\parttitlefont{\normalfont\huge\scshape}
 %    \end{macrocode}
 %
-% Ora le spaziature prima, dopo, a destra e a sinistra dei titoli dei comandi
-% di sezionamento minori. Inoltre si definiscono gli stili dei titolini e
-% altre informazioni stilistiche per le parti e i capitoli.
+% Ora le spaziature prima, dopo, a destra e a sinistra dei titoli dei
+% comandi di sezionamento minori. Inoltre si definiscono gli stili dei
+% titolini e altre informazioni stilistiche per le parti e i capitoli.
+% Per l'indice delle figure si allarga lo spazio destinato al loro
+% numero, perché si arriva anche a numerazioni di due cifre. Con le
+% cifre minuscole l'impostazione di default va bene, ma con le cifre
+% maiuscole queste ricoprono l'inizio della didascalia.
 %    \begin{macrocode}
 \setbeforesecskip{-3.5ex plus-1ex minus-0.2ex}
 \setbeforesubsecskip{-3ex plus-1ex minus-0.2ex}
@@ -621,6 +672,7 @@ validità per l'anno solare in corso.
     \cftchapterformatpnum{#1}%
     \cftchapterafterpnum\par\nobreak}
 \setlength{\cftbeforechapterskip}{1.0em \@plus 2\p@}
+\setlength{\cftfigurenumwidth}{2.5em}
 %    \end{macrocode}
 %
 % Grazie alle funzionalità di |memoir| si ridefiniscono anche
@@ -654,14 +706,14 @@ validità per l'anno solare in corso.
 \renewcommand\blockdescriptionlabel[1]{\normalfont\scshape #1}
 \providecommand\plaindescriptionlabel[1]{\hspace\labelsep\normalfont #1}
 
-\renewlist{blockdescription}{description}{4}
+\renewlist{blockdescription}{description}{1}
 \setlist[blockdescription]{before={\let\makelabel\blockdescriptionlabel},
 leftmargin=\z@,labelsep*=0.5em,labelindent=\z@,labelwidth=\z@}
 
-\newlist{plaindescription}{description}{4}
+\newlist{plaindescription}{description}{1}
 \setlist[plaindescription]{before={\let\makelabel\plaindescriptionlabel}}
 
-\newlist{compactenumerate}{enumerate}{4}
+\newlist{compactenumerate}{enumerate}{1}
 \setlist[compactenumerate,1]{label=\arabic*.,
    noitemsep, partopsep=\z@, topsep=.25\onelineskip}
 
@@ -669,11 +721,20 @@ leftmargin=\z@,labelsep*=0.5em,labelindent=\z@,labelwidth=\z@}
 \setlist[compactitemize]{label=•,
    noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 
-\newlist{compactdescription}{description}{4}
+\newlist{compactdescription}{description}{1}
 \setlist[compactdescription]{%
 style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 %    \end{macrocode}
 %
+% Un comando utile epr impostare con i font continuamente scalabili,
+% come i Latin Modern semplici o estesi, un corpo qualsiasi; di default
+% lo scartamento è impostato a 1,2 volte il corpo, ma può essere
+% specificato come primo argomento opzionale.
+%    \begin{macrocode}
+\newcommand*\cambiacorpo[2][1.2]{\bgroup\dimen@=#2\p@\dimen@=#1\dimen@
+\edef\x{\noexpand\egroup\noexpand\fontsize{#2}{\strip@pt\dimen@}}\x\selectfont}
+\let\setfontsize\cambiacorpo
+%    \end{macrocode}
 % Vengono poi impostati e differiti all'inizio del documento
 % i contatori che regolano la profondità di numerazione delle
 % sezioni e della loro inclusione nell'indice generale.
@@ -685,24 +746,31 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 %
 % Viene ora definita la virgola intelligente; si veda una
 % descrizione più dettagliata della sua utilità in matematica
-% per esempio della documentazioone di questa classe
+% per esempio della documentazione di questa classe
 % |gidatematica-doc.pdf|. Qui si commenta solo il codice.
 %
+% Se il comando |\virgoladecimale| risulta già definito, questo è merito
+% del modulo |babel-italian|, quindi non se ne fa niente perché la virgola
+% decimale con tutto il suo armamentario di macro è già definita. Si
+% fornisce invece una definizione più semplice e meno efficiente per
+% quando si usa {xelatex} o {lualatex}.
 % La prima parte del codice serve per rendere attiva la virgola
 % solo in modo matematico e solo quando la lingua principale
 % \emph{non} è l'inglese. Si fornisce anche un comando
 % |\m@thcomma| come cuore della definizione della virgola attiva.
 %    \begin{macrocode}
- \DeclareMathSymbol{\virgola}{\mathpunct}{letters}{"3B}
- \DeclareMathSymbol{\virgoladecimale}{\mathord}{letters}{"3B}
-\unless\ifPDFTeX
- \AtBeginDocument{\ifcsstring{xpg@main@language}{english}{\relax}{%
-    \mathcode`\,=\string"8000}}
-\else
- \AtBeginDocument{\ifcsstring{languagename}{english}{\relax}{%
-    \mathcode`\,=\string"8000}}
-\fi
-{\catcode `,=\active \gdef,{\futurelet\let@token\m@thcomma}}%
+\unless\ifcsname virgoladecimale\endcsname
+  \unless\ifPDFTeX% non pdflatex
+    \AtEndPreamble{\ifcsstring{xpg@main@language}{english}{\relax}{%
+      \mathcode`\,=\string"8000}%
+       \DeclareMathSymbol{\virgola}{\mathpunct}{letters}{"3B}%
+       \DeclareMathSymbol{\virgoladecimale}{\mathord}{letters}{"3B}%
+    }
+  \else% pdflatex
+    \AtEndPreamble{\ifcsstring{languagename}{english}{\relax}{%
+      \mathcode`\,=\string"8000}}
+  \fi
+  {\catcode `,=\active \gdef,{\futurelet\let@token\m@thcomma}}%
 %    \end{macrocode}
 % Poi, ritardando l'esecuzione alla fine del preambolo, si definisce
 % |\m@thcomma| in modo che svolga il suo compito: |\let@token|
@@ -743,37 +811,47 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 % primo argomento della macro |\m@thcomma| fosse un carattere
 % esplicito di categoria 12 (non potrebbe essere altro a questo
 % punto dei test), questa operazione di togliere il primo
-% carattere, lascerebbe una stringa vuota cosicché il test
-% |\ifcsname\endcsname| darebbe luogo ad un valore ``falso'',
-% quindi abbiamo la certezza che si tratti di un carattere
-% esplicito di categoria 12; bisogna ora testare se si tratta
-% di una cifra. I due test |\ifnum`#1<`0| e |\ifnum`#1>`9|
-% controllano se il carattere in questione è esterno o interno
-% all'intervallo ASCII delle cifre; se esso è esterno ci
-% vuole la virgola interpuntiva, altrimenti la virgola decimale.
+% carattere, lascerebbe una stringa vuota cosicché si verifica se
+% la stringa è vuota; se lo è si trattava di una cifra e ci vuole
+% la virgola decimale, se non lo è si tratta di qualcosa diverso
+% da una cifra e ci vuole la virgola interpuntiva.
+% Certo oltre alle cifre ci sono anche semplici segni come per esempio
+% gli operatori binari che usano i caratteri della testiera che potrebbero
+% essere scambiati per cifra; ma in questi casi la virgola è sempre
+% una virgola seriale e quindi si tratta del tipico caso che anche
+% l'autore più distratto scrive lasciandovi dopo uno spazio. In caso
+% di distrazione, o negli altri casi non previsti dalla serie di test,
+% lasciare uno spazio dopo la virgola nel file sorgente risolve sempre
+% ogni problema.
 %
-% Non tanto semplice ma efficace sia con pdfLaTeX sia con XeLaTeX.
+% Non tanto semplice ma efficace sia con pdfLaTeX sia con XeLaTeX e LuaLaTeX.
+%    \begin{macrocode}
+  \AtEndPreamble{%
+    \unless\ifcsname m@thcomma\endcsname\providecommand\m@thcomma{}\fi
+      \renewcommand\m@thcomma[1]{%
+      \unless\ifcat\noexpand\let@token*%
+        \virgola
+      \else
+        \edef\tempA{\expandafter\@gobble\string#1}%
+        \ifx\tempA\@empty
+          \virgoladecimale
+        \else
+          \virgola
+        \fi
+      \fi#1%
+    }%
+  }%
+\fi
+%    \end{macrocode}
+%
+% Per essere completi conviene provvedere ai comandi per impostare e per
+% disimpostare la virgola intelligente, rinviandoli alla fine del preambolo.
 %    \begin{macrocode}
 \AtEndPreamble{%
-\gdef\m@thcomma#1{%
-\unless\ifcat\noexpand\let@token*%
-  \virgola
-\else
-	\expandafter\expandafter\expandafter
-	    \ifcsname\expandafter\@gobble\string#1\endcsname
-	  \virgola
-	\else
-	  \ifnum`#1<`0\relax
-	    \virgola
-	  \else
-	    \ifnum`#1>`9\relax
-	      \virgola
-	    \else
-	      \virgoladecimale
-	    \fi
-	  \fi
-	\fi
-\fi#1}%
+\providecommand\IntelligentComma{}
+\providecommand\NoIntelligentComma{}
+\renewcommand\IntelligentComma{\mathcode`\,=\string"8000}
+\renewcommand\NoIntelligentComma{\mathcode`\,=\string"613B}
 }
 %    \end{macrocode}
 %
@@ -783,15 +861,6 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 % un link ipertestuale che porti all'inizio di queste
 % ``sezioni''. Per giunta queste parti dovrebbero cadere
 % nella back matter, quindi non verrebbero nemmeno numerati.
-%
-% Per la bibliografia si sfruttano i comandi interni di |memoir|
-% per ottenere quello che si desidera e nello stesso tempo
-% per consentire di mettere un prologo prima dell'elenco
-% bibliografico. La documentazione di |memoir| dice che bisogna
-% ridefinire il comando interno |\bibsection|.
-%    \begin{macrocode}
-\renewcommand{\bibsection}{\chapter{\bibname}\prebibhook}
-%    \end{macrocode}
 %
 % Per l'indice o gli indici analitici non dovrebbero esserci
 % problemi, nel senso che il pacchetto |imakeidx| ridefinisce
@@ -804,7 +873,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 \def\imki@columns{2}
 \renewenvironment{theindex}
 {%
-	\clearforchapter
+  \clearforchapter
     \csname phantomsection\endcsname
     \chapter{\indexname}%
     \indexmark%
@@ -829,7 +898,7 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 % dozzina di tali comandi per avere lo stile predefinito,
 % fra parentesi, solo l'autore, solo l'anno, eccetera.
 %    \begin{macrocode}
-\AtBeginDocument{\bibliographystyle{guidatematica}%
+\AtBeginDocument{\bibliographystyle{guidatematica}}%
 %    \end{macrocode}
 %
 % Come configurazione generale con |XeLaTeX| si impone
@@ -844,11 +913,11 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 \unless\ifPDFTeX
    \ifcsstring{xpg@main@language}{italian}%
      {\csgappto{init@extras@italian}{\nofrench@indent}}{}%
-\fi}
+\fi
 %    \end{macrocode}
 %
 % L'ambiente per la pagina del titolo, |titlepage| non
-% è definita con la classe |memoir|; qui la si definisce
+% è definita con la classe |memoir|; qui lo si definisce
 % apposta e funzionalmente per questa classe, non è un
 % comando da usare da parte dell'utente; egli deve
 % invece limitarsi a dare i comandi |author|, un solo
@@ -859,8 +928,8 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 %    \begin{macrocode}
 \newenvironment{titlepage}{\clearpage
 \pagestyle{titlepage}
-    \makeoddhead{titlepage}{}{\smash{\Large\scshape\@author}}{}
-    \makeoddfoot{titlepage}{}{\smash{\large\scshape\@date}}{}
+    \makeoddhead{titlepage}{}{\smash{{\Large\scshape\@author}}}{}
+    \makeoddfoot{titlepage}{}{\smash{{\large\scshape\@date}}}{}
 }{\clearpage}
 
 \providecommand\subtitle[1]{\gdef\@subtitle{#1}}
@@ -873,13 +942,13 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
     \ifdefvoid{\@subtitle}{}{\vspace{2\onelineskip}
     {\centering\scshape\Large\@subtitle\par}}
     \vspace{\stretch{.7}}
-    {\centering\includegraphics[width=0.23\paperwidth]{logoguittondo}\par}
+    {\centering\resizebox{0.23\textwidth}{!}{\logoguittondo}\par}
     \vspace*{\stretch{.7}}
     \end{titlepage}
 }
 %    \end{macrocode}
 %
-% Invece sono importanti questi due ambienti: |medaglione|
+% Invece sono importanti questi tre ambienti: |esercizio|, |medaglione|
 % e |sintassi|. Il primo serve per incorniciare un testo;
 % per la larghezza l'ambiente medaglione accetta un argomento
 % facoltativo, predefinito alla giustezza corrente (quindi
@@ -941,26 +1010,32 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 % \Dambiente{ambiente}{argomento}{default}; |Bambiente|
 % per indicare l'apertura di un ambiente specifico;
 % |\Eambiente| per indicare la chiusura di un ambiente
-% specifico; |\Arg| per indicare fra graffe un argomento
-% specifico \Arg{123}.\par}
+% specifico; |\Arg| (alias |\Marg| per non confondersi con altre
+% classi) per indicare fra graffe un argomento specifico \Arg{123}.
+% \par}
 %    \begin{macrocode}
 \newcommand*\hz{\nobreak\hskip\z@}
-\renewcommand*\meta[1]{$\langle$\textit{\hz#1}$\rangle$}
-\renewcommand*\marg[1]{\texttt{\char123}\meta{#1}\texttt{\char125}}
-\renewcommand*\oarg[1]{\texttt{[}\meta{#1}\texttt{]}}
-\newcommand*\Arg[1]{\texttt{\char123\relax#1\char125}}
+\renewcommand*\meta[1]{\textnormal{$\langle$\textit{\hz#1}$\rangle$}}
+\renewcommand*\marg[1]%
+  {\textnormal{\texttt{\char123}\meta{#1}\texttt{\char125}}}
+\renewcommand*\oarg[1]{\textnormal{\texttt{[}\meta{#1}\texttt{]}}}
+\newcommand*\Arg[1]{\textnormal{\texttt{\{#1\}}}}
+\let\Marg\Arg 
+\newcommand*\Oarg[1]{\textnormal{\texttt{[#1]}}}
 \def\GT@splitargs#1,#2!{\def\@tempA{#1}\def\@tempB{#2}}
-\newcommand\garg[1]{\GT@splitargs#1!\texttt{(}\meta{\@tempA}%
-   \texttt{,}\meta{\@tempB}\texttt{)}}
-\newcommand*\comando[1]{\texttt{\string#1}}
-\renewcommand*{\cs}[1]{\texttt{\char92#1}\index{#1@\texttt{\char92#1}}}
+\newcommand\garg[1]{\textnormal{\GT@splitargs#1!\texttt{(}\meta{\@tempA}%
+   \texttt{,}\meta{\@tempB}\texttt{)}}}
+\newcommand*\comando[1]{\textnormal{\texttt{\string#1}}}
+\renewcommand*{\cs}[1]%
+{\textnormal{\texttt{\char92#1}\index{#1@\texttt{\char92#1}|textsc}}}
 \let\csindex\cs
-\newcommand*\Sambiente[2]{\cs{begin}\marg{#1}\oarg{#2}\,\dots
-   \cs{end}\marg{#1}}
-\newcommand*\Dambiente[3]{\cs{begin}\marg{#1}\oarg{#2}\oarg{#3}\,\dots
-   \cs{end}\marg{#1}}
-\newcommand*\Bambiente[1]{\cs{begin}\texttt{\char123#1\char125}}
-\newcommand*\Eambiente[1]{\cs{end}\texttt{\char123#1\char125}}
+\newcommand*\Sambiente[2]{\comando{\begin}\marg{#1}\oarg{#2}\,\dots
+   \comando{\end}\marg{#1}}
+\newcommand*\Dambiente[3]{%
+   \comando{\begin}\marg{#1}\oarg{#2}\oarg{#3}\,\dots
+   \comando{\end}\marg{#1}}
+\newcommand*\Bambiente[1]{\comando{\begin}\Marg{#1}}
+\newcommand*\Eambiente[1]{\comando{\end}\Marg{#1}}
 %    \end{macrocode}
 %
 % Invece i comandi che seguono servono per comporre
@@ -996,65 +1071,168 @@ style=sameline,noitemsep,partopsep=\z@,topsep=.25\onelineskip}
 % la voce all'indice desiderato.
 %    \begin{macrocode}
 %
-\DeclareRobustCommand*\ambstyle[1]{\textsf{\slshape#1}}
-\DeclareRobustCommand*\classstyle[1]{\texttv{\itshape#1}}
-\DeclareRobustCommand*\filestyle[1]{\texttm{\textl{#1}}}
-\unless\ifPDFTeX
-    \DeclareRobustCommand*\packstyle[1]{\texttm{\itshape{#1}}}
-\else
-    \DeclareRobustCommand*\packstyle[1]{\texttm{\itshape\textl{#1}}}
-\fi
-\DeclareRobustCommand*\progstyle[1]{\textsf{#1}}
+\DeclareRobustCommand*\ambstyle[1]{{\normalfont\textsf{\slshape#1}}}
+\DeclareRobustCommand*\classstyle[1]{{\normalfont\texttv{\itshape#1}}}
+\DeclareRobustCommand*\filestyle[1]{{\normalfont\texttm{\textl{#1}}}}
+\DeclareRobustCommand*\packstyle[1]{{\normalfont
+   \texttm{\ifbool{PDFTeX}{\textl}{\itshape}{#1}}}}
+\DeclareRobustCommand*\progstyle[1]{{\normalfont\textsf{#1}}}
 \DeclareRobustCommand*\prog[1]{\progstyle{#1}%
-   \index{programma!#1@\progstyle{#1}}}
+   \index{programma!#1@\progstyle{#1}|textsc}}
 \DeclareRobustCommand*\pack[1]{\packstyle{#1}%
-   \index{pacchetto!#1@\packstyle{#1}}}
+   \index{pacchetto!#1@\packstyle{#1}|textsc}}
 \DeclareRobustCommand*\class[1]{\classstyle{#1}%
-   \index{classe!#1@\classstyle{#1}}}
+   \index{classe!#1@\classstyle{#1}|textsc}}
 \DeclareRobustCommand*\file[1]{\filestyle{#1}%
-   \index{file!#1@\filestyle{#1}}}
+   \index{file!#1@\filestyle{#1}|textsc}}
 \DeclareRobustCommand*\amb[1]{\ambstyle{#1}%
-   \index{ambiente!#1@\ambstyle{#1}}}
+   \index{ambiente!#1@\ambstyle{#1}|textsc}}
 %
-\DeclareRobustCommand*\opzstyle[1]{\textsl{\textl{#1}}}
-\DeclareRobustCommand*\contastyle[1]{\texttm{#1}}
-\DeclareRobustCommand*\stilestyle[1]{\texttm{#1}}
-\DeclareRobustCommand*\numeristyle[1]{\texttm{#1}}
-\DeclareRobustCommand*\umisurastyle[1]{\texttm{#1}}
-\DeclareRobustCommand*\chiavestyle[1]{\texttm{#1}}
-\DeclareRobustCommand*\descrittorestyle[1]{\texttm{#1}}
-\DeclareRobustCommand*\posizionestyle[1]{\texttm{#1}}
-\DeclareRobustCommand*\allineamentostyle[1]{\texttm{#1}}
+\DeclareRobustCommand*\opzstyle[1]{{\normalfont\textsl{\textl{#1}}}}
+\DeclareRobustCommand*\contastyle[1]{{\normalfont\texttm{#1}}}
+\DeclareRobustCommand*\stilestyle[1]{{\normalfont\texttm{#1}}}
+\DeclareRobustCommand*\numeristyle[1]{{\normalfont\texttm{#1}}}
+\DeclareRobustCommand*\umisurastyle[1]{{\normalfont\texttm{#1}}}
+\DeclareRobustCommand*\chiavestyle[1]{{\normalfont\texttm{#1}}}
+\DeclareRobustCommand*\descrittorestyle[1]{{\normalfont\texttm{#1}}}
+\DeclareRobustCommand*\posizionestyle[1]{{\normalfont\texttm{#1}}}
+\DeclareRobustCommand*\allineamentostyle[1]{{\normalfont\texttm{#1}}}
 %
 \DeclareRobustCommand*\opz[1]{\opzstyle{#1}%
-   \index{opzione!#1@\opzstyle{#1}}}
+   \index{opzione!#1@\opzstyle{#1}|textsc}}
 \DeclareRobustCommand*\conta[1]{\contastyle{#1}%
-   \index{contatore!#1@\contastyle{#1}}}
+   \index{contatore!#1@\contastyle{#1}|textsc}}
 \DeclareRobustCommand*\stile[1]{\stilestyle{#1}%
    \index{stile della pagina!#1@\stilestyle{#1}}}
 \DeclareRobustCommand*\numeri[1]{\numeristyle{#1}%
-   \index{numerazione!#1@\numeristyle{#1}}}
+   \index{numerazione!#1@\numeristyle{#1}|textsc}}
 \DeclareRobustCommand*\umisura[1]{\umisurastyle{#1}%
-   \index{unit\`a di misura!#1@\umisurastyle{#1}}}
+   \index{unit\`a di misura!#1@\umisurastyle{#1}|textsc}}
 \DeclareRobustCommand*\chiave[1]{\chiavestyle{#1}%
-   \index{chiave!#1@\chiavestyle{#1}}}
+   \index{chiave!#1@\chiavestyle{#1}|textsc}}
 \DeclareRobustCommand*\descrittore[1]{\descrittorestyle{#1}%
-   \index{descrittore di colonna!#1@\descrittorestyle{#1}}}
+   \index{descrittore di colonna!#1@\descrittorestyle{#1}|textsc}}
 \DeclareRobustCommand*\posizione[1]{\posizionestyle{#1}%
-   \index{posizione degli oggetti flottanti!#1@\posizionestyle{#1}}}
+   \index{posizione degli oggetti flottanti!#1@\posizionestyle{#1}|textsc}}
 \DeclareRobustCommand*\allineamento[1]{\allineamentostyle{#1}%
-   \index{codice di allineamento!#1@\allineamentostyle{#1}}}
+   \index{codice di allineamento!#1@\allineamentostyle{#1}|textsc}}
 %    \end{macrocode}
 %
-% Finalmente la macro |\GuIT| per gestire l'immagine del logo del GuIT.
+% Finalmente la macro |\GuIT| per gestire l'immagine del logo del GuIT,
+% sia quello lineare, sia quello tondo.
 %    \begin{macrocode}
 %
-\DeclareRobustCommand*\GuIT{{\dimen@=\f@size\p@\dimen2=20.88\p@
-\edef\guitscale{\strip@pt\dimexpr\dimen@*\p@/\dimen2\relax}%
-\raisebox{-0.93ex}[\z@][\z@]{%
-   \includegraphics[scale=\guitscale]{logoguitlineare}}}}
-\let\guit\GuIT
+\definecolor{verdeguit}{rgb}{0, 0.40, 0}
+\def\GuIT{\mbox{\color{verdeguit}%
+\ifPDFTeX\usefont{T1}{lmr}{m}{sc}%
+  g\raisebox{-0.715ex}{\kern-0.26em u}\kern-0.13em
+  \textcolor{black}{I}\kern-0.14em t%
+\else\usefont{TU}{lmr}{m}{sc}%
+  g\raisebox{-0.60ex}{\kern-0.285em u}\kern-0.14em
+  \textcolor{black}{I}\kern-0.14em t%
+\fi}}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.text}
+
+\def\logoguittondo{\begin{tikzpicture}[x=1.65em,y=1.65em]\small
+\draw  (0,-0.15) node [circle] {\Huge\GuIT};
+\path[decorate,decoration={text along path, text={Gruppo Utilizzatori}}]
+    (-1.5,0) .. controls (-1.5,2) and (1.5,2) .. (1.5,0);
+\path[decorate,decoration={text along path, text={{\kern.25em}{$\star$} 
+{$\star$} Italiani di {\TeX} {$\star$} {$\star$}}}]
+    (-1.8,0) .. controls (-1.8,-2.4) and (1.8,-2.4) .. (1.8,0);
+\end{tikzpicture}
+}
 %    \end{macrocode}
+%
+% In molte guide tematiche si usano le note marginali; per evitare di
+% dover specificare i campi per le note di destra e per quelle di
+% sinistra, sono disponibili due macro, con le loro macro di servizio
+% che permettono di specificare un argomento solo; ricordiamo che i
+% margini sono abbastanza stretti quando si compone in carta in
+% formato B5, e che il margine esterno è già occupato dalla scritta in
+% blu che indica il noem del document insieme al suo numero di versione
+% e alla data dell'ultima modifica. Quindi eventuali altre note marginali
+% vanno inserite nel margine interno.
+%
+% Il primo comando |\LRmarginpar| a seconda di dove cada, genera una
+% nota marginale nel margine destro in bandiera col palo a sinistra,
+% mentre nella pagina di sinistre compone la nota in bandiera con il
+% margine a destra.
+%
+% Il secondo comando |\CLRmarginpar| compone sempre le note in bandiera
+% col palo a sinistra, ma facoltativamente accetta anche uno o due colori
+% per colorare lo sfondo della nota (primo colore)  e i due filetti
+% colorati, uno sopra e uno sotto, in adiacenza alla zona di sfondo;
+% di default questi due colori sono entrambi bianchi, quindi la
+% differenza si vede solo nelle note marginali delle pagine dispari.
+% le due sintassio sono le seguenti:
+% \begin{flushleft}\obeylines
+% \cs{LRmarginpar}\marg{testo della nota}
+% \cs{CLRmarginpar}\marg{testo della nota}\oarg{sfondo}\oarg{filetti}
+% \end{flushleft}
+% I colori possono essere definiti con i soliti nomi validi sia per il
+% pacchetto |color|, sia per |xcolor|; con |xcolor| si ha maggiore
+% libertà d'azione. Usando nomi di colori già definiti o definiti
+% dall'autore nella macro che crea una specifica nota, questi colori
+% sia applicano solo a quella nota. Se si ridefiniscono il colori
+% |sfondo| e |bordo| con colori a piacere (di default sono entrambi
+% bianchi), queste nuove definizioni si applicano a tutte le note
+% marginali; si suggerisce di seguire questa strada, a meno che non
+% si vogliano usare note marginali con colori diversi per tipi di
+% note diverse.
+%
+% Ecco il codice:
+%    \begin{macrocode}
+\NewDocumentCommand\LRmarginpar{s m}{% per le note marginali
+   \marginparmargin{inner}%
+   \marginpar[\raggedleft#2]{\raggedright#2}%
+}
+
+\newbox\colormarginbox 
+\definecolor{sfondo}{rgb}{1,1,1}
+\definecolor{bordo}{rgb}{1,1,1}
+
+\NewDocumentCommand\marginframe{m m m}{%
+  \setbox\colormarginbox\hbox{\fboxsep=0pt\fboxrule=0pt
+    \colorbox{#2}{\parbox[t]{\marginparwidth}{#1}}}%
+    \raisebox{2.3ex}{\arrayrulewidth=1pt
+    {\color{#3}\tabular[t]{@{}c@{}}
+    \hline
+    \colorbox{#2}{\box\colormarginbox}\\
+    \hline
+    \endtabular}%
+  }%
+}
+
+\NewDocumentCommand\CLRmarginpar{m O{sfondo} O{bordo}}{% per note marginali 
+% L'asterisco non fa niente, ma è per compatibilità col passato
+  \marginparmargin{inner}
+  \marginpar[\hbox{\kern-6pt\marginframe{\raggedright#1}{#2}{#3}}]%
+            {\marginframe{\raggedright#1}{#2}{#3}}
+}
+
+%    \end{macrocode}
+%
+% Ultimo ma non meno importante, la definizione dell'ambiente
+% |pdfxmetadata|. Serve per immettere nel testo i metadati, nel
+% caso che si voglia creare un file archiviabile secondo le norme
+% ISO. L'utente di una guida tematica che volesse creare un guida
+% conforme a queste norme ISO deve caricare esplicitamente caricare
+% il pacchetto |pdfx| con l'opzione |[a-1b]| Prima di
+% caricare |pdfx| l'utente deve inserire nel preambolo questo ambiente
+% |pdfx|, all'interno del quale sono inseriti i metadati necessari.
+% Qui non si scende nei dettagli, ma l'utente deve riferirsi alla
+% guida tematica \emph{FileArchiviabili.pdf}, perché il discorso
+% relativo ai file archiviabili è lungo e complesso.  Tuttavia pare
+% corretto mettere già a disposizione in questa classe l'ambiente
+% |pdfxmetadata| così che l'utente non debba “inventarselo”.
+%    \begin{macrocode}
+\newenvironment{pdfxmetadata}{%
+\VerbatimOut{\jobname.xmpdata}}{\endVerbatimOut}
+%    \end{macrocode}
+
 % \iffalse
 %</class>
 % \fi
